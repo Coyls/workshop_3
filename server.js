@@ -1,4 +1,35 @@
-const WebSocket = require('ws')
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+const port = process.env.PORT || 3000;
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* const WebSocket = require('ws')
  
 const wss = new WebSocket.Server({ port: 3000 })
  
@@ -7,4 +38,4 @@ wss.on('connection', ws => {
     console.log(`Received message => ${message}`)
   })
   ws.send('Hello! Message From Server!!')
-})
+}) */
