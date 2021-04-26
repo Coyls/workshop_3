@@ -1,2 +1,2 @@
-Console.log("App.js fonctionne")
+console.log("App.js fonctionne")
 
