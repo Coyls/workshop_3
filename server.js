@@ -1,34 +1,32 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const port = process.env.PORT || 3000;
 const io = require('socket.io')(http);
+const port = process.env.PORT || 3000; 
 
-
-app.use(express.static(__dirname + 'public'));
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/backEndTest/index.html');
+  res.sendFile(__dirname + '/public/back_end_test/index.html');
 });
 
 io.on('connection', (socket) =>{
-  console.log(socket.id)
+  console.log('connect', socket.id)
 
   socket.on('message', (message) =>{
     console.log("Le message est : " + message)
   })
 
   socket.on('disconnect', () => {
-    console.log(socket.id)
+    console.log('disconnect', socket.id)
   })
 })
 
 
-if (port === 3000) {
-  http.listen(port, () => {
-    console.log(`http://localhost:${port}/`);
-  });
-}
+http.listen(port, () => {
+  console.log(`Socket.IO server running at http://localhost:${port}/`);
+});
+
 
 
 
