@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+http.listen(port, () => {
+  console.log(`http://localhost:${port}/`);
+});
+
 
 
 
