@@ -2,19 +2,26 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const port = process.env.PORT || 3000;
+const io = require('socket.io')(http);
 
-app.use(express.static(__dirname + '/public'));
+
+app.use(express.static(__dirname + 'public'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/backEndTest/index.html');
 });
 
+io.on('connection', (socket) =>{
+  console.log(socket.id)
 
+  socket.on('message', (message) =>{
+    console.log("Le message est : " + message)
+  })
 
-
-
-
-
+  socket.on('disconnect', () => {
+    console.log(socket.id)
+  })
+})
 
 
 if (port === 3000) {
