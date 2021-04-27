@@ -24,3 +24,5 @@ connection.onerror = (error) => {
 connection.onmessage = (e) => {
     console.log(e.data)
 }
+
+// ?projectId=15548182

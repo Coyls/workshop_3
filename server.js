@@ -7,12 +7,12 @@ const mysql = require('mysql');
 
 const server = http.createServer(app);
 
-const wss = new WebSocket.Server({ server })
+const socket = new WebSocket.Server({ server })
 
 let screens = [];
 let mobiles = [];
  
-wss.on('connection', ws => {
+socket.on('connection', ws => {
   ws.on('message', msg => {
     const data = JSON.parse(msg)
     const type = data.type
@@ -46,10 +46,7 @@ con.connect(function(err) {
   console.log("Connecté à la base de données MySQL!");
   con.query("SELECT * FROM mood", function (err, result) {
     if (err) throw err;
-    result.forEach(element => {
-      console.log(element.id_mood)
-      
-    });
+    console.log(result)
   });
 });
 
