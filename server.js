@@ -15,7 +15,12 @@ let mobiles = [];
 wss.on('connection', ws => {
   console.log(ws.origin)
   ws.on('message', msg => {
+    const msg = JSON.parse(msg)
     console.log("Message recu :", msg)
+
+
+
+
   })
   // ws.send(test)
 })

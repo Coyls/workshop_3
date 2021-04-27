@@ -16,15 +16,11 @@ console.log(screen)
 
 // Connection WebSocket
 connection.onopen = (event) => {
-    console.log("e", event)
     connection.send(JSON.stringify(screen))
 }
 connection.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)
 }
-
-
-
 connection.onmessage = (e) => {
     console.log(e.data)
 }
