@@ -17,6 +17,8 @@ socket.on('connection', ws => {
     const data = JSON.parse(msg)
     const type = data.type
 
+    console.log(wss.clients)
+
     if (type === 'screen') {
       screens.push(data)
     }
