@@ -18,7 +18,7 @@ socket.on('connection', ws => {
     const type = data.type
 
     socket.clients.forEach(client => {
-      consolelog(client.readyState)
+      console.log(client.readyState)
     })
 
     if (type === 'screen') {
