@@ -10,22 +10,25 @@ if (screenId === NaN) screenId = 0
 // MOBILE
 const postBtn = document.getElementById('post')
 
-const postMood = () => {
-    console.log('post Mood')
-    // Création d'un objet msg qui contient les données
-    // dont le serveur a besoin pour traiter le message
-    var msg = {
-      type: "post", //nom de message serveur
-      idEcran: screenId, // identifiant de l'écran
-      idQuestion: 0,  // identifiant de la question
-      humeur: 0 // Réponse à la question, valeur possibile 0 ou 1
-    };
-  
-    // Envoi de l'objet msg à travers une chaîne formatée en JSON
-    serveurSocket.send(JSON.stringify(msg));
-  }
 
-postBtn.addEventListener('click', postMood())
+
+postBtn.addEventListener('click', () => {
+    const postMood = () => {
+        console.log('post Mood')
+        // Création d'un objet msg qui contient les données
+        // dont le serveur a besoin pour traiter le message
+        var msg = {
+            type: "post", //nom de message serveur
+            idEcran: screenId, // identifiant de l'écran
+            idQuestion: 0, // identifiant de la question
+            humeur: 0 // Réponse à la question, valeur possibile 0 ou 1
+        };
+    
+        // Envoi de l'objet msg à travers une chaîne formatée en JSON
+        serveurSocket.send(JSON.stringify(msg));
+    }
+    postMood()
+})
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -53,12 +56,12 @@ serveurSocket.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)
 }
 serveurSocket.onmessage = (event) => {
-  var message = event.data;
-  
-  if(message.type === "post") {
-    console.log(data.type); //"humeurReceive"
-    console.log(data.humeur); //0 ou 1  
-  }
+    var message = event.data;
+
+    if (message.type === "post") {
+        console.log(data.type); //"humeurReceive"
+        console.log(data.humeur); //0 ou 1  
+    }
 }
 
 
