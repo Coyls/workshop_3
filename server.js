@@ -33,6 +33,6 @@ con.connect(function(err) {
 });
 
 
-http.listen(port, () => {
+server.listen(port, () => {
   console.log(`server running at http://localhost:${port}/`);
 });
