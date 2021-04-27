@@ -29,10 +29,8 @@ socket.on('connection', ws => {
   })
   // ws.send(test)
 
-  ws.on('disconnect', disconnect => {
-    const data = JSON.parse(disconnect)
-    console.log("Deconection", data)
-
+  ws.on('close', () => {
+    console.log('disconnected');
   })
 })
 
