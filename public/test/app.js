@@ -15,15 +15,10 @@ let msg = {
 connection.onopen = (e) => {
     console.log("e", e)
     connection.send(JSON.stringify(msg))
-
-    // connection.emit('test', JSON.stringify(msg))
-
 }
 connection.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)
 }
-
-
 connection.onmessage = (e) => {
     console.log(e.data)
 }

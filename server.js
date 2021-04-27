@@ -33,7 +33,10 @@ con.connect(function(err) {
   console.log("Connecté à la base de données MySQL!");
   con.query("SELECT * FROM mood", function (err, result) {
     if (err) throw err;
-    console.log(result);
+    result.forEach(element => {
+      console.log(element)
+      
+    });
   });
 });
 
