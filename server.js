@@ -31,7 +31,7 @@ const con = mysql.createConnection({
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connecté à la base de données MySQL!");
-  con.query("SELECT * FROM posts LEFT JOIN reponses ON post.id_reponse=reponse.id_reponse LEFT JOIN mood ON reponse.id_mood=mood.id_mood LEFT JOIN questions ON reponse.id_question=question.id_question LEFT JOIN screen ON question.id_screen=screen.id_screen", function (err, result) {
+  con.query("SELECT * FROM posts", function (err, result) {
     if (err) throw err;
     console.log(result);
   });
