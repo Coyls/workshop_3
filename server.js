@@ -29,7 +29,8 @@ socket.on('connection', ws => {
   })
   // ws.send(test)
 
-  ws.on('close', () => {
+  ws.on('close', (e) => {
+    console.log(e)
     console.log('disconnected');
   })
 })
