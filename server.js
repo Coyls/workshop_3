@@ -14,7 +14,7 @@ const test = 'Une data'
 wss.on('connection', ws => {
   console.log('ws', ws)
   ws.on('message', message => {
-    console.log(`Received message => ${message}`)
+    console.log("Message recu :", message)
   })
   ws.send(test)
 })
