@@ -17,10 +17,6 @@ socket.on('connection', ws => {
     const data = JSON.parse(msg)
     const type = data.type
 
-    socket.clients.forEach(client => {
-      console.log(client.readyState)
-    })
-
     if (type === 'screen') {
       screens.push(data)
     }
