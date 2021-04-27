@@ -1,24 +1,29 @@
-console.log("test dossier public")
+console.log("test Screen -> Server")
 
 const url = 'ws://vps215076.ovh.net:3000'
 const connection = new WebSocket(url)
 
+let screenId = parseInt(params.get('screenId'))
+if (screenId === null) screenId = 0
 
-let msg = {
-    type: "message",
-    text: "Salut le test",
-    date: Date.now()
-  };
+let screen = {
+    type: "screen",
+    id_screen: screenId,
+};
 
+console.log(screen)
 
 // Connection WebSocket
-connection.onopen = (e) => {
-    console.log("e", e)
-    connection.send(JSON.stringify(msg))
+connection.onopen = (event) => {
+    console.log("e", event)
+    connection.send(JSON.stringify(screen))
 }
 connection.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)
 }
+
+
+
 connection.onmessage = (e) => {
     console.log(e.data)
 }
