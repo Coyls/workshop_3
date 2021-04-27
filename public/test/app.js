@@ -10,7 +10,8 @@ if (screenId === NaN) screenId = 0
 // MOBILE
 const postBtn = document.getElementById('post')
 
-function envoiHumeur() {
+const postMood = () => {
+    console.log('post Mood')
     // Création d'un objet msg qui contient les données
     // dont le serveur a besoin pour traiter le message
     var msg = {
@@ -24,7 +25,7 @@ function envoiHumeur() {
     serveurSocket.send(JSON.stringify(msg));
   }
 
-postBtn.addEventListener('click', envoiHumeur())
+postBtn.addEventListener('click', postMood())
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 
