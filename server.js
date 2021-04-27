@@ -1,6 +1,12 @@
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+const port = process.env.PORT || 3000;
 const WebSocket = require('ws');
 const mysql = require('mysql');
- 
+
+
+
 const wss = new WebSocket.Server({ port: 3000 })
  
 wss.on('connection', ws => {
@@ -24,4 +30,9 @@ con.connect(function(err) {
     if (err) throw err;
     console.log(result);
   });
+});
+
+
+http.listen(port, () => {
+  console.log(`server running at http://localhost:${port}/`);
 });
