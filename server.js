@@ -7,7 +7,7 @@ const mysql = require('mysql');
 
 
 
-const wss = new WebSocket.Server({ port: 3000 })
+const wss = new WebSocket.Server({ http })
  
 wss.on('connection', ws => {
   ws.on('message', message => {
