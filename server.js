@@ -17,7 +17,7 @@ wss.on('connection', ws => {
   ws.on('message', msg => {
     console.log("Message recu :", msg)
   })
-  ws.send(test)
+  // ws.send(test)
 })
 
 
