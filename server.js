@@ -25,6 +25,11 @@ socket.on('connection', ws => {
       screens.push(data)
     }
 
+    if (type === 'post') {
+      console.log(data)
+      // Mettre ici la requete SQL 
+    }
+
     console.log("A screen has connect", screens)
 
 
@@ -33,10 +38,7 @@ socket.on('connection', ws => {
   })
   // ws.send(test)
 
-  ws.on('close', () => {
-    ws.send("screenasdisconnect")
-    console.log('disconnected');
-  })
+ 
 })
 
 
@@ -63,3 +65,10 @@ con.connect(function(err) {
 server.listen(port, () => {
   console.log(`server running at http://localhost:${port}/`);
 });
+
+
+// Au cas ou
+
+ /* ws.on('close', () => {
+    console.log('disconnected');
+  }) */
