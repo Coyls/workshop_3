@@ -8,14 +8,20 @@ const mysql = require('mysql');
 const server = http.createServer(app);
 
 const wss = new WebSocket.Server({ server })
+
+const test = 'Une data'
  
 wss.on('connection', ws => {
+  console.log('ws', ws)
   ws.on('message', message => {
     console.log(`Received message => ${message}`)
   })
-  ws.send('Hello! Message From Server!!')
+  ws.send(test)
 })
 
+
+
+// Request mySQL
 const con = mysql.createConnection({
   host: "localhost",
   user: "pma",
