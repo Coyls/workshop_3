@@ -3,6 +3,7 @@ console.log("test Screen -> Server")
 const url = 'ws://vps215076.ovh.net:3000'
 const connection = new WebSocket(url)
 
+let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screenId'))
 if (screenId === null) screenId = 0
 
