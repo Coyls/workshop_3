@@ -21,13 +21,19 @@ socket.on('connection', ws => {
       screens.push(data)
     }
 
-    console.log(screens)
+    console.log("A screen has connect", screens)
 
 
 
 
   })
   // ws.send(test)
+
+  ws.on('disconnect', disconnect => {
+    const data = JSON.parse(disconnect)
+    console.log("Deconection", data)
+
+  })
 })
 
 

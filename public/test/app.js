@@ -24,5 +24,8 @@ connection.onerror = (error) => {
 connection.onmessage = (e) => {
     console.log(e.data)
 }
+connection.onclose = (event) => {
+    connection.send(JSON.stringify(screen))
+}
 
-// ?projectId=15548182
+// ?screenId=1
