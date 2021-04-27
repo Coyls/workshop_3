@@ -26,7 +26,7 @@ const con = mysql.createConnection({
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connecté à la base de données MySQL!");
-  con.query("SELECT * FROM posts", function (err, result) {
+  con.query("SELECT * FROM mood", function (err, result) {
     if (err) throw err;
     console.log(result);
   });
