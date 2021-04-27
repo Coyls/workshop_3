@@ -7,8 +7,14 @@ let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screenId'))
 if (screenId === NaN) screenId = 0
 
+// Object
 let screen = {
     type: "screen",
+    id_screen: screenId,
+};
+
+let disconnect = {
+    type: "disconnect",
     id_screen: screenId,
 };
 
@@ -22,10 +28,13 @@ connection.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)
 }
 connection.onmessage = (e) => {
-    console.log(e.data)
+    let data = e.data
+
+    if (data === 'screenasdisconnect') {
+        console.log("Someone disconnected")
+    }
+
 }
-connection.onclose = (event) => {
-    connection.send(JSON.stringify(screen))
-}
+
 
 // ?screenId=1

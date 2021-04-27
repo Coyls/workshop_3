@@ -29,8 +29,8 @@ socket.on('connection', ws => {
   })
   // ws.send(test)
 
-  ws.on('close', (e) => {
-    console.log(e)
+  ws.on('close', () => {
+    ws.send("screenasdisconnect")
     console.log('disconnected');
   })
 })
@@ -51,7 +51,7 @@ con.connect(function(err) {
   console.log("Connecté à la base de données MySQL!");
   con.query("SELECT * FROM mood", function (err, result) {
     if (err) throw err;
-    console.log(result)
+    // console.log(result)
   });
 });
 
