@@ -1,69 +1,4 @@
-const express = require('express');
-const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const port = process.env.PORT || 3000;
-const mysql = require('mysql');
-
-app.use("/public", express.static('public'))
-
-
-io.on('connection', (socket) =>{
-  console.log('connect', socket.id)
-
-
-  socket.on('message', (message) =>{
-    console.log("Le message est : " + message)
-  })
-
-  socket.on('disconnect', () => {
-    console.log('disconnect', socket.id)
-  })
-})
-
-const con = mysql.createConnection({
-  host: "localhost",
-  user: "pma",
-  password: "pmapass",
-  database : "comment_ca_va"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connecté à la base de données MySQL!");
-  con.query("SELECT * FROM posts", function (err, result) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
-
-http.listen(port, () => {
-  console.log(`Socket.IO server running at http://localhost:${port}/`);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* const WebSocket = require('ws')
+const WebSocket = require('ws')
  
 const wss = new WebSocket.Server({ port: 3000 })
  
@@ -72,4 +7,4 @@ wss.on('connection', ws => {
     console.log(`Received message => ${message}`)
   })
   ws.send('Hello! Message From Server!!')
-}) */
+})
