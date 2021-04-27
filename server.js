@@ -22,7 +22,7 @@ io.on('connection', (socket) =>{
 })
 
 const con = mysql.createConnection({
-  host: "http://vps215076.ovh.net/",
+  host: "localhost",
   user: "pma",
   password: "pmapass",
   database : "comment_ca_va"
