@@ -6,10 +6,6 @@ const port = process.env.PORT || 3000;
 
 app.use("/public", express.static('public'))
 
-app.get('/', (req, res) => {
-
-  res.sendFile(__dirname + '/public/back_end_test/index.html');
-});
 
 io.on('connection', (socket) =>{
   console.log('connect', socket.id)
