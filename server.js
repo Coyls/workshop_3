@@ -14,7 +14,7 @@ let mobiles = [];
  
 wss.on('connection', ws => {
   console.log(ws.origin)
-  ws.on('test', msg => {
+  ws.on('message', msg => {
     console.log("Message recu :", msg)
   })
   ws.send(test)

@@ -5,7 +5,7 @@ const connection = new WebSocket(url)
 
 let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screenId'))
-if (screenId === null) screenId = 0
+if (screenId === NaN) screenId = 0
 
 let screen = {
     type: "screen",
