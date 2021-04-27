@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const http = require('http').Server(app);
+const http = require('http');
 const port = process.env.PORT || 3000;
 const WebSocket = require('ws');
 const mysql = require('mysql');
 
+const server = http.createServer(app);
 
-
-const wss = new WebSocket.Server({ http })
+const wss = new WebSocket.Server({ server })
  
 wss.on('connection', ws => {
   ws.on('message', message => {
