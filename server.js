@@ -34,7 +34,7 @@ con.connect(function(err) {
   con.query("SELECT * FROM mood", function (err, result) {
     if (err) throw err;
     result.forEach(element => {
-      console.log(element)
+      console.log(element.id_mood)
       
     });
   });
