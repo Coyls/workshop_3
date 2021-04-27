@@ -14,9 +14,9 @@ let msg = {
 // Connection WebSocket
 connection.onopen = (e) => {
     console.log("e", e)
-    // connection.send(JSON.stringify(msg))
+    connection.send("test", JSON.stringify(msg))
 
-    connection.emit('test', JSON.stringify(msg))
+    // connection.emit('test', JSON.stringify(msg))
 
 }
 connection.onerror = (error) => {
