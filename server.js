@@ -13,10 +13,15 @@ let screens = [];
 let mobiles = [];
  
 wss.on('connection', ws => {
-  console.log(ws.origin)
   ws.on('message', msg => {
     const data = JSON.parse(msg)
-    console.log("Message recu :", data.type)
+    const type = data.type
+
+    if (type === 'screen') {
+      screens.push(data)
+    }
+
+    console.log(screens)
 
 
 
