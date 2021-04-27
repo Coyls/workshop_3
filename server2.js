@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const port = 3001;
+const http = require('http')/*.Server(app)*/;
+const port = process.env.PORT || 3001;
 const mysql = require('mysql');
 
 app.use("/public", express.static('public'))
@@ -27,20 +26,6 @@ con.connect(function(err) {
     console.log(result);
   });
 });
-
-io.on('connection', (socket) =>{
-  console.log('connect', socket.id)
-
-
-  socket.on('message', (message) =>{
-    console.log("Le message est : " + message)
-  })
-
-
-  socket.on('disconnect', () => {
-    console.log('disconnect', socket.id)
-  })
-}) 
 
 
 http.listen(port, () => {
