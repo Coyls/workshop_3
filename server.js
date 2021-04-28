@@ -112,9 +112,9 @@ socket.on('connection', ws => {
     }
 
     mobiles.push(mobile)
-    whitelists[data.screenId].push(mobile)
+    whitelists[data.screenId - 1].push(mobile)
 
-    if (whitelists[data.screenId][0] === mobile) {
+    if (whitelists[data.screenId - 1][0] === mobile) {
       console.log(mobile.mobileId + " est actif")
     } else {
       console.log(mobile.mobileId + " est inactif")
@@ -138,7 +138,7 @@ socket.on('connection', ws => {
       whitelists[mobile.mobileId].forEach((connexion, id) => {
         if (connexion.socket === ws) {
           console.log(connexion.mobileId + "est sortie de la whitelist")
-          whitelists[mobile.mobileId].splice(id, 1)
+          whitelists[mobile.mobileId - 1].splice(id, 1)
         }
       })
       if (mobile.socket === ws) {
