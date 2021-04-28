@@ -57,27 +57,20 @@ socket.on('connection', ws => {
       })
 
     } else if (type === 'data') {
-      // ici la requete sql pour visualiser les data
-      /* con.connect(function (err) {
-        if (err) throw err;
-        con.query(requestData, function (err, result) {
-          if (err) throw err;
-          console.log(result)
-        });
-      }); */
-
+      
       con.connect(function (err) {
         if (err) throw err;
-        console.log("Connecté à la base de données MySQL!");
-        con.query(requestData
-          , function (err, result) {
+        con.query(requestData, function (err, result) {
             if (err) throw err;
-            console.log(result)
+            let dataPage = {
+              type : "dataPage",
+              stats : result
+            }
+
+            ws.send(JSON.stringify(dataPage))
           });
       });
 
-
-      // ws.send(result)
     }
 
   })

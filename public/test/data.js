@@ -20,5 +20,11 @@ serveurSocket.onerror = (error) => {
 
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
+    const data = JSON.parse(event.data)
+    console.log(data)
+
+    if (data.type === "dataPage") {
+        console.log(data)
+    }
 
 }
