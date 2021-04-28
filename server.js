@@ -144,7 +144,7 @@ socket.on('connection', ws => {
     mobile.socket.send(JSON.stringify(mobileData))
 
     whitelists[data.screenId - 1].forEach(mobileOnList => {
-      console.log(mobileOnList)
+      console.log("mobileOnlist", mobileOnList.mobileId)
     })
 
     if (whitelists[data.screenId - 1][0] === mobile) {
