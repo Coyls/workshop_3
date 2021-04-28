@@ -12,6 +12,7 @@ const socket = new WebSocket.Server({ server })
 
 let screens = [];
 let mobiles = [];
+let whitelists = [];
 
 socket.on('connection', ws => {
 
@@ -66,7 +67,16 @@ socket.on('connection', ws => {
       mobileId : data.screenId,
       socket : ws
     }
+
     mobiles.push(mobile)
+    whitelists[data.screenId].push(mobile)
+
+    if (whitelists[data.screenId][0] === mobile) {
+      console.log(mobile.mobileId + " est actif")
+    } else {
+      console.log(mobile.mobileId + " est inactif")
+    }
+
     mobile.socket.on('message', msg => {
       const dataMobile = JSON.parse(msg)
     })
