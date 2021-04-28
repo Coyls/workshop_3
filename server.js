@@ -39,10 +39,16 @@ socket.on('connection', ws => {
     screen.socket.on('message', msg => {
       const dataScreen = JSON.parse(msg)
     })
-    screen.socket.on('close', () => {
-      console.log("Disconect screen" + screenId)
-    })
   }
+
+  ws.on('close', () => {
+    console.log("Someone disconect")
+    screens.forEach(screen => {
+      if (screen.socket === ws) {
+        console.log(screen.screenId + "disconecte")
+      }
+    })
+  })
 
 
   const initMobile = (data, ws) => {
