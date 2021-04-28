@@ -46,7 +46,8 @@ serveurSocket.onmessage = (event) => {
 
         if (data.state === 'actif') {
             wait(6000).then( () => {
-                window.close()
+                Window.close()
+                
             })
         }
     }
