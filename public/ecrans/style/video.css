@@ -1,0 +1,14 @@
+#img-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+}
+
+.video {
+    display: none;
+}
+
+#loop-video {
+    display: flex;
+    position: absolute;
+}

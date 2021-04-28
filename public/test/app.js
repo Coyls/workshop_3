@@ -5,12 +5,9 @@ const serveurSocket = new WebSocket(url)
 
 let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screenId'))
-if (screenId === NaN) screenId = 0
 //////////////////////////////////////////////////////////////////////////////////////////////
 // MOBILE
 const postBtn = document.getElementById('post')
-
-
 
 postBtn.addEventListener('click', () => {
     const postMood = () => {
@@ -20,8 +17,7 @@ postBtn.addEventListener('click', () => {
         var msg = {
             type: "post", //nom de message serveur
             idEcran: screenId, // identifiant de l'écran
-            idQuestion: 0, // identifiant de la question
-            humeur: 0 // Réponse à la question, valeur possibile 0 ou 1
+            humeur: moodId // Réponse à la question, valeur possibile 0 ou 1
         };
     
         // Envoi de l'objet msg à travers une chaîne formatée en JSON
@@ -38,11 +34,6 @@ postBtn.addEventListener('click', () => {
 // Object
 let screen = {
     type: "screen",
-    id_screen: screenId,
-};
-
-let disconnect = {
-    type: "disconnect",
     id_screen: screenId,
 };
 
@@ -66,4 +57,49 @@ serveurSocket.onmessage = (event) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Au cas ou
+/* let disconnect = {
+    type: "disconnect",
+    id_screen: screenId,
+}; */
 // ?screenId=1
+
