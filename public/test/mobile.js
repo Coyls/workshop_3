@@ -48,7 +48,7 @@ postBtn.addEventListener('click', () => {
         let post = {
             type: "post", //nom de message serveur
             idEcran: screenId, // identifiant de l'écran
-            mood: moodId // Réponse à la question, valeur possibile 0 ou 1
+            moodId: moodId // Réponse à la question, valeur possibile 0 ou 1
         };
     
         serveurSocket.send(JSON.stringify(post));
