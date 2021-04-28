@@ -120,6 +120,14 @@ socket.on('connection', ws => {
     mobiles.push(mobile)
     whitelists[data.screenId - 1].push(mobile)
 
+    const index = questionsReponses.findIndex(questionReponse => questionReponse.screen === data.screenId)
+    let mobileData = {
+      type: "mobileData",
+      question: questionsReponses[index]
+    }
+
+    screen.socket.send(JSON.stringify(mobileData))
+
     if (whitelists[data.screenId - 1][0] === mobile) {
       console.log(mobile.mobileId + " est actif")
     } else {
