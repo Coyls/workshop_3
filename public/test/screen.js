@@ -27,6 +27,8 @@ serveurSocket.onerror = (error) => {
 serveurSocket.onmessage = (event) => {
     const data = JSON.parse(event.data)
 
+    console.log(data)
+
     if (data.type === "post") {
         console.log(data.message); //"humeurReceive"
         console.log(data.moodId); //0 ou 1  

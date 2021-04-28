@@ -10,6 +10,18 @@ const server = http.createServer(app);
 
 const socket = new WebSocket.Server({ server })
 
+// Connexion mySQL -------------------------------------
+const con = mysql.createConnection({
+  host: "localhost",
+  user: "pma",
+  password: "pmapass",
+  database: "comment_ca_va"
+});
+
+//////////////////////////////////////////////////////////
+const requestData = "SELECT questions.name_question AS 'question', questions.id_question AS 'id_question', mood.name_mood AS 'mood',posts.id_post AS ‘post’ FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
+//////////////////////////////////////////////////////////
+
 let screens = [];
 let mobiles = [];
 let whitelists = [[],[],[],[],[],[]];
@@ -45,8 +57,17 @@ socket.on('connection', ws => {
       })
 
     } else if (type === 'data') {
-      console.log("someone ask to see data")
+      // ici la requete sql pour visualiser les data
+      con.connect(function (err) {
+        if (err) throw err;
+        con.query(requestData, function (err, result) {
+          if (err) throw err;
+          console.log(result)
+        });
+      });
 
+
+      // ws.send(result)
     }
 
   })
@@ -122,14 +143,7 @@ socket.on('connection', ws => {
 
 
 
-// Request mySQL ------------------------------------------
-const con = mysql.createConnection({
-  host: "localhost",
-  user: "pma",
-  password: "pmapass",
-  database: "comment_ca_va"
-});
-
+// Requete type
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connecté à la base de données MySQL!");

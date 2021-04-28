@@ -26,7 +26,7 @@ serveurSocket.onerror = (error) => {
 
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
-    console.log("Mobile link to" + screenId, event.data)
+    // console.log("Mobile link to" + screenId, event.data)
 }
 
 
