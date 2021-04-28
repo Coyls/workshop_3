@@ -168,7 +168,7 @@ socket.on('connection', ws => {
       }
     })
     mobiles.forEach((mobile, id) => {
-      whitelists[mobile.mobileId].forEach((connexion, id) => {
+      whitelists[mobile.mobileId - 1].forEach((connexion, id) => {
         if (connexion.socket === ws) {
           console.log(whitelists[mobile.mobileId - 1])
           // const index = whitelists[mobile.mobileId - 1].findIndex(onList => question.screen === data.screenId)
