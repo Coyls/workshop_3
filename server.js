@@ -51,7 +51,8 @@ socket.on('connection', ws => {
 
 
   })
-
+  
+});
 
 
 
@@ -77,4 +78,4 @@ socket.on('connection', ws => {
     console.log(`server running at http://localhost:${port}/`);
   });
 
-});
+
