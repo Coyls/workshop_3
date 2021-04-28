@@ -77,6 +77,4 @@ socket.on('connection', ws => {
     console.log(`server running at http://localhost:${port}/`);
   });
 
-
-// Au cas ou
-})
+});
