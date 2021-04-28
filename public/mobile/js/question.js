@@ -140,6 +140,11 @@ const postMood = () => {
 }
 postMood()
 
+let mobile = {
+    type: "mobile",
+    id_screen: screenId,
+};
+
 serveurSocket.onopen = (event) => {
     serveurSocket.send(JSON.stringify(screen))
 }
@@ -147,10 +152,14 @@ serveurSocket.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)
 }
 serveurSocket.onmessage = (event) => {
-    var message = event.data;
+    let data = event.data;
+    let type = data.type
 
-    if (message.type === "post") {
-        console.log(data.type); //"humeurReceive"
-        console.log(data.humeur); //0 ou 1  
+
+    if (type === 'pullquestion' && screenId === data.idQuestion) {
+        console.log(data)
+        // Afficher les données
     }
+
+    
 }
