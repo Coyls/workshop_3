@@ -7,16 +7,23 @@ body {
   position: fixed;
   width: 100vw;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background: black;
 }
 
 #waiting-anim {
   width: 50vw;
   background: white;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 #questionAndRep-wrapper {
@@ -25,8 +32,14 @@ body {
   height: 300vh;
   top: -100vh;
   display: none;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: top 1s ease;
   transition: top 1s ease;
 }
 
@@ -57,6 +70,7 @@ body {
   width: 100vw;
   height: 100px;
   background-color: orange;
+  -webkit-transition: opacity 0.2s, top 0.2s;
   transition: opacity 0.2s, top 0.2s;
 }
 
@@ -68,7 +82,7 @@ body {
   width: 100vw;
   height: 100px;
   background-color: orange;
+  -webkit-transition: opacity 0.2s, bottom 0.2s;
   transition: opacity 0.2s, bottom 0.2s;
 }
-
 /*# sourceMappingURL=question.css.map */

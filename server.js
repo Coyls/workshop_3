@@ -11,7 +11,7 @@ const socket = new WebSocket.Server({ server })
 
 let screens = [];
 let mobiles = [];
- 
+
 socket.on('connection', ws => {
   ws.on('message', msg => {
     const data = JSON.parse(msg)
@@ -19,6 +19,7 @@ socket.on('connection', ws => {
 
     if (type === 'screen') {
       screens.push(data)
+      console.log("A screen has connect", screens)
     }
 
     if (type === 'post') {
@@ -26,7 +27,6 @@ socket.on('connection', ws => {
       // Mettre ici la requete SQL 
     }
 
-    console.log("A screen has connect", screens)
 
 
 
@@ -34,7 +34,7 @@ socket.on('connection', ws => {
   })
   // ws.send(test)
 
- 
+
 })
 
 
@@ -45,10 +45,10 @@ const con = mysql.createConnection({
   host: "localhost",
   user: "pma",
   password: "pmapass",
-  database : "comment_ca_va"
+  database: "comment_ca_va"
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log("Connecté à la base de données MySQL!");
   con.query("SELECT * FROM mood", function (err, result) {
@@ -65,6 +65,6 @@ server.listen(port, () => {
 
 // Au cas ou
 
- /* ws.on('close', () => {
-    console.log('disconnected');
-  }) */
+/* ws.on('close', () => {
+   console.log('disconnected');
+ }) */

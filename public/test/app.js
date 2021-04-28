@@ -5,7 +5,6 @@ const serveurSocket = new WebSocket(url)
 
 let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screenId'))
-if (screenId === NaN) screenId = 0
 //////////////////////////////////////////////////////////////////////////////////////////////
 // MOBILE
 const postBtn = document.getElementById('post')
@@ -41,11 +40,6 @@ let screen = {
     id_screen: screenId,
 };
 
-let disconnect = {
-    type: "disconnect",
-    id_screen: screenId,
-};
-
 console.log(screen)
 
 // Connection WebSocket
@@ -66,4 +60,49 @@ serveurSocket.onmessage = (event) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Au cas ou
+/* let disconnect = {
+    type: "disconnect",
+    id_screen: screenId,
+}; */
 // ?screenId=1
+
