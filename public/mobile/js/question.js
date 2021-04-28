@@ -121,6 +121,25 @@ menu.onclick = () => {
 const url = 'ws://vps215076.ovh.net:3000'
 const serveurSocket = new WebSocket(url)
 
+let params = (new URL(document.location)).searchParams;
+let screenId = parseInt(params.get('screenId'))
+
+const postMood = () => {
+    console.log('post Mood')
+    // Création d'un objet msg qui contient les données
+    // dont le serveur a besoin pour traiter le message
+    var msg = {
+        type: "post", //nom de message serveur
+        idEcran: screenId, // identifiant de l'écran
+        idReponse: responseId, // id reponse
+        humeur: moodId // Réponse à la question, valeur possibile 0 ou 1
+    };
+
+    // Envoi de l'objet msg à travers une chaîne formatée en JSON
+    serveurSocket.send(JSON.stringify(msg));
+}
+postMood()
+
 serveurSocket.onopen = (event) => {
     serveurSocket.send(JSON.stringify(screen))
 }
