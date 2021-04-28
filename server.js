@@ -127,8 +127,6 @@ socket.on('connection', ws => {
 
     })
 
-
-    console.log(questionsReponses.findIndex(questionReponse => questionReponse.screen === data.screenId))
     let mobileData = {
       type: "mobileData",
       question: mobileCreation
