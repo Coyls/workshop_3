@@ -125,10 +125,14 @@ socket.on('connection', ws => {
       socket: ws
     }
 
-    mobiles.push(mobile)
-    whitelists[data.screenId - 1].push(mobile)
+    let mobileWl = {
+      mobileId: data.screenId,
+      socket: ws,
+      wl
+    }
 
-    console.log(whitelists[data.screenId - 1])
+    mobiles.push(mobile)
+    whitelists[data.screenId - 1].push(mobileWl)
 
     let questionReponseToSend = []
     questionsReponses.forEach(questionReponse => {
@@ -145,14 +149,23 @@ socket.on('connection', ws => {
 
     mobile.socket.send(JSON.stringify(mobileData))
 
-    whitelists[data.screenId - 1].forEach(mobileOnList => {
-      console.log("mobileOnlist", mobileOnList.mobileId)
-    })
+    /* let firstOnWl = true
 
-    if (whitelists[data.screenId - 1][0] === mobile) {
-      console.log(mobile.mobileId + " est actif")
+    whitelists[data.screenId - 1].forEach(mobileOnList => {
+      if (firstOnWl) {
+
+      } else {
+
+      }
+      console.log("mobileOnlist", mobileOnList.mobileId)
+    }) */
+
+    if (whitelists[data.screenId - 1][0] === mobileWl) {
+      mobileWl.wl = "actif"
+      console.log(mobileWl.mobileId + " est " + mobileWl.wl)
     } else {
-      console.log(mobile.mobileId + " est inactif")
+      mobileWl.wl = "inactif"
+      console.log(mobileWl.mobileId + " est " + mobileWl.wl)
     }
 
     mobile.socket.on('message', msg => {
