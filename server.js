@@ -4,11 +4,15 @@ const http = require('http');
 const port = process.env.PORT || 3000;
 const WebSocket = require('ws');
 const mysql = require('mysql');
-const { disconnect } = require('process');
+const {
+  disconnect
+} = require('process');
 
 const server = http.createServer(app);
 
-const socket = new WebSocket.Server({ server })
+const socket = new WebSocket.Server({
+  server
+})
 
 // Connexion mySQL -------------------------------------
 const con = mysql.createConnection({
@@ -42,7 +46,14 @@ con.connect(function (err) {
 
 let screens = [];
 let mobiles = [];
-let whitelists = [[], [], [], [], [], []];
+let whitelists = [
+  [],
+  [],
+  [],
+  [],
+  [],
+  []
+];
 
 
 socket.on('connection', ws => {
@@ -77,18 +88,16 @@ socket.on('connection', ws => {
 
     } else if (type === 'data') {
 
-      // con.connect(function (err) {
-       // if (err) throw err;
-        con.query(requestData, function (err, result) {
-          if (err) throw err;
-          let dataPage = {
-            type: "dataPage",
-            stats: result
-          }
+      con.query(requestData, function (err, result) {
+        if (err) throw err;
+        let dataPage = {
+          type: "dataPage",
+          stats: result
+        }
 
-          ws.send(JSON.stringify(dataPage))
-        });
-      // });
+        ws.send(JSON.stringify(dataPage))
+      });
+
 
     }
 
@@ -119,20 +128,24 @@ socket.on('connection', ws => {
     mobiles.push(mobile)
     whitelists[data.screenId - 1].push(mobile)
 
-    let mobileCreation = []
-    questionsReponses.forEach(frag => {
-      if (frag.screen === data.screenId) {
-        mobileCreation.push(frag)
+    let questionReponseToSend = []
+    questionsReponses.forEach(questionReponse => {
+      if (questionReponse.screen === data.screenId) {
+        questionReponseToSend.push(questionReponse)
       }
 
     })
 
     let mobileData = {
       type: "mobileData",
-      question: mobileCreation
+      question: questionReponseToSend
     }
 
     mobile.socket.send(JSON.stringify(mobileData))
+
+    whitelists[data.screenId - 1].forEach(mobileOnList => {
+      console.log(mobileOnList)
+    })
 
     if (whitelists[data.screenId - 1][0] === mobile) {
       console.log(mobile.mobileId + " est actif")
@@ -257,4 +270,3 @@ server.listen(port, () => {
 
 
 */
-

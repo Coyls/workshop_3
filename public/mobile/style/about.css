@@ -12,9 +12,16 @@
   left: 5vw;
   height: 52vh;
   width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #team-wrapper-part-one {
@@ -31,13 +38,17 @@
   left: 0;
   height: 5vh;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .team-title {
   font-size: 6vw;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #image-wrapper-part-one {
@@ -80,9 +91,15 @@
   left: 0;
   height: 30vh;
   width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .imageWrapper {
@@ -92,5 +109,4 @@
   background-color: blue;
   margin: 1.75vh;
 }
-
 /*# sourceMappingURL=about.css.map */
