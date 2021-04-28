@@ -8,39 +8,84 @@
 </head>
 <body>
 
-<div id="menu-btn">
-    <div id="menu-btn-burger">
+<div class="background-wrapper">
+    <img src="image/background_home.png" alt="background" class="image">
+</div>
 
+<div class="main">
+
+    <div id="menu-btn">
+        <div id="menu-btn-burger">
+
+        </div>
     </div>
-</div>
 
-<div id="menu-btn-active">
-    <ul id="menu-link">
-        <a href="#"><li class="nav-link">Accueil</li></a>
-        <a href="./data.html"><li class="nav-link">Statistiques</li></a>
-        <a href="./about.html"><li class="nav-link">A propos</li></a>
-    </ul>
-</div>
+    <div id="menu-btn-active">
+        <img src="image/background_menu.png" alt="background" class="image">
+        <ul id="menu-link">
+            <a href="#">
+                <li class="nav-link">Accueil</li>
+            </a>
+            <a href="./data.html">
+                <li class="nav-link">Statistiques</li>
+            </a>
+            <a href="./about.html">
+                <li class="nav-link">A propos</li>
+            </a>
+        </ul>
+    </div>
 
-<div id="logo-wrapper">
-    <h1 id="logo">Comment ça va ?</h1>
-</div>
+    <div id="logo-wrapper">
+        <h1 id="logo">Comment ça va ?</h1>
+    </div>
 
-<div id="text-wrapper">
     <div id="text-top-wrapper">
-        <p id="text-top" class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <p id="text-top" class="paragraph-big">"Comment ça va ?" est une <span
+                class="paragraph-span-orange">exposition</span> interactive qui se déroulera le vendredi <span
+                class="paragraph-span-blue">30 Avril</span> à 15h00 aux Papeteries.</p>
     </div>
-    <div id="text-bottom-wrapper">
-        <p id="text-bottom" class="text">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+
+    <div id="papet-wrapper">
+        <img src="image/papet_normal.png" alt="papeteries" class="image">
     </div>
+
+    <div id="papet-mood-wrapper">
+        <p class="paragraph-bold">Le bâtiment est paisible</p>
+    </div>
+
+    <div id="text-middle-wrapper">
+        <div id="text-middle-wrapper-part-one">
+            <p class="paragraph">Scannez le <span class="paragraph-span-green">QR code</span> pour participer à la vie
+                des Papeteries.</p>
+        </div>
+        <div id="text-middle-wrapper-part-two">
+            <p class="paragraph"><span class="paragraph-span-orange">Les sondages</span> mis à votre disposition lors de
+                l'exposition permettent d'évaluer votre <span class="paragraph-span-pink">bien-être.</span></p>
+        </div>
+    </div>
+
+    <a href="./data.html">
+        <button id="button">Statistiques</button>
+    </a>
+
+    <div id="scrolling-paragraph-wrapper-one">
+        <p class="paragraph"><span class="paragraph-span-blue">Exposition</span> - <span class="paragraph-span-orange">Papeteries Image Factory</span>
+            - <span class="paragraph-span-green">Vendredi</span></p>
+    </div>
+
+    <div id="scrolling-paragraph-wrapper-two">
+        <p class="paragraph"><span class="paragraph-span-green">age Factory</span> - <span class="paragraph-span-pink">Vendredi 30 avril 2021</span>
+            - <span class="paragraph-span-orange">Exposition</span></p>
+    </div>
+
+    <div id="follow-wrapper">
+        <a href="https://www.instagram.com/ccv_expo/" id="insta-a">
+            <p class="paragraph-semiBold">Suivez-nous sur instagram</p>
+            <img src="image/instagram.svg" alt="instagram" class="image-insta">
+        </a>
+    </div>
+
 </div>
-
-<div id="image-wrapper">
-
-</div>
-
-<a href="./data.html"><button id="button">Statistiques / Analyses</button></a>
-
 <script src="./js/gsap.js"></script>
 <script src="./js/main.js"></script>
 </body>

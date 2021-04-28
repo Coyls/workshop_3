@@ -20,11 +20,30 @@ const con = mysql.createConnection({
 
 //////////////////////////////////////////////////////////
 const requestData = "SELECT questions.name_question AS 'question', questions.id_question AS 'id_question', mood.name_mood AS 'mood',posts.id_post AS 'post' FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
+const requestScreen = "SELECT screen.id_screen AS 'screen', questions.name_question AS 'questions' FROM screen LEFT JOIN questions ON screen.id_screen=questions.id_screen"
+const requestMobile = "SELECT questions.id_question AS 'questionId', screen.id_screen AS 'screen', questions.name_question AS 'questions',reponses.name_reponse AS 'reponses', mood.id_mood AS 'moodId' FROM screen LEFT JOIN questions ON screen.id_screen=questions.id_screen LEFT JOIN reponses ON questions.id_question=reponses.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
 //////////////////////////////////////////////////////////
+let questions
+let questionsReponses
+/////////////////////////////////////////////////////////
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connecté à la base de données MySQL!");
+  con.query(requestScreen, function (err, result) {
+    if (err) throw err;
+    questions = result
+  });
+  con.query(requestMobile, function (err, result) {
+    if (err) throw err;
+    questionsReponses = result
+  });
+});
+/////////////////////////////////////////////////////////
 
 let screens = [];
 let mobiles = [];
 let whitelists = [[], [], [], [], [], []];
+
 
 socket.on('connection', ws => {
 
@@ -48,7 +67,7 @@ socket.on('connection', ws => {
           let post = {
             type: 'post',
             message: `Envoi du mobile ${mobile.mobileId} vers screen ${screens[index].screenId}`,
-            moodId: mobile.moodId
+            moodId: data.moodId
           }
 
           linkScreen.send(JSON.stringify(post))
@@ -57,19 +76,19 @@ socket.on('connection', ws => {
       })
 
     } else if (type === 'data') {
-      
-      con.connect(function (err) {
-        if (err) throw err;
-        con.query(requestData, function (err, result) {
-            if (err) throw err;
-            let dataPage = {
-              type : "dataPage",
-              stats : result
-            }
 
-            ws.send(JSON.stringify(dataPage))
-          });
-      });
+      // con.connect(function (err) {
+       // if (err) throw err;
+        con.query(requestData, function (err, result) {
+          if (err) throw err;
+          let dataPage = {
+            type: "dataPage",
+            stats: result
+          }
+
+          ws.send(JSON.stringify(dataPage))
+        });
+      // });
 
     }
 
@@ -82,9 +101,14 @@ socket.on('connection', ws => {
       socket: ws
     }
     screens.push(screen)
-    screen.socket.on('message', msg => {
-      const dataScreen = JSON.parse(msg)
-    })
+
+    const index = questions.findIndex(question => question.screen === data.screenId)
+    let screenData = {
+      type: "screenData",
+      question: questions[index]
+    }
+
+    screen.socket.send(JSON.stringify(screenData))
   }
   const initMobile = (data, ws) => {
     let mobile = {
@@ -93,9 +117,24 @@ socket.on('connection', ws => {
     }
 
     mobiles.push(mobile)
-    whitelists[data.screenId].push(mobile)
+    whitelists[data.screenId - 1].push(mobile)
 
-    if (whitelists[data.screenId][0] === mobile) {
+    let mobileCreation = []
+    questionsReponses.forEach(frag => {
+      if (frag.screen === data.screenId) {
+        mobileCreation.push(frag)
+      }
+
+    })
+
+    let mobileData = {
+      type: "mobileData",
+      question: mobileCreation
+    }
+
+    mobile.socket.send(JSON.stringify(mobileData))
+
+    if (whitelists[data.screenId - 1][0] === mobile) {
       console.log(mobile.mobileId + " est actif")
     } else {
       console.log(mobile.mobileId + " est inactif")
@@ -119,7 +158,7 @@ socket.on('connection', ws => {
       whitelists[mobile.mobileId].forEach((connexion, id) => {
         if (connexion.socket === ws) {
           console.log(connexion.mobileId + "est sortie de la whitelist")
-          whitelists[mobile.mobileId].splice(id, 1)
+          whitelists[mobile.mobileId - 1].splice(id, 1)
         }
       })
       if (mobile.socket === ws) {

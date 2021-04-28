@@ -32,6 +32,9 @@ serveurSocket.onmessage = (event) => {
     if (data.type === "post") {
         console.log(data.message); //"humeurReceive"
         console.log(data.moodId); //0 ou 1  
+    } else if (data.type === 'screenData') {
+        console.log(data.question)
+
     }
 }
 

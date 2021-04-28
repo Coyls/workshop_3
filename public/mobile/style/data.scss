@@ -40,8 +40,10 @@
 /*-----------------------------------------------Data-------------------------------------------------*/
 
 #canvasQ1{
+  position: relative;
+  top: -5vh;
   height: 90%;
-  width: 70%;
+  width: 80%;
 }
 
 #data {
@@ -54,6 +56,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 #data-questions{
   display: flex;
   align-items: center;
