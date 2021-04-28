@@ -36,7 +36,6 @@ con.connect(function (err) {
   con.query(requestMobile, function (err, result) {
     if (err) throw err;
     questionsReponses = result
-    console.log(questionsReponses)
   });
 });
 /////////////////////////////////////////////////////////
@@ -125,6 +124,8 @@ socket.on('connection', ws => {
       type: "mobileData",
       question: questionsReponses[index]
     }
+
+    console.log(questionsReponses[index])
 
     mobile.socket.send(JSON.stringify(mobileData))
 
