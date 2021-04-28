@@ -43,9 +43,11 @@ socket.on('connection', ws => {
 
   ws.on('close', () => {
     console.log("Someone disconect")
-    screens.forEach(screen => {
+    screens.forEach((screen,id) => {
       if (screen.socket === ws) {
         console.log(screen.screenId + "disconecte")
+        screens.splice(id, 1)
+        console.log(screens)
       }
     })
   })
