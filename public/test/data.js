@@ -26,5 +26,4 @@ serveurSocket.onmessage = (event) => {
     if (data.type === "dataPage") {
         console.log(data)
     }
-
 }

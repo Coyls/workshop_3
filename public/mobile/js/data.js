@@ -1,3 +1,51 @@
+let tab
+
+
+const url = 'ws://vps215076.ovh.net:3000'
+const serveurSocket = new WebSocket(url)
+
+// Object init ---------------------------
+let dataPage = {
+    type: 'data',
+};
+
+console.log(dataPage)
+
+// Connection WebSocket ---------------------------
+serveurSocket.onopen = () => {
+    serveurSocket.send(JSON.stringify(dataPage))
+}
+serveurSocket.onerror = (error) => {
+    console.log(`WebSocket error: ${error}`)
+}
+
+// message ----------------------------------------
+serveurSocket.onmessage = (event) => {
+    const data = JSON.parse(event.data)
+    console.log(data)
+
+    if (data.type === "dataPage") {
+        console.log(data)
+        tab = data
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 let moyG = 70;
 let red
 let green
@@ -252,12 +300,6 @@ window.addEventListener("load", () => {
         ctx2.font="20px Poppins serif"
         ctx2.textAlign = "start"
         ctx2.fillText(`${radius1}%`,((165+55/50*radius1+waveRanTo1[4])+(165-55/50*radius1-waveRanTo1[0]))/2+55/50*radius1+waveRanTo1[4]+13,((165+55/50*radius1+waveRanTo1[6])+(165-55/50*radius1-waveRanTo1[2]))/2-25)
-
-
-
-
     }
 })
-
-
 
