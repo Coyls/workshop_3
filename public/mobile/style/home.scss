@@ -1,0 +1,65 @@
+/*-----------------------------------------------Text-------------------------------------------------*/
+
+#text-wrapper {
+  position: relative;
+  top: 2vh;
+  left: 0;
+  height: 30vh;
+  width: 100%;
+  background-color: red;
+  padding: 2vh;
+}
+
+#text-top-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 8vh;
+  width: 100%;
+  background-color: green;
+}
+
+.text {
+  font-family: Poppins, serif;
+  font-size: 2vh;
+  color: grey;
+}
+
+#text-top {
+  text-align: left;
+}
+
+#text-bottom {
+  text-align: right;
+}
+
+#text-bottom-wrapper {
+  position: relative;
+  top: 2vh;
+  left: 0;
+  height: 16vh;
+  width: 100%;
+  background-color: yellow;
+}
+
+#image-wrapper {
+  position: relative;
+  top: 5vh;
+  left: 1.5vh;
+  height: 45vh;
+  width: 94vw;
+  background-color: aqua;
+}
+
+#button {
+  position: relative;
+  top: 7.5vh;
+  left: 35vw;
+  height: 5vh;
+  width: 30vw;
+  background-color: purple;
+  border-radius: 20vh;
+  font-size: 1vh;
+  color: white;
+  font-family: Poppins, serif;
+}

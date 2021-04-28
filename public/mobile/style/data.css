@@ -1,0 +1,90 @@
+/*-----------------------------------------------Mood-------------------------------------------------*/
+#building-mood {
+  position: relative;
+  top: 5vh;
+  left: 5vw;
+  height: 40vh;
+  width: 90vw;
+}
+
+#building-text-wrapper {
+  position: relative;
+  top: 0;
+  left: 5%;
+  height: 10%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+}
+
+#building-image-wrapper {
+  position: relative;
+  top: 5vh;
+  left: 10%;
+  height: 70%;
+  width: 80%;
+  background-color: brown;
+}
+
+/*-----------------------------------------------Data-------------------------------------------------*/
+#data {
+  position: relative;
+  top: 7vh;
+  left: 10vw;
+  height: 110vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#data-title {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 5vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.5vh;
+  font-family: Poppins, serif;
+  color: grey;
+}
+
+.data-wrapper {
+  position: relative;
+  height: 15vh;
+  width: 100%;
+}
+
+.data-question {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 7vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.question {
+  font-size: 2vh;
+  font-family: Poppins, serif;
+  color: grey;
+}
+
+.data-slider {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 7.5vh;
+  width: 100%;
+  background-color: darksalmon;
+  display: flex;
+  align-items: center;
+}
+
+/*# sourceMappingURL=data.css.map */

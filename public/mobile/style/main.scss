@@ -1,0 +1,129 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*---------------------------------------------menu Btn---------------------------------------------*/
+
+#menu-btn {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 8.5vh;
+  width: 8.5vh;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#menu-btn-burger {
+  height: 0.7vh;
+  width: 12vw;
+  border-radius: 10vh;
+  background-color: #212121;
+  transition: all .5s ease-in-out;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    height: 0.7vh;
+    width: 12vw;
+    background-color: #212121;
+    border-radius: 10vh;
+    transition: all .5s ease-in-out;
+  }
+
+  &:before {
+    transform: translateY(-1.5vh);
+  }
+
+  &:after {
+    transform: translateY(1.5vh);
+  }
+}
+
+#menu-btn.open #menu-btn-burger {
+  transform: translateX(-5vw);
+  background: transparent;
+}
+
+#menu-btn.open #menu-btn-burger::before {
+  transform: rotate(45deg) translate(3.5vw, -3.5vw);
+}
+
+#menu-btn.open #menu-btn-burger::after {
+  transform: rotate(-45deg) translate(3.5vw, 3.5vw);
+}
+
+#menu-btn-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212121;
+  transition: all 0.75s ease-in-out;
+  z-index: 1;
+  display: none;
+
+  &.active {
+    display: block;
+    transition: all 0.75s ease-in-out;
+  }
+}
+
+/*-----------------------------------------------menu-------------------------------------------------*/
+
+#menu-link {
+  position: relative;
+  top: 30%;
+  left: 20%;
+  height: 40%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  user-select: none;
+}
+
+a{
+  text-decoration: none;
+  user-select: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.nav-link{
+  position: relative;
+  font-family: Poppins, serif;
+  font-size: 5vh;
+  color: #FFFFFF;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.1s linear;
+  list-style: none;
+}
+/*-----------------------------------------------Logo-------------------------------------------------*/
+
+#logo-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 8.5vh;
+  width: 50vw;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  font-size: 9vw;
+  font-family: 'Bebas Neue', cursive;
+}
