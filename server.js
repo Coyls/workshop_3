@@ -128,6 +128,8 @@ socket.on('connection', ws => {
     mobiles.push(mobile)
     whitelists[data.screenId - 1].push(mobile)
 
+    console.log(whitelists[data.screenId - 1])
+
     let questionReponseToSend = []
     questionsReponses.forEach(questionReponse => {
       if (questionReponse.screen === data.screenId) {
