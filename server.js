@@ -50,6 +50,13 @@ socket.on('connection', ws => {
         console.log(screens)
       }
     })
+    mobiles.forEach((mobile,id) => {
+      if (mobile.socket === ws) {
+        console.log(mobile.mobileId + "disconecte")
+        mobiles.splice(id, 1)
+        console.log(screens)
+      }
+    })
   })
 
 

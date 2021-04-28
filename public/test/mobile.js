@@ -11,13 +11,14 @@ let screenId = parseInt(params.get('screen_id'))
 let mobileInit = {
     type: "init",
     deviceType: "mobile",
+    mobileId: screenId,
 };
 
-console.log(screen)
+console.log(mobileInit)
 
 // Connection WebSocket ---------------------------
 serveurSocket.onopen = () => {
-    serveurSocket.send(JSON.stringify(screenInit))
+    serveurSocket.send(JSON.stringify(mobileInit))
 }
 serveurSocket.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)
