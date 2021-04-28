@@ -192,11 +192,11 @@ socket.on('connection', ws => {
 
           whitelists[mobile.mobileId - 1].forEach(wlElement => {
             if (whitelists[mobile.mobileId - 1].indexOf(wlElement)=== 0) {
-              mobileWl.wl = "actif"
-              console.log(mobileWl.mobileId + " est " + mobileWl.wl)
+              wlElement.wl = "actif"
+              console.log(wlElement.mobileId + " est " + wlElement.wl)
             } else {
-              mobileWl.wl = "inactif"
-              console.log(mobileWl.mobileId + " est " + mobileWl.wl)
+              wlElement.wl = "inactif"
+              console.log(wlElement.mobileId + " est " + wlElement.wl)
             }
           })
 
