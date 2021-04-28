@@ -132,8 +132,6 @@ socket.on('connection', ws => {
       question: mobileCreation
     }
 
-    console.log(questionsReponses[index])
-
     mobile.socket.send(JSON.stringify(mobileData))
 
     if (whitelists[data.screenId - 1][0] === mobile) {
