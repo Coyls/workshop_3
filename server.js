@@ -189,6 +189,8 @@ socket.on('connection', ws => {
           // const index = whitelists[mobile.mobileId - 1].findIndex(onList => question.screen === data.screenId)
           console.log(connexion.mobileId + "est sortie de la whitelist")
           whitelists[mobile.mobileId - 1].splice(id, 1)
+
+          console.log( whitelists[mobile.mobileId - 1])
         }
       })
       if (mobile.socket === ws) {
