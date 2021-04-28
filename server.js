@@ -149,17 +149,6 @@ socket.on('connection', ws => {
 
     mobile.socket.send(JSON.stringify(mobileData))
 
-    /* let firstOnWl = true
-
-    whitelists[data.screenId - 1].forEach(mobileOnList => {
-      if (firstOnWl) {
-
-      } else {
-
-      }
-      console.log("mobileOnlist", mobileOnList.mobileId)
-    }) */
-
     if (whitelists[data.screenId - 1][0] === mobileWl) {
       mobileWl.wl = "actif"
       console.log(mobileWl.mobileId + " est " + mobileWl.wl)
@@ -167,6 +156,13 @@ socket.on('connection', ws => {
       mobileWl.wl = "inactif"
       console.log(mobileWl.mobileId + " est " + mobileWl.wl)
     }
+
+    let mobileState = {
+      type : "mobileState",
+      state : mobileWl.wl,
+    }
+
+    mobileWl.socket.send(JSON.stringify(mobileState))
 
     /* mobile.socket.on('message', msg => {
       const dataMobile = JSON.parse(msg)
@@ -185,19 +181,24 @@ socket.on('connection', ws => {
     mobiles.forEach((mobile, id) => {
       whitelists[mobile.mobileId - 1].forEach((connexion, id) => {
         if (connexion.socket === ws) {
-          // console.log(whitelists[mobile.mobileId - 1])
-          // const index = whitelists[mobile.mobileId - 1].findIndex(onList => question.screen === data.screenId)
           console.log(connexion.mobileId + " est sortie de la whitelist")
           whitelists[mobile.mobileId - 1].splice(id, 1)
 
           whitelists[mobile.mobileId - 1].forEach(wlElement => {
-            if (whitelists[mobile.mobileId - 1].indexOf(wlElement)=== 0) {
+            if (whitelists[mobile.mobileId - 1].indexOf(wlElement) === 0) {
               wlElement.wl = "actif"
               console.log(wlElement.mobileId + " est " + wlElement.wl)
             } else {
               wlElement.wl = "inactif"
               console.log(wlElement.mobileId + " est " + wlElement.wl)
             }
+
+            let mobileState = {
+              type : "mobileState",
+              state : wlElement.wl,
+            }
+        
+            wlElement.socket.send(JSON.stringify(mobileState))
           })
 
           console.log( whitelists[mobile.mobileId - 1])

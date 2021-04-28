@@ -14,7 +14,7 @@ let mobileInit = {
     screenId: screenId,
 };
 
-console.log(mobileInit)
+console.log("mobileInit", mobileInit)
 
 // Connection WebSocket ---------------------------
 serveurSocket.onopen = () => {
@@ -28,11 +28,12 @@ serveurSocket.onerror = (error) => {
 serveurSocket.onmessage = (event) => {
     // console.log("Mobile link to" + screenId, event.data)
     const data = JSON.parse(event.data)
-    console.log(data)
+    // console.log(data)
 
     if (data.type === 'mobileData') {
-        console.log(data.question)
-
+        console.log("question/response", data.question)
+    } else if (data.type === 'mobileState') {
+        console.log("State", data.state)
     }
 }
 
