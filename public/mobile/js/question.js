@@ -146,7 +146,7 @@ let mobile = {
 };
 
 serveurSocket.onopen = (event) => {
-    serveurSocket.send(JSON.stringify(screen))
+    serveurSocket.send(JSON.stringify(mobile))
 }
 serveurSocket.onerror = (error) => {
     console.log(`WebSocket error: ${error}`)

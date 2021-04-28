@@ -23,14 +23,22 @@ socket.on('connection', ws => {
     }
 
     if (type === 'post') {
+
+      let screenPush = {
+        type: 'screenPull',
+        idEcran : data.idEcran,
+
+      }
+
+      ws.send()
       console.log(data)
-      con.connect(function (err) {
+      /* con.connect(function (err) {
         if (err) throw err;
         con.query("INSERT INTO posts(id_reponse, date) VALUES (data.idReponse,NOW())", function (err, result) {
           if (err) throw err;
            console.log("Pas d'erreur")
         });
-      });
+      }); */
     }
 
 
@@ -39,6 +47,11 @@ socket.on('connection', ws => {
 
   })
   // ws.send(test)
+
+  ws.on('close', (event) => {
+    console.log(event)
+   console.log('disconnected');
+ })
 
 
 })

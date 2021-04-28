@@ -4,7 +4,7 @@ const url = 'ws://vps215076.ovh.net:3000'
 const serveurSocket = new WebSocket(url)
 
 let params = (new URL(document.location)).searchParams;
-let screenId = parseInt(params.get('screenId'))
+let screenId = parseInt(params.get('screen_id'))
 //////////////////////////////////////////////////////////////////////////////////////////////
 // MOBILE
 const postBtn = document.getElementById('post')
@@ -17,7 +17,7 @@ postBtn.addEventListener('click', () => {
         var msg = {
             type: "post", //nom de message serveur
             idEcran: screenId, // identifiant de l'écran
-            humeur: moodId // Réponse à la question, valeur possibile 0 ou 1
+            // humeur: moodId // Réponse à la question, valeur possibile 0 ou 1
         };
     
         // Envoi de l'objet msg à travers une chaîne formatée en JSON
@@ -34,7 +34,7 @@ postBtn.addEventListener('click', () => {
 // Object
 let screen = {
     type: "screen",
-    id_screen: screenId,
+    idEcran: screenId,
 };
 
 console.log(screen)
