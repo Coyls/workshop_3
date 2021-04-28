@@ -45,7 +45,7 @@ serveurSocket.onmessage = (event) => {
         console.log("State", data.state)
 
         if (data.state === 'actif') {
-            wait(6000).then( () => {
+            wait(60000).then( () => {
                 window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
             })
         }

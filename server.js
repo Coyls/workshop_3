@@ -83,6 +83,12 @@ socket.on('connection', ws => {
 
           linkScreen.send(JSON.stringify(post))
 
+          ////////
+          ////////
+          //////// METTRE LA REQUETE SQL POST
+          ////////
+          ////////
+
         }
       })
 
@@ -245,58 +251,3 @@ server.listen(port, () => {
 });
 
 
-// A GARDER TEMPO 
-/* ws.on('close', (event) => {
-  console.log(event)
-  console.log("ws on close", ws)
-  console.log('disconnected');
-})
-
- ws.on('message', msg => {
-    const data = JSON.parse(msg)
-    const type = data.type
-
-    if (type === 'screen') {
-      screens.push(data)
-      console.log("A screen has connect", screens)
-    }
-
-    if (type === 'post') {
-
-      let screenPush = {
-        type: 'screenPull',
-        idEcran: data.idEcran,
-
-      }
-
-      console.log(data)
-      con.connect(function (err) {
-        if (err) throw err;
-        con.query("INSERT INTO posts(id_reponse, date) VALUES (data.idReponse,NOW())", function (err, result) {
-          if (err) throw err;
-           console.log("Pas d'erreur")
-        });
-      });
-    }
-
-
-
-  })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
