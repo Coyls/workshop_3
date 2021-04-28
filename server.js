@@ -92,6 +92,12 @@ socket.on('connection', ws => {
       }
     })
     mobiles.forEach((mobile,id) => {
+      whitelists[mobile.mobileId].forEach((connexion,id) => {
+        if (connexion.socket === ws) {
+          console.log(connexion.mobileId + "est sortie de la whitelist")
+          whitelists[mobile.mobileId].splice(id, 1)
+        }
+      })
       if (mobile.socket === ws) {
         console.log(mobile.mobileId + "disconecte")
         mobiles.splice(id, 1)
