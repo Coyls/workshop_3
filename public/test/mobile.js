@@ -1,3 +1,12 @@
+// Fonction delay
+const wait = (delay) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, delay);
+    })
+}
+////////////////////////////////////
 console.log("mobile") //// MOBILE
 
 const url = 'ws://vps215076.ovh.net:3000'
@@ -34,6 +43,12 @@ serveurSocket.onmessage = (event) => {
         console.log("question/response", data.question)
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
+
+        if (data.state === 'actif') {
+            wait(6000).then( () => {
+                window.close()
+            })
+        }
     }
 }
 
