@@ -1,7 +1,13 @@
+/*TODO
+* Faire le flash blanc que quand on est sur la vidéo neutre*/
+
+
 //Video declarations
 let video1Neg = document.querySelector("#video1");
 let video1Pos = document.querySelector("#video2");
 let loopNeutralVideo = document.querySelector("#loop-video");
+
+let flash = document.querySelector("#flashes");
 
 //Boolean declarations
 let video1NegBool = false;
@@ -15,13 +21,19 @@ document.addEventListener('keyup', (e) => {
     if (e.key.toLowerCase() === "a"){
         //the negative video bool is true
         video1NegBool = true;
+        flash.classList.add('flash_anim');
     }
 
     //if the key is 'e'
     if (e.key.toLowerCase() === "e") {
         //the positive video bool is true
         video1PosBool = true;
+        flash.classList.add('flash_anim');
     }
+})
+
+flash.addEventListener("animationend", () => {
+    flash.classList.remove('flash_anim');
 })
 
 //When the neutral video ends
@@ -40,6 +52,7 @@ loopNeutralVideo.addEventListener('ended', () => {
 
         //reset the bool at false
         video1NegBool = false;
+
     }
     //if the positive video bool is true
     else if (video1PosBool){
@@ -53,6 +66,7 @@ loopNeutralVideo.addEventListener('ended', () => {
 
         //reset the bool at false
         video1PosBool = false;
+
     }
     else {
         //else play again the neutral video
