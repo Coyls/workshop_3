@@ -24,7 +24,13 @@ socket.on('connection', ws => {
 
     if (type === 'post') {
       console.log(data)
-      // Mettre ici la requete SQL 
+      con.connect(function (err) {
+        if (err) throw err;
+        con.query("INSERT INTO posts(id_reponse, date) VALUES (data.idReponse,NOW())", function (err, result) {
+          if (err) throw err;
+           console.log("Pas d'erreur")
+        });
+      });
     }
 
 
