@@ -19,12 +19,12 @@ const con = mysql.createConnection({
 });
 
 //////////////////////////////////////////////////////////
-const requestData = "SELECT questions.name_question AS 'question', questions.id_question AS 'id_question', mood.name_mood AS 'mood',posts.id_post AS ‘post’ FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
+const requestData = "SELECT questions.name_question AS 'question', questions.id_question AS 'id_question', mood.name_mood AS 'mood',posts.id_post AS 'post' FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
 //////////////////////////////////////////////////////////
 
 let screens = [];
 let mobiles = [];
-let whitelists = [[],[],[],[],[],[]];
+let whitelists = [[], [], [], [], [], []];
 
 socket.on('connection', ws => {
 
@@ -46,8 +46,8 @@ socket.on('connection', ws => {
           let linkScreen = screens[index].socket
 
           let post = {
-            type : 'post',
-            message : `Envoi du mobile ${mobile.mobileId} vers screen ${screens[index].screenId}`,
+            type: 'post',
+            message: `Envoi du mobile ${mobile.mobileId} vers screen ${screens[index].screenId}`,
             moodId: mobile.moodId
           }
 
@@ -69,11 +69,11 @@ socket.on('connection', ws => {
       con.connect(function (err) {
         if (err) throw err;
         console.log("Connecté à la base de données MySQL!");
-        con.query("SELECT questions.name_question AS 'question', questions.id_question AS 'id_question', mood.name_mood AS 'mood',posts.id_post AS 'post' FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
-        , function (err, result) {
-          if (err) throw err;
-          console.log(result)
-        });
+        con.query(requestData
+          , function (err, result) {
+            if (err) throw err;
+            console.log(result)
+          });
       });
 
 
@@ -85,8 +85,8 @@ socket.on('connection', ws => {
   // Functions Init -------------------------
   const initScreen = (data, ws) => {
     let screen = {
-      screenId : data.screenId,
-      socket : ws
+      screenId: data.screenId,
+      socket: ws
     }
     screens.push(screen)
     screen.socket.on('message', msg => {
@@ -95,8 +95,8 @@ socket.on('connection', ws => {
   }
   const initMobile = (data, ws) => {
     let mobile = {
-      mobileId : data.screenId,
-      socket : ws
+      mobileId: data.screenId,
+      socket: ws
     }
 
     mobiles.push(mobile)
@@ -116,14 +116,14 @@ socket.on('connection', ws => {
   // Disconnect Screen and mobile -----------------
   ws.on('close', () => {
     console.log("Someone disconect")
-    screens.forEach((screen,id) => {
+    screens.forEach((screen, id) => {
       if (screen.socket === ws) {
         console.log(screen.screenId + "disconecte")
         screens.splice(id, 1)
       }
     })
-    mobiles.forEach((mobile,id) => {
-      whitelists[mobile.mobileId].forEach((connexion,id) => {
+    mobiles.forEach((mobile, id) => {
+      whitelists[mobile.mobileId].forEach((connexion, id) => {
         if (connexion.socket === ws) {
           console.log(connexion.mobileId + "est sortie de la whitelist")
           whitelists[mobile.mobileId].splice(id, 1)
@@ -137,8 +137,8 @@ socket.on('connection', ws => {
   })
 
 
-  
-  
+
+
 
 
 
@@ -207,7 +207,7 @@ server.listen(port, () => {
 
 
   })
- 
+
 
 
 
