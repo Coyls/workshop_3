@@ -12,7 +12,7 @@ const socket = new WebSocket.Server({ server })
 
 let screens = [];
 let mobiles = [];
-let whitelists = [];
+let whitelists = [[]];
 
 socket.on('connection', ws => {
 
