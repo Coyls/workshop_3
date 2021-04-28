@@ -31,6 +31,7 @@ serveurSocket.onmessage = (event) => {
 
 // Send data post ---------------------------------------------
 const postBtn = document.getElementById('post')
+let moodId = 1
 
 postBtn.addEventListener('click', () => {
      const postMood = () => {
