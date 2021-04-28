@@ -69,7 +69,8 @@ socket.on('connection', ws => {
       con.connect(function (err) {
         if (err) throw err;
         console.log("Connecté à la base de données MySQL!");
-        con.query("SELECT * FROM mood", function (err, result) {
+        con.query("SELECT questions.name_question AS 'question', questions.id_question AS 'id_question', mood.name_mood AS 'mood',posts.id_post AS 'post' FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
+        , function (err, result) {
           if (err) throw err;
           console.log(result)
         });
