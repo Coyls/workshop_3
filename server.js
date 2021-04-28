@@ -13,6 +13,7 @@ let screens = [];
 let mobiles = [];
 
 socket.on('connection', ws => {
+  console.log(ws)
   ws.on('message', msg => {
     const data = JSON.parse(msg)
     const type = data.type
@@ -40,6 +41,11 @@ socket.on('connection', ws => {
         });
       }); */
     }
+
+    wss.clients.forEach(function each(ws) {
+      if (ws.isAlive === false) return ws.terminate();
+  
+      ws.isAlive = false;
 
 
 
