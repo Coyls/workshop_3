@@ -13,7 +13,7 @@ let screenInit = {
     screenId: screenId,
 };
 
-console.log(screen)
+console.log(screenInit)
 
 // Connection WebSocket ---------------------------
 serveurSocket.onopen = () => {

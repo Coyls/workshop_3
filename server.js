@@ -34,6 +34,7 @@ socket.on('connection', ws => {
       socket : ws
     }
     screens.push(screen)
+    console.log(screen)
     screen.socket.on('message', msg => {
       const dataScreen = JSON.parse(msg)
     })
