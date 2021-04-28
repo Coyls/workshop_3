@@ -10,7 +10,10 @@ let screenId = parseInt(params.get('screen_id'))
 const postBtn = document.getElementById('post')
 
 postBtn.addEventListener('click', () => {
-    const postMood = () => {
+
+    serveurSocket.close({ toto : 'tata'})
+
+    /* const postMood = () => {
         console.log('post Mood')
         // Création d'un objet msg qui contient les données
         // dont le serveur a besoin pour traiter le message
@@ -21,9 +24,9 @@ postBtn.addEventListener('click', () => {
         };
     
         // Envoi de l'objet msg à travers une chaîne formatée en JSON
-        serveurSocket.send(JSON.stringify(msg));
+        serveurSocket.send(JSON.stringify(msg));*/
     }
-    postMood()
+    //postMood() 
 })
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
