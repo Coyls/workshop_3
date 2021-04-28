@@ -128,7 +128,7 @@ socket.on('connection', ws => {
     let mobileWl = {
       mobileId: data.screenId,
       socket: ws,
-      wl
+      wl : ""
     }
 
     mobiles.push(mobile)
