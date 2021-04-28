@@ -44,10 +44,10 @@ socket.on('connection', ws => {
         }
       })
 
+    } else if (type === 'data') {
+      console.log("someone ask to see data")
 
     }
-
-
 
   })
 

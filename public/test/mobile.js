@@ -29,9 +29,11 @@ serveurSocket.onmessage = (event) => {
     console.log("Mobile link to" + screenId, event.data)
 }
 
+
+
 // Send data post ---------------------------------------------
 const postBtn = document.getElementById('post')
-let moodId = 1
+let moodId = 1 ///// !!!!!!!!!!! A SUPPRIMER
 
 postBtn.addEventListener('click', () => {
      const postMood = () => {
