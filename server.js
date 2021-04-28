@@ -32,7 +32,6 @@ con.connect(function (err) {
   con.query(requestScreen, function (err, result) {
     if (err) throw err;
     questions = result
-
   });
   con.query(requestMobile, function (err, result) {
     if (err) throw err;
@@ -79,8 +78,8 @@ socket.on('connection', ws => {
 
     } else if (type === 'data') {
 
-      con.connect(function (err) {
-        if (err) throw err;
+      // con.connect(function (err) {
+       // if (err) throw err;
         con.query(requestData, function (err, result) {
           if (err) throw err;
           let dataPage = {
@@ -90,7 +89,7 @@ socket.on('connection', ws => {
 
           ws.send(JSON.stringify(dataPage))
         });
-      });
+      // });
 
     }
 
