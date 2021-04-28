@@ -119,7 +119,13 @@ socket.on('connection', ws => {
     mobiles.push(mobile)
     whitelists[data.screenId - 1].push(mobile)
 
+    /* questionsReponses.forEach(frag => {
+
+    }) */
+
     const index = questionsReponses.findIndex(questionReponse => questionReponse.screen === data.screenId)
+
+    console.log(questionsReponses.findIndex(questionReponse => questionReponse.screen === data.screenId))
     let mobileData = {
       type: "mobileData",
       question: questionsReponses[index]
