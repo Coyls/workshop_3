@@ -168,9 +168,9 @@ socket.on('connection', ws => {
       console.log(mobileWl.mobileId + " est " + mobileWl.wl)
     }
 
-    mobile.socket.on('message', msg => {
+    /* mobile.socket.on('message', msg => {
       const dataMobile = JSON.parse(msg)
-    })
+    }) */
   }
 
   // Disconnect Screen and mobile -----------------
@@ -178,21 +178,21 @@ socket.on('connection', ws => {
     console.log("Someone disconect")
     screens.forEach((screen, id) => {
       if (screen.socket === ws) {
-        console.log(screen.screenId + "disconecte")
+        console.log(screen.screenId + " screen disconecte")
         screens.splice(id, 1)
       }
     })
     mobiles.forEach((mobile, id) => {
       whitelists[mobile.mobileId - 1].forEach((connexion, id) => {
         if (connexion.socket === ws) {
-          console.log(whitelists[mobile.mobileId - 1])
+          // console.log(whitelists[mobile.mobileId - 1])
           // const index = whitelists[mobile.mobileId - 1].findIndex(onList => question.screen === data.screenId)
           console.log(connexion.mobileId + "est sortie de la whitelist")
           whitelists[mobile.mobileId - 1].splice(id, 1)
         }
       })
       if (mobile.socket === ws) {
-        console.log(mobile.mobileId + "disconecte")
+        console.log(mobile.mobileId + " mobile disconecte")
         mobiles.splice(id, 1)
       }
     })
