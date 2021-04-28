@@ -24,9 +24,9 @@ postBtn.addEventListener('click', () => {
         };
     
         // Envoi de l'objet msg à travers une chaîne formatée en JSON
-        serveurSocket.send(JSON.stringify(msg));*/
+        serveurSocket.send(JSON.stringify(msg));
     }
-    //postMood() 
+    postMood() */
 })
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
