@@ -23,7 +23,7 @@ const con = mysql.createConnection({
 });
 
 //////////////////////////////////////////////////////////
-const requestData = "SELECT questions.name_question AS 'question', questions.id_question AS 'id_question', mood.name_mood AS 'mood',posts.id_post AS 'post' FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
+const requestData = "SELECT questions.name_question AS 'question', questions.id_question AS 'questionId', mood.name_mood AS 'mood', mood.id_mood AS 'moodId',posts.id_post AS 'post' FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
 const requestScreen = "SELECT screen.id_screen AS 'screen', questions.name_question AS 'questions' FROM screen LEFT JOIN questions ON screen.id_screen=questions.id_screen"
 const requestMobile = "SELECT questions.id_question AS 'questionId', screen.id_screen AS 'screen', questions.name_question AS 'questions',reponses.name_reponse AS 'reponses', mood.id_mood AS 'moodId' FROM screen LEFT JOIN questions ON screen.id_screen=questions.id_screen LEFT JOIN reponses ON questions.id_question=reponses.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
 //////////////////////////////////////////////////////////
