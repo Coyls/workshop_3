@@ -34,10 +34,6 @@ con.connect(function (err) {
     questions = result
 
   });
-});
-con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connecté à la base de données MySQL!");
   con.query(requestMobile, function (err, result) {
     if (err) throw err;
     questionsReponses = result
