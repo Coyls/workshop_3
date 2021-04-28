@@ -25,11 +25,11 @@ serveurSocket.onerror = (error) => {
 
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
-    var data = event.data;
+    const data = JSON.parse(event.data)
 
     if (data.type === "post") {
-        console.log(data.type); //"humeurReceive"
-        console.log(data.humeur); //0 ou 1  
+        console.log(data.message); //"humeurReceive"
+        console.log(data.moodId); //0 ou 1  
     }
 }
 

@@ -29,7 +29,17 @@ socket.on('connection', ws => {
     } else if (type === 'post') {
       mobiles.forEach(mobile => {
         if (mobile.socket === ws) {
-          console.log(mobile.mobileId)
+          const index = screens.findIndex(screen => screen.screenId === mobile.mobileId)
+          let linkScreen = screens[index].socket
+
+          let post = {
+            type : 'post',
+            message : `Envoi du mobile ${mobile.mobileId} vers screen ${screens[index].screenId}`,
+            moodId: mobile.moodId
+          }
+
+          linkScreen.send(JSON.stringify(post))
+
         }
       })
 
