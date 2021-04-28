@@ -25,7 +25,19 @@ socket.on('connection', ws => {
       } else if (data.deviceType === 'mobile') {
         initMobile(data, ws)
       }
+
+    } else if (type === 'post') {
+      mobiles.forEach(mobile => {
+        if (mobile.socket === ws) {
+          console.log(mobile.mobileId)
+        }
+      })
+
+
     }
+
+
+
   })
 
   // Functions Init -------------------------
@@ -35,43 +47,41 @@ socket.on('connection', ws => {
       socket : ws
     }
     screens.push(screen)
-    console.log(screen)
     screen.socket.on('message', msg => {
       const dataScreen = JSON.parse(msg)
     })
   }
-
-  ws.on('close', () => {
-    console.log("Someone disconect")
-    screens.forEach((screen,id) => {
-      if (screen.socket === ws) {
-        console.log(screen.screenId + "disconecte")
-        screens.splice(id, 1)
-        console.log(screens)
-      }
-    })
-    mobiles.forEach((mobile,id) => {
-      if (mobile.socket === ws) {
-        console.log(mobile.mobileId + "disconecte")
-        mobiles.splice(id, 1)
-        console.log(mobiles)
-      }
-    })
-  })
-
-
   const initMobile = (data, ws) => {
     let mobile = {
       mobileId : data.screenId,
       socket : ws
     }
     mobiles.push(mobile)
-    console.log(mobile)
     mobile.socket.on('message', msg => {
       const dataMobile = JSON.parse(msg)
     })
   }
-  //////////////////////////////////////////////
+
+  // Disconnect Screen and mobile -----------------
+  ws.on('close', () => {
+    console.log("Someone disconect")
+    screens.forEach((screen,id) => {
+      if (screen.socket === ws) {
+        console.log(screen.screenId + "disconecte")
+        screens.splice(id, 1)
+      }
+    })
+    mobiles.forEach((mobile,id) => {
+      if (mobile.socket === ws) {
+        console.log(mobile.mobileId + "disconecte")
+        mobiles.splice(id, 1)
+      }
+    })
+  })
+
+
+  
+  
 
 
 

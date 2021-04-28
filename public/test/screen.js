@@ -25,12 +25,12 @@ serveurSocket.onerror = (error) => {
 
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
-    /* var message = event.data;
+    var data = event.data;
 
-    if (message.type === "post") {
+    if (data.type === "post") {
         console.log(data.type); //"humeurReceive"
         console.log(data.humeur); //0 ou 1  
-    } */
+    }
 }
 
 

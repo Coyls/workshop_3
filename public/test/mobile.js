@@ -27,17 +27,7 @@ serveurSocket.onerror = (error) => {
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
     console.log("Mobile link to" + screenId, event.data)
-
-    /* var message = event.data;
-
-    if (message.type === "post") {
-        console.log(data.type); //"humeurReceive"
-        console.log(data.humeur); //0 ou 1  
-    } */
 }
-
-
-
 
 // Send data post ---------------------------------------------
 const postBtn = document.getElementById('post')
@@ -45,13 +35,13 @@ const postBtn = document.getElementById('post')
 postBtn.addEventListener('click', () => {
      const postMood = () => {
         console.log('post Mood')
-        var msg = {
+        let post = {
             type: "post", //nom de message serveur
             idEcran: screenId, // identifiant de l'écran
-            // humeur: moodId // Réponse à la question, valeur possibile 0 ou 1
+            mood: moodId // Réponse à la question, valeur possibile 0 ou 1
         };
     
-        serveurSocket.send(JSON.stringify(msg));
+        serveurSocket.send(JSON.stringify(post));
     }
     postMood() 
 })
