@@ -27,6 +27,13 @@ serveurSocket.onerror = (error) => {
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
     // console.log("Mobile link to" + screenId, event.data)
+    const data = JSON.parse(event.data)
+    console.log(data)
+
+    if (data.type === 'mobileData') {
+        console.log(data.question)
+
+    }
 }
 
 
