@@ -54,7 +54,7 @@ socket.on('connection', ws => {
       if (mobile.socket === ws) {
         console.log(mobile.mobileId + "disconecte")
         mobiles.splice(id, 1)
-        console.log(screens)
+        console.log(mobiles)
       }
     })
   })
@@ -66,6 +66,7 @@ socket.on('connection', ws => {
       socket : ws
     }
     mobiles.push(mobile)
+    console.log(mobile)
     mobile.socket.on('message', msg => {
       const dataMobile = JSON.parse(msg)
     })

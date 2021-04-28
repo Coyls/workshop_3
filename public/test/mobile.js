@@ -11,7 +11,7 @@ let screenId = parseInt(params.get('screen_id'))
 let mobileInit = {
     type: "init",
     deviceType: "mobile",
-    mobileId: screenId,
+    screenId: screenId,
 };
 
 console.log(mobileInit)
