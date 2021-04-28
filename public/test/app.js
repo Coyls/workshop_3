@@ -9,8 +9,6 @@ let screenId = parseInt(params.get('screenId'))
 // MOBILE
 const postBtn = document.getElementById('post')
 
-
-
 postBtn.addEventListener('click', () => {
     const postMood = () => {
         console.log('post Mood')
@@ -19,8 +17,7 @@ postBtn.addEventListener('click', () => {
         var msg = {
             type: "post", //nom de message serveur
             idEcran: screenId, // identifiant de l'écran
-            idQuestion: 0, // identifiant de la question
-            humeur: 0 // Réponse à la question, valeur possibile 0 ou 1
+            humeur: moodId // Réponse à la question, valeur possibile 0 ou 1
         };
     
         // Envoi de l'objet msg à travers une chaîne formatée en JSON
