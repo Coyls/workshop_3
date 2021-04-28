@@ -4,6 +4,7 @@ const http = require('http');
 const port = process.env.PORT || 3000;
 const WebSocket = require('ws');
 const mysql = require('mysql');
+const { disconnect } = require('process');
 
 const server = http.createServer(app);
 
@@ -37,6 +38,9 @@ socket.on('connection', ws => {
     console.log(screen)
     screen.socket.on('message', msg => {
       const dataScreen = JSON.parse(msg)
+    })
+    screen.socket.on('close', () => {
+      console.log("Disconect screen" + screenId)
     })
   }
 
