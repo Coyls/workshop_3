@@ -13,7 +13,14 @@ let screens = [];
 let mobiles = [];
 
 socket.on('connection', ws => {
-  console.log(ws)
+  console.log("on connection", ws)
+  ws.on('close', (event) => {
+    console.log(event)
+    console.log("ws on close", ws)
+    console.log('disconnected');
+  })
+
+
   ws.on('message', msg => {
     const data = JSON.parse(msg)
     const type = data.type
@@ -27,11 +34,10 @@ socket.on('connection', ws => {
 
       let screenPush = {
         type: 'screenPull',
-        idEcran : data.idEcran,
+        idEcran: data.idEcran,
 
       }
 
-      ws.send()
       console.log(data)
       /* con.connect(function (err) {
         if (err) throw err;
@@ -41,55 +47,36 @@ socket.on('connection', ws => {
         });
       }); */
     }
-
-    wss.clients.forEach(function each(ws) {
-      if (ws.isAlive === false) return ws.terminate();
-  
-      ws.isAlive = false;
-
-
-
+   
 
 
   })
-  // ws.send(test)
-
-  ws.on('close', (event) => {
-    console.log(event)
-   console.log('disconnected');
- })
-
-
-})
 
 
 
 
-// Request mySQL
-const con = mysql.createConnection({
-  host: "localhost",
-  user: "pma",
-  password: "pmapass",
-  database: "comment_ca_va"
-});
-
-con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connecté à la base de données MySQL!");
-  con.query("SELECT * FROM mood", function (err, result) {
-    if (err) throw err;
-    // console.log(result)
+  // Request mySQL
+  const con = mysql.createConnection({
+    host: "localhost",
+    user: "pma",
+    password: "pmapass",
+    database: "comment_ca_va"
   });
-});
+
+  con.connect(function (err) {
+    if (err) throw err;
+    console.log("Connecté à la base de données MySQL!");
+    con.query("SELECT * FROM mood", function (err, result) {
+      if (err) throw err;
+      // console.log(result)
+    });
+  });
 
 
-server.listen(port, () => {
-  console.log(`server running at http://localhost:${port}/`);
-});
+  server.listen(port, () => {
+    console.log(`server running at http://localhost:${port}/`);
+  });
 
 
 // Au cas ou
-
-/* ws.on('close', () => {
-   console.log('disconnected');
- }) */
+})
