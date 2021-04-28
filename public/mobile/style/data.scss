@@ -1,11 +1,13 @@
 /*-----------------------------------------------Mood-------------------------------------------------*/
-
 #building-mood {
   position: relative;
   top: 5vh;
   left: 5vw;
   height: 40vh;
   width: 90vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 #building-text-wrapper {
@@ -18,28 +20,50 @@
   align-items: center;
 }
 
-#building-image-wrapper {
-  position: relative;
+#canvasG {
+  position: absolute;
   top: 5vh;
   left: 10%;
   height: 70%;
   width: 80%;
-  background-color: brown;
+}
+
+#textMoyG {
+  position: relative;
+  top: 20%;
+  font-family: Poppins, serif;
+  font-weight: 400;
+  font-size: 200px;
+  z-index: 2;
 }
 
 /*-----------------------------------------------Data-------------------------------------------------*/
+
+#canvasQ1{
+  height: 90%;
+  width: 70%;
+}
 
 #data {
   position: relative;
   top: 7vh;
   left: 10vw;
-  height: 110vh;
+  height: 35vh;
   width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
+#data-questions{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  width: 600vw;
+  left: 0;
+  bottom: 0;
+  height: 40vh;
+}
 #data-title {
   position: relative;
   top: 0;
@@ -58,8 +82,12 @@
 
 .data-wrapper {
   position: relative;
-  height: 15vh;
-  width: 100%;
+  height: 30vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .data-question {
@@ -67,8 +95,9 @@
   top: 0;
   left: 0;
   height: 7vh;
-  width: 100%;
+  width: 80%;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -76,6 +105,7 @@
   font-size: 2vh;
   font-family: Poppins, serif;
   color: grey;
+  text-align: center;
 }
 
 .data-slider {

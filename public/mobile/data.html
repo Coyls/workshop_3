@@ -16,9 +16,15 @@
 
 <div id="menu-btn-active">
     <ul id="menu-link">
-        <a href="home.html"><li class="nav-link">Accueil</li></a>
-        <a href="#"><li class="nav-link">Statistiques</li></a>
-        <a href="about.html"><li class="nav-link">A propos</li></a>
+        <a href="home.html">
+            <li class="nav-link">Accueil</li>
+        </a>
+        <a href="#">
+            <li class="nav-link">Statistiques</li>
+        </a>
+        <a href="about.html">
+            <li class="nav-link">A propos</li>
+        </a>
     </ul>
 </div>
 
@@ -30,66 +36,76 @@
     <div id="building-text-wrapper">
         <h1 class="title">L'état général du bâtiment</h1>
     </div>
-    <div id="building-image-wrapper">
-
-    </div>
+    <p id="textMoyG"></p>
+    <canvas id="canvasG" width="302" height="302">
+        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
 </div>
 
 <div id="data">
+
     <div id="data-title">
         <h1 class="title">Les statistiques par question</h1>
     </div>
-    <div class="data-wrapper">
-        <div class="data-question">
-            <p class="question">Comment te sens-tu aujourd'hui ?</p>
+    <div id="data-questions">
+        <div class="data-wrapper">
+            <canvas id="canvasQ1" width="302" height="302">
+                Désolé, votre navigateur ne prend pas en charge
+            </canvas>
+            <div class="data-question">
+                <p class="question">Comment te sens-tu aujourd'hui ?</p>
+            </div>
         </div>
-        <div class="data-slider">
+        <div class="data-wrapper">
 
-        </div>
-    </div>
-    <div class="data-wrapper">
-        <div class="data-question">
-            <p class="question">Es-tu optimiste pour l'avenir ?</p>
-        </div>
-        <div class="data-slider">
+            <div class="data-slider">
 
+            </div>
+            <div class="data-question">
+                <p class="question">Es-tu optimiste pour l'avenir ?</p>
+            </div>
         </div>
-    </div>
-    <div class="data-wrapper">
-        <div class="data-question">
-            <p class="question">Te sens-tu suffisamment entouré en ce moment ?</p>
-        </div>
-        <div class="data-slider">
+        <div class="data-wrapper">
 
-        </div>
-    </div>
-    <div class="data-wrapper">
-        <div class="data-question">
-            <p class="question">As-tu réussi à rester motivé pour bosser pendant l'année écoulée ?</p>
-        </div>
-        <div class="data-slider">
+            <div class="data-slider">
 
+            </div>
+            <div class="data-question">
+                <p class="question">Te sens-tu suffisamment entouré en ce moment ?</p>
+            </div>
         </div>
-    </div>
-    <div class="data-wrapper">
-        <div class="data-question">
-            <p class="question">As-tu trouvé de nouvelles façons de vivre qui te rendent plus heureux qu'avant ?</p>
-        </div>
-        <div class="data-slider">
+        <div class="data-wrapper">
 
-        </div>
-    </div>
-    <div class="data-wrapper">
-        <div class="data-question">
-            <p class="question">Quel effet va avoir cette crise sur ton environnement ?</p>
-        </div>
-        <div class="data-slider">
+            <div class="data-slider">
 
+            </div>
+            <div class="data-question">
+                <p class="question">As-tu réussi à rester motivé pour bosser pendant l'année écoulée ?</p>
+            </div>
+        </div>
+        <div class="data-wrapper">
+
+            <div class="data-slider">
+
+            </div>
+            <div class="data-question">
+                <p class="question">As-tu trouvé de nouvelles façons de vivre qui te rendent plus heureux qu'avant ?</p>
+            </div>
+        </div>
+        <div class="data-wrapper">
+
+            <div class="data-slider">
+
+            </div>
+            <div class="data-question">
+                <p class="question">Quel effet va avoir cette crise sur ton environnement ?</p>
+            </div>
         </div>
     </div>
 </div>
 
 <script src="js/gsap.js"></script>
+<script src="js/canvas.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
