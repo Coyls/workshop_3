@@ -58,9 +58,18 @@ socket.on('connection', ws => {
 
     } else if (type === 'data') {
       // ici la requete sql pour visualiser les data
-      con.connect(function (err) {
+      /* con.connect(function (err) {
         if (err) throw err;
         con.query(requestData, function (err, result) {
+          if (err) throw err;
+          console.log(result)
+        });
+      }); */
+
+      con.connect(function (err) {
+        if (err) throw err;
+        console.log("Connecté à la base de données MySQL!");
+        con.query("SELECT * FROM mood", function (err, result) {
           if (err) throw err;
           console.log(result)
         });
@@ -144,14 +153,14 @@ socket.on('connection', ws => {
 
 
 // Requete type
-con.connect(function (err) {
+/* con.connect(function (err) {
   if (err) throw err;
   console.log("Connecté à la base de données MySQL!");
   con.query("SELECT * FROM mood", function (err, result) {
     if (err) throw err;
-    // console.log(result)
+    console.log(result)
   });
-});
+}); */
 // --------------------------------------------------------
 
 
