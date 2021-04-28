@@ -3,10 +3,6 @@ console.log("data") //// DATA
 const url = 'ws://vps215076.ovh.net:3000'
 const serveurSocket = new WebSocket(url)
 
-let params = (new URL(document.location)).searchParams;
-let screenId = parseInt(params.get('screen_id'))
-
-
 // Object init ---------------------------
 let dataPage = {
     type: 'data',
