@@ -187,8 +187,18 @@ socket.on('connection', ws => {
         if (connexion.socket === ws) {
           // console.log(whitelists[mobile.mobileId - 1])
           // const index = whitelists[mobile.mobileId - 1].findIndex(onList => question.screen === data.screenId)
-          console.log(connexion.mobileId + "est sortie de la whitelist")
+          console.log(connexion.mobileId + " est sortie de la whitelist")
           whitelists[mobile.mobileId - 1].splice(id, 1)
+
+          whitelists[mobile.mobileId - 1].forEach(wlElement => {
+            if (whitelists[mobile.mobileId - 1].indexOf(wlElement)=== 0) {
+              mobileWl.wl = "actif"
+              console.log(mobileWl.mobileId + " est " + mobileWl.wl)
+            } else {
+              mobileWl.wl = "inactif"
+              console.log(mobileWl.mobileId + " est " + mobileWl.wl)
+            }
+          })
 
           console.log( whitelists[mobile.mobileId - 1])
         }
