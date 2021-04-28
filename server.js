@@ -67,7 +67,7 @@ socket.on('connection', ws => {
           let post = {
             type: 'post',
             message: `Envoi du mobile ${mobile.mobileId} vers screen ${screens[index].screenId}`,
-            moodId: mobile.moodId
+            moodId: data.moodId
           }
 
           linkScreen.send(JSON.stringify(post))
