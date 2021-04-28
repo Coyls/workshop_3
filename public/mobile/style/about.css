@@ -2,27 +2,19 @@
   position: relative;
   top: 5vh;
   left: 5vw;
-  height: 20vh;
+  height: 10vh;
   width: 90vw;
-  background-color: red;
 }
 
 #team-wrapper {
   position: relative;
-  top: 10vh;
+  top: 5vh;
   left: 5vw;
   height: 52vh;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #team-wrapper-part-one {
@@ -39,17 +31,13 @@
   left: 0;
   height: 5vh;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .team-title {
   font-size: 6vw;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 #image-wrapper-part-one {
@@ -80,7 +68,7 @@
 
 #instagram-wrapper {
   position: relative;
-  top: 17.5vh;
+  top: 10vh;
   left: 5vw;
   height: 27.5vh;
   width: 90vw;
@@ -90,24 +78,19 @@
   position: relative;
   top: 1vh;
   left: 0;
-  height: 18vh;
+  height: 30vh;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .imageWrapper {
   position: relative;
-  height: 13vw;
-  width: 13vw;
+  height: 10vh;
+  width: 22vw;
   background-color: blue;
-  margin: 1.15vh;
+  margin: 1.75vh;
 }
+
 /*# sourceMappingURL=about.css.map */

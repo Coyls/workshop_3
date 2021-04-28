@@ -1,8 +1,23 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.background-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 /*---------------------------------------------menu Btn---------------------------------------------*/
@@ -12,63 +27,46 @@
   left: 0;
   height: 8.5vh;
   width: 8.5vh;
-  background-color: red;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   z-index: 10;
 }
 
 #menu-btn-burger {
-  height: 0.7vh;
-  width: 12vw;
+  height: 0.5vh;
+  width: 10vw;
   border-radius: 10vh;
   background-color: #212121;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
-
 #menu-btn-burger:before, #menu-btn-burger:after {
-  content: '';
+  content: "";
   position: absolute;
-  height: 0.7vh;
-  width: 12vw;
+  height: 0.5vh;
+  width: 10vw;
   background-color: #212121;
   border-radius: 10vh;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
-
 #menu-btn-burger:before {
-  -webkit-transform: translateY(-1.5vh);
-          transform: translateY(-1.5vh);
+  transform: translateY(-1.5vh);
 }
-
 #menu-btn-burger:after {
-  -webkit-transform: translateY(1.5vh);
-          transform: translateY(1.5vh);
+  transform: translateY(1.5vh);
 }
 
 #menu-btn.open #menu-btn-burger {
-  -webkit-transform: translateX(-5vw);
-          transform: translateX(-5vw);
+  transform: translateX(-5vw);
   background: transparent;
 }
 
 #menu-btn.open #menu-btn-burger::before {
-  -webkit-transform: rotate(45deg) translate(3.5vw, -3.5vw);
-          transform: rotate(45deg) translate(3.5vw, -3.5vw);
+  transform: rotate(45deg) translate(3.5vw, -3.5vw);
 }
 
 #menu-btn.open #menu-btn-burger::after {
-  -webkit-transform: rotate(-45deg) translate(3.5vw, 3.5vw);
-          transform: rotate(-45deg) translate(3.5vw, 3.5vw);
+  transform: rotate(-45deg) translate(3.5vw, 3.5vw);
 }
 
 #menu-btn-active {
@@ -77,73 +75,67 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #212121;
-  -webkit-transition: all 0.75s ease-in-out;
   transition: all 0.75s ease-in-out;
-  z-index: 1;
+  z-index: 8;
   display: none;
 }
-
 #menu-btn-active.active {
   display: block;
-  -webkit-transition: all 0.75s ease-in-out;
   transition: all 0.75s ease-in-out;
 }
 
 /*-----------------------------------------------menu-------------------------------------------------*/
 #menu-link {
-  position: relative;
+  position: absolute;
   top: 30%;
   left: 20%;
   height: 40%;
   width: 60%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  user-select: none;
+}
+#menu-link:focus {
+  outline: none;
 }
 
 a {
   text-decoration: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
-
 a:focus {
   border: none;
   outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .nav-link {
   position: relative;
-  font-family: Poppins, serif;
-  font-size: 5vh;
-  color: #FFFFFF;
+  font-family: "Montserrat", serif;
+  font-weight: 600;
+  font-size: 10vw;
+  color: #000000;
   pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  -webkit-transition: -webkit-transform 0.1s linear;
-  transition: -webkit-transform 0.1s linear;
+  user-select: none;
   transition: transform 0.1s linear;
-  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
   list-style: none;
+  outline: none;
+}
+
+.image {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.about-background {
+  position: relative;
+  height: 120%;
+  width: 100%;
+  object-fit: cover;
 }
 
 /*-----------------------------------------------Logo-------------------------------------------------*/
@@ -153,18 +145,61 @@ a:focus {
   left: 50%;
   height: 8.5vh;
   width: 50vw;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  transform: translateX(-50%);
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 #logo {
   font-size: 9vw;
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
 }
+
+/*-----------------------------------------------Text-------------------------------------------------*/
+.paragraph {
+  font-family: "Montserrat", serif;
+  font-size: 4.2vw;
+  color: #000000;
+}
+
+.paragraph-big {
+  font-family: "Montserrat", serif;
+  font-size: 5vw;
+  color: #000000;
+}
+
+.paragraph-bold {
+  font-family: "Montserrat", serif;
+  font-size: 5vw;
+  color: #000000;
+  font-weight: 600;
+}
+
+.paragraph-semiBold {
+  font-family: "Montserrat", serif;
+  font-size: 4.2vw;
+  color: #000000;
+  font-weight: 500;
+}
+
+.paragraph-span-blue {
+  color: #1A3AC7;
+  font-weight: 700;
+}
+
+.paragraph-span-green {
+  color: #60D08D;
+  font-weight: 700;
+}
+
+.paragraph-span-orange {
+  color: #E45E2C;
+  font-weight: 700;
+}
+
+.paragraph-span-pink {
+  color: #EB81AF;
+  font-weight: 700;
+}
+
 /*# sourceMappingURL=main.css.map */

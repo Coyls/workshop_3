@@ -1,6 +1,6 @@
-let moyG = 50;
-let red = 255
-let green = 255
+let moyG = 70;
+let red
+let green
 let moyGTo = 0;
 let waveRan = [];
 let waveRanTo = [];
@@ -97,46 +97,167 @@ window.addEventListener("load", () => {
         ctx.closePath();
     }
 
-    let nbPoint = 6;
-    let repN = 70
-    let repP = 30
+
+
+
+
+
+
+
+
+
+    let repN = 100
+    let repP =100-repN
+    let dirRan1 = 1
+    let waveRan1 = [];
+    let waveRanTo1 = [];
+    let speedWave1 = [];
+    let dirRan2 = -1
+    let waveRan2 = [];
+    let waveRanTo2 = [];
+    let speedWave2 = [];
+
     let radius1,radius2,color1,color2
     if (repN<=repP){
-        radius1 = repN
-        color1 = "rgb(135,219,89)"
-        color2 = "rgb(219,135,89)"
-
-        radius2 = repP
-    }else{
-        radius1 = repP
-        color1 = "rgb(219,135,89)"
-        color2 = "rgb(135,219,89)"
         radius2 = repN
+        color2 = "rgb(135,219,89)"
+        color1 = "rgb(219,135,89)"
+
+        radius1 = repP
+    }else{
+        radius2 = repP
+        color2 = "rgb(219,135,89)"
+        color1 = "rgb(135,219,89)"
+        radius1 = repN
     }
+    for (let i = 0; i < 8; i++) {
+        waveRan1[i] = ((Math.random()/2+0.5)* dirRan1 + 1) * 10 * ((radius1+5)/100);
+        waveRanTo1[i] = (Math.random()/2+0.5)*5 * ((radius1+5)/100);
+        speedWave1[i] = 1 + Math.random()
+        waveRan2[i] = ((Math.random()/2+0.5)*dirRan2 + 1) * 10 * ((radius2+5)/50);
+        waveRanTo2[i] = (Math.random()/2+0.5)*5 * ((radius2+5)/50);
+        speedWave2[i] = 1 + Math.random()
+        console.log(waveRan2[i])
+        console.log(waveRan1[i])
+        if (dirRan1 === 1) {
+            dirRan1 = -1
+            dirRan2 = -1
+        } else {
+            dirRan1 = 1
+            dirRan2 = -1
+        }
+
+    }
+
 
     let canvasQ = document.querySelector("#canvasQ1");
     let ctx2 = canvasQ.getContext('2d');
     loop2();
 
     function loop2() {
+
+        for (let i = 0; i < 8; i++) {
+            if (waveRan1[i] > 10) {
+                if (waveRanTo1[i] < waveRan1[i]) {
+                    waveRanTo1[i] += speedWave1[i] / 10
+                } else {
+                    waveRan1[i] = ((Math.random()/2+0.5)* -1 + 1) * 10 * ((radius1+5)/100);
+                    speedWave1[i] = 0.5 + Math.random()
+                }
+            } else {
+                if (waveRanTo1[i] > waveRan1[i]) {
+                    waveRanTo1[i] -= speedWave1[i] / 10
+                } else {
+                    waveRan1[i] = (Math.random()/2+0.5 + 1) * 10 * ((radius1+5)/100);
+                    speedWave1[i] = 0.5 + Math.random()
+                }
+            }
+
+
+            if (waveRan2[i] > 10) {
+                if (waveRanTo2[i] < waveRan2[i]) {
+                    waveRanTo2[i] += speedWave2[i] / 15
+                } else {
+                    waveRan2[i] = ((Math.random()/2+0.5)* -1 + 1) * 10 * ((radius2+5)/50);
+                    speedWave2[i] = 0.5 + Math.random()
+
+                }
+            } else {
+                if (waveRanTo2[i] > waveRan2[i]) {
+                    waveRanTo2[i] -= speedWave2[i] / 15
+                } else {
+                    waveRan2[i] = (Math.random()/2+0.5 + 1) * 10 * ((radius2+5)/50);
+                    speedWave2[i] = 0.5 + Math.random()
+                }
+            }
+        }
+
+
         draw2()
         requestAnimationFrame(loop2)
     }
 
     function draw2() {
-        ctx2.fillStyle =color1
+        ctx2.fillStyle = "#ffffff"
+        ctx2.fillRect(0, 0, 302, 302)
+        ctx2.fillStyle =color2
         ctx2.beginPath();
-        ctx2.moveTo(1, 121);
-        ctx2.bezierCurveTo(1, 61, 41, 1, 101, 1);
-        ctx2.bezierCurveTo(161, 1, 301, 51, 301, 101);
-        ctx2.bezierCurveTo(301, 151, 181, 301, 121, 301);
-        ctx2.bezierCurveTo(61, 301, 1, 181, 1, 121);
+        ctx2.moveTo(165-55/50*radius1-waveRanTo1[0], 165);
+        ctx2.bezierCurveTo(165-55/50*radius1-waveRanTo1[0], 165-(55/50*radius1)/4, 165-55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4-waveRanTo1[1], 165-55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4-waveRanTo1[1], 165-55/50*radius1*(Math.sqrt(2)/2)-waveRanTo1[1], 165-55/50*radius1*(Math.sqrt(2)/2)-waveRanTo1[1]);
+        ctx2.bezierCurveTo(165-55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4-waveRanTo1[1], 165-55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4-waveRanTo1[1], 165-(55/50*radius1)/4, 165-55/50*radius1-waveRanTo1[2], 165, 165-55/50*radius1-waveRanTo1[2]);
+        ctx2.bezierCurveTo(165+(55/50*radius1)/4, 165-55/50*radius1-waveRanTo1[2], 165+55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4 + waveRanTo1[3], 165-55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4 -waveRanTo1[3], 165+55/50*radius1*(Math.sqrt(2)/2)+waveRanTo1[3], 165-55/50*radius1*(Math.sqrt(2)/2)-waveRanTo1[3]);
+        ctx2.bezierCurveTo(165+55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4 +waveRanTo1[3], 165-55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4-waveRanTo1[3], 165+55/50*radius1+waveRanTo1[4], 165-(55/50*radius1)/4,165+55/50*radius1+waveRanTo1[4], 165);
+        ctx2.bezierCurveTo(165+55/50*radius1+waveRanTo1[4], 165+(55/50*radius1)/4, 165+55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4+waveRanTo1[5], 165+55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4+waveRanTo1[5], 165+55/50*radius1*(Math.sqrt(2)/2)+waveRanTo1[5], 165+55/50*radius1*(Math.sqrt(2)/2)+waveRanTo1[5]);
+        ctx2.bezierCurveTo(165+55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4+waveRanTo1[5], 165+55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4+waveRanTo1[5], 165+(55/50*radius1)/4, 165+55/50*radius1+waveRanTo1[6], 165, 165+55/50*radius1+waveRanTo1[6]);
+        ctx2.bezierCurveTo(165-(55/50*radius1)/4, 165+55/50*radius1+waveRanTo1[6], 165-55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4-waveRanTo1[7], 165+55/50*radius1*(Math.sqrt(2)/2)+55/50*radius1*(Math.sqrt(2)/2)/4+waveRanTo1[7], 165-55/50*radius1*(Math.sqrt(2)/2)-waveRanTo1[7], 165+55/50*radius1*(Math.sqrt(2)/2)+waveRanTo1[7]);
+        ctx2.bezierCurveTo(165-55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4-waveRanTo1[7], 165+55/50*radius1*(Math.sqrt(2)/2)-55/50*radius1*(Math.sqrt(2)/2)/4+waveRanTo1[7], 165-55/50*radius1-waveRanTo1[0], 165+(55/50*radius1)/4,165-55/50*radius1-waveRanTo1[0], 165);
         ctx2.fill()
         ctx2.closePath();
+        ctx2.fillStyle =color1
         ctx2.beginPath();
-        ctx2.strokeStyle= "black"
-        ctx2.ellipse(70,70,radius2,radius2,0,0,0,2*Math.PI)
+        ctx2.moveTo(90-55/50*radius2-waveRanTo2[0], 90);
+        ctx2.bezierCurveTo(90-55/50*radius2-waveRanTo2[0], 90-(55/50*radius2)/4, 90-55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4-waveRanTo2[1], 90-55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4-waveRanTo2[1], 90-55/50*radius2*(Math.sqrt(2)/2)-waveRanTo2[1], 90-55/50*radius2*(Math.sqrt(2)/2)-waveRanTo2[1]);
+        ctx2.bezierCurveTo(90-55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4-waveRanTo2[1], 90-55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4-waveRanTo2[1], 90-(55/50*radius2)/4, 90-55/50*radius2-waveRanTo2[2], 90, 90-55/50*radius2-waveRanTo2[2]);
+        ctx2.bezierCurveTo(90+(55/50*radius2)/4, 90-55/50*radius2-waveRanTo2[2], 90+55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4 + waveRanTo2[3], 90-55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4 -waveRanTo2[3], 90+55/50*radius2*(Math.sqrt(2)/2)+waveRanTo2[3], 90-55/50*radius2*(Math.sqrt(2)/2)-waveRanTo2[3]);
+        ctx2.bezierCurveTo(90+55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4 +waveRanTo2[3], 90-55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4-waveRanTo2[3], 90+55/50*radius2+waveRanTo2[4], 90-(55/50*radius2)/4,90+55/50*radius2+waveRanTo2[4], 90);
+        ctx2.bezierCurveTo(90+55/50*radius2+waveRanTo2[4], 90+(55/50*radius2)/4, 90+55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4+waveRanTo2[5], 90+55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4+waveRanTo2[5], 90+55/50*radius2*(Math.sqrt(2)/2)+waveRanTo2[5], 90+55/50*radius2*(Math.sqrt(2)/2)+waveRanTo2[5]);
+        ctx2.bezierCurveTo(90+55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4+waveRanTo2[5], 90+55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4+waveRanTo2[5], 90+(55/50*radius2)/4, 90+55/50*radius2+waveRanTo2[6], 90, 90+55/50*radius2+waveRanTo2[6]);
+        ctx2.bezierCurveTo(90-(55/50*radius2)/4, 90+55/50*radius2+waveRanTo2[6], 90-55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4-waveRanTo2[7], 90+55/50*radius2*(Math.sqrt(2)/2)+55/50*radius2*(Math.sqrt(2)/2)/4+waveRanTo2[7], 90-55/50*radius2*(Math.sqrt(2)/2)-waveRanTo2[7], 90+55/50*radius2*(Math.sqrt(2)/2)+waveRanTo2[7]);
+        ctx2.bezierCurveTo(90-55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4-waveRanTo2[7], 90+55/50*radius2*(Math.sqrt(2)/2)-55/50*radius2*(Math.sqrt(2)/2)/4+waveRanTo2[7], 90-55/50*radius2-waveRanTo2[0], 90+(55/50*radius2)/4,90-55/50*radius2-waveRanTo2[0], 90);
+        ctx2.fill()
+        ctx2.closePath();
+        ctx2.fillStyle = "#797979"
+        ctx2.strokeStyle = "#000000"
+
+        ctx2.beginPath();
+        ctx2.ellipse(((90+55/50*radius2+waveRanTo2[4])+(90-55/50*radius2-waveRanTo2[0]))/2,((90+55/50*radius2+waveRanTo2[6])+(90-55/50*radius2-waveRanTo2[2]))/2,4,4,0,0,2* Math.PI,2* Math.PI);
+        ctx2.fill()
+        ctx2.moveTo(((90+55/50*radius2+waveRanTo2[4])+(90-55/50*radius2-waveRanTo2[0]))/2-3,((90+55/50*radius2+waveRanTo2[6])+(90-55/50*radius2-waveRanTo2[2]))/2-3)
+        ctx2.lineTo(((90+55/50*radius2+waveRanTo2[4])+(90-55/50*radius2-waveRanTo2[0]))/2-60,((90+55/50*radius2+waveRanTo2[6])+(90-55/50*radius2-waveRanTo2[2]))/2-40)
+        ctx2.lineTo(((90+55/50*radius2+waveRanTo2[4])+(90-55/50*radius2-waveRanTo2[0]))/2-80,((90+55/50*radius2+waveRanTo2[6])+(90-55/50*radius2-waveRanTo2[2]))/2-40)
         ctx2.stroke()
         ctx2.closePath();
+        ctx2.font="20px Poppins serif"
+        ctx2.textAlign = "end"
+        ctx2.fillText(`${radius2}%`,((90+55/50*radius2+waveRanTo2[4])+(90-55/50*radius2-waveRanTo2[0]))/2-83,((90+55/50*radius2+waveRanTo2[6])+(90-55/50*radius2-waveRanTo2[2]))/2-35)
+        ctx2.beginPath();
+        ctx2.ellipse(((165+55/50*radius1+waveRanTo1[4])+(165-55/50*radius1-waveRanTo1[0]))/2,((165+55/50*radius1+waveRanTo1[6])+(165-55/50*radius1-waveRanTo1[2]))/2,4,4,0,0,2* Math.PI,2* Math.PI);
+        ctx2.fill()
+        ctx2.moveTo(((165+55/50*radius1+waveRanTo1[4])+(165-55/50*radius1-waveRanTo1[0]))/2+3,((165+55/50*radius1+waveRanTo1[6])+(165-55/50*radius1-waveRanTo1[2]))/2-3)
+        ctx2.lineTo(((165+55/50*radius1+waveRanTo1[4])+(165-55/50*radius1-waveRanTo1[0]))/2+55/50*radius1+waveRanTo1[4]-20,((165+55/50*radius1+waveRanTo1[6])+(165-55/50*radius1-waveRanTo1[2]))/2-30)
+        ctx2.lineTo(((165+55/50*radius1+waveRanTo1[4])+(165-55/50*radius1-waveRanTo1[0]))/2+55/50*radius1+waveRanTo1[4]+10,((165+55/50*radius1+waveRanTo1[6])+(165-55/50*radius1-waveRanTo1[2]))/2-30)
+
+        ctx2.stroke()
+        ctx2.closePath();
+        ctx2.font="20px Poppins serif"
+        ctx2.textAlign = "start"
+        ctx2.fillText(`${radius1}%`,((165+55/50*radius1+waveRanTo1[4])+(165-55/50*radius1-waveRanTo1[0]))/2+55/50*radius1+waveRanTo1[4]+13,((165+55/50*radius1+waveRanTo1[6])+(165-55/50*radius1-waveRanTo1[2]))/2-25)
+
+
+
+
     }
 })
+
+
+

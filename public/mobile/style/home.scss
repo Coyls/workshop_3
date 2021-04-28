@@ -1,65 +1,123 @@
 /*-----------------------------------------------Text-------------------------------------------------*/
 
-#text-wrapper {
+#text-top-wrapper {
   position: relative;
-  top: 2vh;
-  left: 0;
-  height: 30vh;
-  width: 100%;
-  background-color: red;
-  padding: 2vh;
+  top: 4vh;
+  left: 10vw;
+  height: 10vh;
+  width: 80vw;
+  display: flex;
+  align-items: center;
 }
 
-#text-top-wrapper {
+#papet-wrapper {
+  position: relative;
+  top: 7vh;
+  left: 3vw;
+  height: 20vh;
+  width: 94vw;
+}
+
+#papet-mood-wrapper{
+  position: relative;
+  top: 7vh;
+  left: 0;
+  height: 5vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#text-middle-wrapper {
+  position: relative;
+  top: 10vh;
+  left: 10vw;
+  height: 15vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#text-middle-wrapper-part-one {
   position: relative;
   top: 0;
   left: 0;
-  height: 8vh;
-  width: 100%;
-  background-color: green;
+  height: 5vh;
+  width: 80vw;
 }
 
-.text {
-  font-family: Poppins, serif;
-  font-size: 2vh;
-  color: grey;
-}
-
-#text-top {
-  text-align: left;
-}
-
-#text-bottom {
-  text-align: right;
-}
-
-#text-bottom-wrapper {
+#text-middle-wrapper-part-two {
   position: relative;
-  top: 2vh;
+  top: 0;
   left: 0;
-  height: 16vh;
-  width: 100%;
-  background-color: yellow;
+  height: 7.5vh;
+  width: 80vw;
 }
 
-#image-wrapper {
-  position: relative;
-  top: 5vh;
-  left: 1.5vh;
-  height: 45vh;
-  width: 94vw;
-  background-color: aqua;
-}
 
 #button {
   position: relative;
-  top: 7.5vh;
-  left: 35vw;
-  height: 5vh;
-  width: 30vw;
-  background-color: purple;
+  top: 15vh;
+  left: 32.5vw;
+  height: 4vh;
+  width: 35vw;
+  background-color: transparent;
+  border: 0.2vh solid #000000;
   border-radius: 20vh;
-  font-size: 1vh;
-  color: white;
-  font-family: Poppins, serif;
+  font-size: 2vh;
+  color: #000000;
+  font-family: "Montserrat", serif;
+}
+
+#scrolling-paragraph-wrapper-one {
+  position: relative;
+  top: 20vh;
+  left: 0;
+  height: 4vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#scrolling-paragraph-wrapper-two {
+  position: relative;
+  top: 20vh;
+  left: 0;
+  height: 4vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#follow-wrapper {
+  position: relative;
+  top: 22.5vh;
+  left: 10vw;
+  height: 4vh;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}
+
+#insta-a {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.image-insta {
+  margin-left: 2vw;
+  height: 100%;
+  width: 10%
 }
