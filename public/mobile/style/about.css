@@ -46,6 +46,11 @@
           align-items: center;
 }
 
+.team-title {
+  font-size: 6vw;
+  font-family: 'Montserrat', sans-serif;
+}
+
 #image-wrapper-part-one {
   position: relative;
   top: 1vh;

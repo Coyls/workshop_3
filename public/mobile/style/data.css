@@ -14,16 +14,9 @@
   left: 5vw;
   height: 40vh;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
 }
 
 #building-text-wrapper {
@@ -32,15 +25,10 @@
   left: 0;
   height: 10%;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 #canvasG {
@@ -127,18 +115,12 @@
   bottom: 0;
   left: 50%;
   width: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+
+  transform: translateX(-50%);
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-evenly !important;
+  -webkit-flex-direction: row !important;
 }
 
 #fp-nav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li a.active span, .fp-slidesNav ul li:hover a.active span {
@@ -163,7 +145,10 @@
   left: 50%;
   top: 50%;
   margin: -20px 0 0 -20px !important;
+
   -webkit-transition: all .1s ease-in-out;
   transition: all .1s ease-in-out;
+
 }
+
 /*# sourceMappingURL=data.css.map */
