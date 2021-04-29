@@ -74,6 +74,7 @@ socket.on('connection', ws => {
       mobiles.forEach(mobile => {
         if (mobile.socket === ws) {
           const index = screens.findIndex(screen => screen.screenId === mobile.mobileId)
+          if (!screens[index]) console.log("Ok sa vas bug")
           let linkScreen = screens[index].socket
 
           let post = {
