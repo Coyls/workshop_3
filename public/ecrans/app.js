@@ -25,9 +25,9 @@ loopNeutralVideo.innerHTML = '<source src="./media/videos/neutral_'+screenId+'.m
 video1Neg.innerHTML = '<source src="./media/videos/negative_'+screenId+'.mp4">'
 video1Pos.innerHTML = '<source src="./media/videos/positive_'+screenId+'.mp4">'
 
-//let video = document.querySelectorAll(".video")
+let video = document.querySelectorAll(".video")
 
-//video.removeAttribute("muted");
+video.removeAttribute("muted");
 
 // Object Init ---------------------------------------
 let screenInit = {
