@@ -42,6 +42,28 @@ serveurSocket.onmessage = (event) => {
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
 
+        document.querySelector("body").innerHTML += `
+<div id="previewRep1"></div>
+<div id="previewRep2"></div>
+<div id="questionAndRep-wrapper">
+
+    <div id="backGround-anim">
+
+    </div>
+    <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
+    <div id="question-wrapper">
+        <div id="arrowUp-wrapper">
+            <div id="arrowUp"></div>
+            <p id="arrowUp-text"></p>
+        </div>
+        <div id="question"><p>${data.question[0].questions}</p></div>
+        <div id="arrowDown-wrapper">
+            <div id="arrowDown"></div>
+            <p id="arrowDown-text">${data.question[1].reponses}</p>
+        </div>
+    </div>
+    <div id="repD-wrapper"><p></p></div>
+</div>`
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
         if (data.state === "inactif") {
@@ -50,7 +72,7 @@ serveurSocket.onmessage = (event) => {
 
         if (data.state === 'actif') {
             wait = false
-            waitTimer(60000).then( () => {
+            waitTimer(60000).then(() => {
                 window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
             })
         }
@@ -64,16 +86,16 @@ serveurSocket.onmessage = (event) => {
 
 // Send data post ---------------------------------------------
 
-    const postMood = (mood) => {
-        console.log('post Mood')
-        let post = {
-            type: "post", //nom de message serveur
-            idEcran: screenId, // identifiant de l'écran
-            moodId: mood // Réponse à la question, valeur possibile 0 ou 1
-        };
+const postMood = (mood) => {
+    console.log('post Mood')
+    let post = {
+        type: "post", //nom de message serveur
+        idEcran: screenId, // identifiant de l'écran
+        moodId: mood // Réponse à la question, valeur possibile 0 ou 1
+    };
 
-        serveurSocket.send(JSON.stringify(post));
-    }
+    serveurSocket.send(JSON.stringify(post));
+}
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -93,35 +115,14 @@ serveurSocket.onmessage = (event) => {
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-document.querySelector("body").innerHTML += `
-<div id="previewRep1"></div>
-<div id="previewRep2"></div>
-<div id="questionAndRep-wrapper">
 
-    <div id="backGround-anim">
-
-    </div>
-    <div id="repU-wrapper"><p></p></div>
-    <div id="question-wrapper">
-        <div id="arrowUp-wrapper">
-            <div id="arrowUp"></div>
-            <p id="arrowUp-text"></p>
-        </div>
-        <div id="question"><p></p></div>
-        <div id="arrowDown-wrapper">
-            <div id="arrowDown"></div>
-            <p id="arrowDown-text"></p>
-        </div>
-    </div>
-    <div id="repD-wrapper"><p></p></div>
-</div>`
 
 
 let mov = false
 
 const menu = document.querySelector("#menu-btn")
 
-window.addEventListener("load", () => {
+(function () {
     if (!wait) {
         setTimeout(() => {
             const waitingWrapper = document.querySelector("#waiting-wrapper")
@@ -153,7 +154,8 @@ window.addEventListener("load", () => {
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov !wait) {
+                if (!mov && !wait)
+                {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(0, 0);
@@ -201,8 +203,7 @@ window.addEventListener("load", () => {
             }
         }, 1);
     }
-})
-
+})()
 menu.onclick = () => {
     console.log("test")
 }
