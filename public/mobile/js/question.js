@@ -1,5 +1,5 @@
 let wait = false
-
+let animationLoad = false
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {
@@ -51,7 +51,9 @@ serveurSocket.onmessage = (event) => {
         if (data.state === 'actif') {
             wait = false
             waitTimer(60000).then( () => {
-                window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+                if (!animationLoad){
+                    window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+                }
             })
         }
     } else if (data.type === 'disconnecte') {
@@ -71,7 +73,7 @@ const postMood = (mood) => {
         idEcran: screenId, // identifiant de l'écran
         moodId: mood // Réponse à la question, valeur possibile 0 ou 1
     };
-
+    animationLoad=true
     serveurSocket.send(JSON.stringify(post));
 }
 
