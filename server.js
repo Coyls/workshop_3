@@ -167,7 +167,9 @@ socket.on('connection', ws => {
       socket: ws
     }
 
-    if (screens.findIndex(screen => screen.screenId === data.screenId)) {
+    const screenIsConnect = screens.findIndex(screen => screen.screenId === data.screenId)
+
+    if (!screenIsConnect) {
       const errorToCatch = {
         type: "crash"
       }
