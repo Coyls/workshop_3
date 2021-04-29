@@ -1,53 +1,73 @@
-body{
+body {
   height: 100vh;
   overflow: hidden;
 }
 
-#waiting-wrapper{
+#waiting-wrapper {
+  z-index: 20;
   position: fixed;
   width: 100vw;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   background: black;
 }
 
-#waiting-anim{
+#waiting-anim {
   width: 50vw;
   background: white;
+  -o-object-fit: contain;
   object-fit: contain;
 }
 
-#questionAndRep-wrapper{
+#questionAndRep-wrapper {
   position: fixed;
   width: 100vw;
   height: 300vh;
-  top : -100vh;
+  top: -100vh;
   display: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-transition: top 1s ease;
   transition: top 1s ease;
 }
-
-#repD-wrapper {
-  top: 200vh;
+#repU-wrapper, #repD-wrapper,#question-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
+}
+#repU-wrapper p, #repD-wrapper p,#question-wrapper p{
+  font-family: "Bebas Neue", cursive;
+  font-size: 10vw;
+  width: 70vw;
+  text-align: center;
+}
+#repD-wrapper {
+  top: 200vh;
   background: #920909;
 }
 
-#question-wrapper{
-  position: relative;
+#question-wrapper {
   top: 100vh;
-  height: 100vh;
-  width: 100vw;
   background: #00ffc4;
 }
 
 #repU-wrapper {
-  height: 100vh;
-  width: 100vw;
   background: #32a522;
 }
 
@@ -60,8 +80,8 @@ body{
   z-index: 5;
   width: 100vw;
   height: 100px;
-  -webkit-transition:bottom 0.4s ease, top 0.4s ease;
-  transition: bottom 0.4s ease , top 0.4s ease;
+  -webkit-transition:bottom 0.4s ease, top 0.4s ease, opacity 0.2s;
+  transition: bottom 0.4s ease , top 0.4s ease, opacity 0.2s;
 }
 #previewRep1 {
   top: -100px;
@@ -85,7 +105,6 @@ h6{
   font-family: "Montserrat", serif;
 }
 .la-angle-down, .la-angle-up{
-  z-index: 100;
   font-size: 5vw;
   height:  5vw;
   width: 5vw;

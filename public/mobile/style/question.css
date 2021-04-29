@@ -43,36 +43,31 @@ body {
   -webkit-transition: top 1s ease;
   transition: top 1s ease;
 }
-
-#repD-wrapper {
+#repU-wrapper, #repD-wrapper,#question-wrapper{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  top: 200vh;
   height: 100vh;
   width: 100vw;
+}
+#repU-wrapper p, #repD-wrapper p,#question-wrapper p{
+  font-family: "Bebas Neue", cursive;
+  font-size: 10vw;
+  width: 70vw;
+  text-align: center;
+}
+#repD-wrapper {
+  top: 200vh;
   background: #920909;
 }
 
 #question-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   top: 100vh;
-  height: 100vh;
-  width: 100vw;
   background: #00ffc4;
 }
 
 #repU-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
   background: #32a522;
 }
 
@@ -134,4 +129,3 @@ h6{
   height: 15vw;
   bottom: -80px;
 }
-/*# sourceMappingURL=question.css.map */
