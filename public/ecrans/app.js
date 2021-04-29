@@ -27,7 +27,7 @@ video1Pos.innerHTML = '<source src="./media/videos/positive_'+screenId+'.mp4">'
 
 let video = document.querySelectorAll(".video")
 
-video.muted = !video.muted;
+video.volume = 1;
 //video.removeAttribute("muted");
 
 // Object Init ---------------------------------------
