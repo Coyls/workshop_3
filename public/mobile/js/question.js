@@ -123,7 +123,7 @@ const postMood = (mood) => {
 
 let mov = false
 
-const menu = document.querySelector("#menu-btn")
+const menu = document.getElementById("menu-btn");
 
 (function () {
     if (!wait) {
