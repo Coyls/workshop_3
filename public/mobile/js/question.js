@@ -130,16 +130,19 @@ serveurSocket.onmessage = (event) => {
             }
             waitTimer(60000).then(() => {
                 if (!animationLoad) {
+                    window.removeEventListener("beforeunload", stoprefresh)
                     window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
                 }
             })
         }
     } else if (data.type === 'disconnecte') {
         console.log("Mobile deconnecter")
+        window.removeEventListener("beforeunload", stoprefresh)
         window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
 
     } else if (data.type === 'crash') {
         console.log("crash")
+        window.removeEventListener("beforeunload", stoprefresh)
         window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
     }
 }
@@ -168,6 +171,11 @@ const postMood = (mood, response) => {
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
+const stoprefresh = (e) =>{
+    e.preventDefault();
+    e.returnValue = 'Merci de ne pas actualiser ou quitter la page avant la redirection';
+    console.log("test")
+}
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -196,7 +204,12 @@ function load_element_slide() {
     const pPreviewRep2 = document.querySelector("#previewRep2 p")
     const previewRep2 = document.querySelector("#previewRep2")
     console.log("inside timeout");
-    waitingWrapper.style = "display : none"
+    waitingWrapper.style = "opacity : 0"
+    setTimeout(function(){
+        waitingWrapper.style = "display : none"
+    }, 300);
+
+
     questionAndRepWrapper.style = "display : flex;"
     let swipedir, startY, distY;
 
@@ -236,6 +249,8 @@ function load_element_slide() {
         window.navigator.vibrate(200);
         previewRep2.style = `opacity : 0;`
         previewRep1.style = `opacity : 0;`
+
+        window.addEventListener('beforeunload', stoprefresh)
         if (dir === "up") {
             questionAndRepWrapper.style = "display : flex;top:-200vh"
             postMood(2, idResponseN)
