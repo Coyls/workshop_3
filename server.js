@@ -122,17 +122,17 @@ socket.on('connection', ws => {
 
       screens.forEach(screen => {
         if (screen.socket === ws) {
-          let linkMobile = whitelists[screen.screenId - 1][0].socket
+          let linkMobile = whitelists[screen.screenId - 1][0]
 
-          if (whitelists[screen.screenId - 1][0]) {
+          if (linkMobile) {
 
             let disconnect = {
               type: 'disconnecte',
-              message: `Envoi du screen ${screen.screenId} vers mobile ${whitelists[screen.screenId - 1][0]}`,
+              message: `Envoi du screen ${screen.screenId} vers mobile ${linkMobile}`,
               isEnd: true
             }
 
-            linkMobile.send(JSON.stringify(disconnect))
+            linkMobile.socket.send(JSON.stringify(disconnect))
           }
 
         }
