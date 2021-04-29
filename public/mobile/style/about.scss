@@ -33,6 +33,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 #image-wrapper-part-one {
@@ -62,7 +63,7 @@
 
 .about-background {
   position: relative;
-  height: 135%;
+  height: 145%;
   width: 100%;
   object-fit: cover;
 }

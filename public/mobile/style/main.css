@@ -50,11 +50,9 @@
   transition: all 0.5s ease-in-out;
 }
 #menu-btn-burger:before {
-
   transform: translateY(-1vh);
 }
 #menu-btn-burger:after {
-
   transform: translateY(1vh);
 }
 
@@ -96,10 +94,10 @@
 /*-----------------------------------------------menu-------------------------------------------------*/
 #menu-link {
   position: absolute;
-  top: 30%;
-  left: 20%;
-  height: 40%;
-  width: 60%;
+  top: 30vh;
+  left: 20vw;
+  height: 40vh;
+  width: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -137,7 +135,6 @@ a:focus {
   position: relative;
   height: 100%;
   width: 100%;
-
   object-fit: cover;
 }
 
@@ -164,7 +161,7 @@ a:focus {
 .global-title {
   position: relative;
   font-size: 6vw;
-  font-family: 'Montserrat', serif;
+  font-family: "Montserrat", serif;
   color: #000000;
   font-weight: 600;
 }
