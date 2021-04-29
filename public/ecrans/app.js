@@ -17,7 +17,7 @@ const serveurSocket = new WebSocket(url)
 let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screen_id'));
 
-loopNeutralVideo.innerHTML = '<source src="./media/videos/neutral_'+screenId+'.mp4\">'
+loopNeutralVideo.innerHTML = '<source src="./media/videos/neutral_'+screenId+'.mp4">'
 video1Neg.innerHTML = '<source src="./media/videos/negative_'+screenId+'.mp4">'
 video1Pos.innerHTML = '<source src="./media/videos/positive_'+screenId+'.mp4">'
 
