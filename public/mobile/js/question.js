@@ -61,54 +61,53 @@ serveurSocket.onmessage = (event) => {
                     <div id="previewRep1">
                         <p>${data.question[0].reponses}</p>
                         <div id="arrowUp-wrapper">
-                                    <i id="arrowDown" class="las la-angle-down"></i>
-                                    <h6 id="arrowUp-text">positif</h6>
-                                </div></div>
-                        <div id="previewRep2">
-                            <div id="arrowDown-wrapper">
-                                <i id="arrowDown" class="las la-angle-up"></i>
-                                <h6 id="arrowDown-text">negatif</h6>
-                            </div>
-                            <p>${data.question[1].reponses}</p>
+                            <i id="arrowDown" class="las la-angle-down"></i>
+                            <h6 id="arrowUp-text">positif</h6>
                         </div>
-                        
-                        
-                        
-                        <div id="questionAndRep-wrapper">
-                        <div id="backGround-anim">
+                    </div>
+                    
+                    <div id="previewRep2">
+                        <div id="arrowDown-wrapper">
+                            <i id="arrowDown" class="las la-angle-up"></i>
+                            <h6 id="arrowDown-text">negatif</h6>
                         </div>
-                        <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
+                        <p>${data.question[1].reponses}</p>
+                    </div>
+                        
+                        
+                        
+                    <div id="questionAndRepSlide-wrapper">
+                        <div id="backGroundSlide-wrapper">
+                        </div>
+                        <div id="repU-wrapper">
+                            <p>${data.question[0].reponses}</p>
+                        </div>
                         <div id="question-wrapper">
-                            
-                            <div id="question"><p>${data.question[0].questions}</p></div>
-                            
+                            <div id="question">
+                                <p>${data.question[0].questions}</p>
+                            </div>
                         </div>
                         <div id="repD-wrapper">
-                            
                             <p>${data.question[1].reponses}</p>
-                            </div>
+                        </div>
                         
                     </div>`
 
             console.log('end construct')
         } else {
             document.querySelector("body").innerHTML += `
-<div id="questionAndRep-wrapper">
-    <div id="backGround-anim">
+<div id="questionAndRepButton-wrapper">
+    <div id="backGroundButton-wrapper">
     </div>
-    <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
+    <div id="repU-wrapper"><p>${data.question[0].reponses}</p><div id="buttons-wrapper"></div>
     <div id="question-wrapper">
-        <div id="arrowUp-wrapper">
-            <div id="arrowUp"></div>
-            <h6 id="arrowUp-text">positif</h6>
-        </div>
         <div id="question"><p>${data.question[0].questions}</p></div>
-        <div id="arrowDown-wrapper">
-            <div id="arrowDown"></div>
-            <h6 id="arrowDown-text">negatif</h6>
+        <div id="buttons-wrapper">
+            <div id="buttonP"><p>${data.question[0].reponses}</p></div>
+            <div id="buttonN"><p>${data.question[1].reponses}</p></div>
         </div>
     </div>
-    <div id="repD-wrapper"><p>${data.question[1].reponses}</p></div>
+    <div id="repD-wrapper"><p>${data.question[1].reponses}</p><div id="buttons-wrapper"></div>
 </div>`
 
             console.log('end construct')
@@ -126,7 +125,7 @@ serveurSocket.onmessage = (event) => {
             wait = false
             if (format === "slide") {
                 load_element_slide()
-            }else{
+            } else {
                 load_element_button()
             }
             waitTimer(60000).then(() => {
@@ -193,7 +192,7 @@ function load_element_slide() {
 
     console.log("recup Element")
     const waitingWrapper = document.querySelector("#waiting-wrapper")
-    const questionAndRepWrapper = document.querySelector("#questionAndRep-wrapper")
+    const questionAndRepWrapper = document.querySelector("#questionAndRepSlide-wrapper")
     const pPreviewRep1 = document.querySelector("#previewRep1 p")
     const previewRep1 = document.querySelector("#previewRep1")
     const pPreviewRep2 = document.querySelector("#previewRep2 p")

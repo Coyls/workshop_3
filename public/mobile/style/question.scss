@@ -26,8 +26,22 @@ body {
   -o-object-fit: contain;
   object-fit: contain;
 }
-
-#questionAndRep-wrapper {
+#questionAndRepButton-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-transition: top 1s ease;
+  transition: top 1s ease;
+}
+#questionAndRepSlide-wrapper {
   position: fixed;
   width: 100vw;
   height: 300vh;
