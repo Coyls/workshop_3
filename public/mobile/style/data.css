@@ -25,7 +25,6 @@
   left: 0;
   height: 10%;
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +59,6 @@
 }
 
 /*-----------------------------------------------Data-------------------------------------------------*/
-
 #data-wrapper {
   position: absolute;
   top: 0;
@@ -79,10 +77,11 @@
 
 .data-canva-wrapper {
   position: relative;
-  top: 25vh;
-  left: 5vw;
-  height: 30vh;
-  width: 90vw;
+  top: 22.5vh;
+  left: 10vw;
+  height: 25vh;
+  width: 80vw;
+  background-color: blue;
 }
 
 .data-question-wrapper {
@@ -91,12 +90,11 @@
   left: 5vw;
   height: 5vh;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
+  background-color: red;
 }
 
 .fp-slidesNav ul {
@@ -106,7 +104,6 @@
   bottom: 0;
   left: 50%;
   width: 50%;
-
   transform: translateX(-50%);
   display: flex !important;
   flex-direction: row !important;
@@ -121,7 +118,6 @@
   border-radius: 100%;
   background-color: transparent;
   border: 0.2vh solid #000000;
-  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
@@ -136,9 +132,14 @@
   left: 50%;
   top: 50%;
   margin: -20px 0 0 -20px !important;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
 
-  -webkit-transition: all .1s ease-in-out;
-  transition: all .1s ease-in-out;
+.test {
+  display: flex;
 }
 
 /*# sourceMappingURL=data.css.map */
