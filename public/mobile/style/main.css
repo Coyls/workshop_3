@@ -50,9 +50,11 @@
   transition: all 0.5s ease-in-out;
 }
 #menu-btn-burger:before {
+
   transform: translateY(-1vh);
 }
 #menu-btn-burger:after {
+
   transform: translateY(1vh);
 }
 
@@ -128,6 +130,7 @@ a:focus {
   position: relative;
   height: 100%;
   width: 100%;
+
   object-fit: cover;
 }
 
@@ -152,7 +155,7 @@ a:focus {
 .global-title {
   position: relative;
   font-size: 6vw;
-  font-family: "Montserrat", serif;
+  font-family: 'Montserrat', serif;
   color: #000000;
   font-weight: 600;
 }
