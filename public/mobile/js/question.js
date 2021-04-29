@@ -151,7 +151,7 @@ window.addEventListener("load", () => {
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov !wait) {
+                if (!mov &&!wait) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(0, 0);
