@@ -1,3 +1,92 @@
+// Fonction delay
+const wait = (delay) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, delay);
+    })
+}
+////////////////////////////////////
+console.log("mobile") //// MOBILE
+
+const url = 'ws://vps215076.ovh.net:3000'
+const serveurSocket = new WebSocket(url)
+
+let params = (new URL(document.location)).searchParams;
+let screenId = parseInt(params.get('screen_id'))
+
+
+// Object init ---------------------------
+let mobileInit = {
+    type: "init",
+    deviceType: "mobile",
+    screenId: screenId,
+};
+
+console.log("mobileInit", mobileInit)
+
+// Connection WebSocket ---------------------------
+serveurSocket.onopen = () => {
+    serveurSocket.send(JSON.stringify(mobileInit))
+}
+serveurSocket.onerror = (error) => {
+    console.log(`WebSocket error: ${error}`)
+}
+
+// message ----------------------------------------
+serveurSocket.onmessage = (event) => {
+    const data = JSON.parse(event.data)
+
+    if (data.type === 'mobileData') {
+        console.log("question/response", data.question)
+
+    } else if (data.type === 'mobileState') {
+        console.log("State", data.state)
+
+        if (data.state === 'actif') {
+            wait(60000).then( () => {
+                window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+            })
+        }
+    } else if (data.type === 'disconnecte') {
+        console.log("Mobile deconnecter")
+        window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+
+    }
+}
+
+
+// Send data post ---------------------------------------------
+
+    const postMood = (mood) => {
+        console.log('post Mood')
+        let post = {
+            type: "post", //nom de message serveur
+            idEcran: screenId, // identifiant de l'écran
+            moodId: mood // Réponse à la question, valeur possibile 0 ou 1
+        };
+
+        serveurSocket.send(JSON.stringify(post));
+    }
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
 document.querySelector("body").innerHTML += `
 <div id="previewRep1"></div>
 <div id="previewRep2"></div>
@@ -78,8 +167,10 @@ window.addEventListener("load", () => {
                 }, 750);
                 if (dir === "up") {
                     questionAndRepWrapper.style = "display : flex;top:-200vh"
+                    postMood(2)
                 } else {
                     questionAndRepWrapper.style = "display : flex;top:0"
+                    postMood(1)
                 }
             }
 
@@ -117,4 +208,5 @@ menu.onclick = () => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
