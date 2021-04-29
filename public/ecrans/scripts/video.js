@@ -1,11 +1,7 @@
-/*TODO
-* Faire le flash blanc que quand on est sur la vidéo neutre*/
-
-
 //Video declarations
-let video1Neg = document.querySelector("#video1");
-let video1Pos = document.querySelector("#video2");
-let loopNeutralVideo = document.querySelector("#loop-video");
+let video1Neg = document.querySelector("#negative");
+let video1Pos = document.querySelector("#positive");
+let loopNeutralVideo = document.querySelector("#neutral");
 
 let flash = document.querySelector("#flashes");
 
