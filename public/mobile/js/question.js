@@ -135,7 +135,7 @@ window.addEventListener("load", () => {
             let swipedir, startY, distY;
 
             questionAndRepWrapper.addEventListener('touchstart', (e) => {
-                if (!mov) {
+                if (!mov && !wait) {
                     swipedir = 'none'
                     distY = 0
                     startY = e.changedTouches[0].pageY
@@ -143,7 +143,7 @@ window.addEventListener("load", () => {
                 }
             })
             questionAndRepWrapper.addEventListener("touchmove", (e) => {
-                if (!mov) {
+                if (!mov && !wait) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(swipedir, distY)
@@ -153,7 +153,7 @@ window.addEventListener("load", () => {
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov) {
+                if (!mov !wait) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(0, 0);
