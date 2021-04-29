@@ -1,5 +1,5 @@
 let wait = false
-let animationLoad = false
+
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {
@@ -42,28 +42,6 @@ serveurSocket.onmessage = (event) => {
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
 
-        document.querySelector("body").innerHTML += `
-<div id="previewRep1"></div>
-<div id="previewRep2"></div>
-<div id="questionAndRep-wrapper">
-
-    <div id="backGround-anim">
-
-    </div>
-    <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
-    <div id="question-wrapper">
-        <div id="arrowUp-wrapper">
-            <div id="arrowUp"></div>
-            <p id="arrowUp-text"></p>
-        </div>
-        <div id="question"><p>${data.question[0].questions}</p></div>
-        <div id="arrowDown-wrapper">
-            <div id="arrowDown"></div>
-            <p id="arrowDown-text">${data.question[1].reponses}</p>
-        </div>
-    </div>
-    <div id="repD-wrapper"><p></p></div>
-</div>`
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
         if (data.state === "inactif") {
@@ -72,10 +50,8 @@ serveurSocket.onmessage = (event) => {
 
         if (data.state === 'actif') {
             wait = false
-            waitTimer(60000).then(() => {
-                if (!animationLoad){
-                    window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
-                }
+            waitTimer(60000).then( () => {
+                window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
             })
         }
     } else if (data.type === 'disconnecte') {
@@ -95,7 +71,6 @@ const postMood = (mood) => {
         idEcran: screenId, // identifiant de l'écran
         moodId: mood // Réponse à la question, valeur possibile 0 ou 1
     };
-    animationLoad = true;
 
     serveurSocket.send(JSON.stringify(post));
 }
@@ -118,15 +93,33 @@ const postMood = (mood) => {
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-
+document.querySelector("body").innerHTML += `
+<div id="previewRep1"></div>
+<div id="previewRep2"></div>
+<div id="questionAndRep-wrapper">
+    <div id="backGround-anim">
+    </div>
+    <div id="repU-wrapper"><p></p></div>
+    <div id="question-wrapper">
+        <div id="arrowUp-wrapper">
+            <div id="arrowUp"></div>
+            <p id="arrowUp-text"></p>
+        </div>
+        <div id="question"><p></p></div>
+        <div id="arrowDown-wrapper">
+            <div id="arrowDown"></div>
+            <p id="arrowDown-text"></p>
+        </div>
+    </div>
+    <div id="repD-wrapper"><p></p></div>
+</div>`
 
 
 let mov = false
 
-const menu = document.getElementById("menu-btn");
+const menu = document.querySelector("#menu-btn")
 
-window.addEventListener("load",() => {
-
+window.addEventListener("load", () => {
     if (!wait) {
         setTimeout(() => {
             const waitingWrapper = document.querySelector("#waiting-wrapper")
@@ -141,8 +134,6 @@ window.addEventListener("load",() => {
 
             questionAndRepWrapper.addEventListener('touchstart', (e) => {
                 if (!mov && !wait) {
-                    console.log(wait)
-                    console.log(mov)
                     swipedir = 'none'
                     distY = 0
                     startY = e.changedTouches[0].pageY
@@ -151,8 +142,6 @@ window.addEventListener("load",() => {
             })
             questionAndRepWrapper.addEventListener("touchmove", (e) => {
                 if (!mov && !wait) {
-                    console.log(wait)
-                    console.log(mov)
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(swipedir, distY)
@@ -162,9 +151,7 @@ window.addEventListener("load",() => {
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov && !wait){
-                    console.log(wait)
-                    console.log(mov)
+                if (!mov !wait) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(0, 0);
@@ -213,6 +200,7 @@ window.addEventListener("load",() => {
         }, 1);
     }
 })
+
 menu.onclick = () => {
     console.log("test")
 }
@@ -224,5 +212,3 @@ menu.onclick = () => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
