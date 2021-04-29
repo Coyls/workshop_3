@@ -73,7 +73,6 @@ flash.addEventListener("animationend", () => {
 
 //When the neutral video ends
 loopNeutralVideo.addEventListener('ended', () => {
-    console.log("ended");
 
     //if the negative video bool is true
     if (video1NegBool) {
@@ -83,7 +82,6 @@ loopNeutralVideo.addEventListener('ended', () => {
         //display and play the negative video
         video1Neg.style.display = "block";
         video1Neg.play();
-        console.log("neg video");
 
         //reset the bool at false
         video1NegBool = false;
@@ -97,7 +95,6 @@ loopNeutralVideo.addEventListener('ended', () => {
         //display and play the positive video
         video1Pos.style.display = "block";
         video1Pos.play();
-        console.log("pos video");
 
         //reset the bool at false
         video1PosBool = false;
