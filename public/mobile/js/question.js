@@ -2,6 +2,7 @@ let wait = false
 let animationLoad = false
 let idResponseP
 let idResponseN
+let format
 
 // Fonction delay
 const waitTimer = (delay) => {
@@ -53,7 +54,7 @@ serveurSocket.onmessage = (event) => {
         console.log("question/response", data.question)
         idResponseP = data.question[0].responseID
         idResponseN = data.question[1].responseID
-        let format = data.question[0].format
+        format = data.question[0].format
 
         if (format === "slide") {
             document.querySelector("body").innerHTML += `
@@ -70,6 +71,9 @@ serveurSocket.onmessage = (event) => {
                             </div>
                             <p>${data.question[1].reponses}</p>
                         </div>
+                        
+                        
+                        
                         <div id="questionAndRep-wrapper">
                         <div id="backGround-anim">
                         </div>
@@ -87,7 +91,6 @@ serveurSocket.onmessage = (event) => {
                     </div>`
 
             console.log('end construct')
-            load_element_slide()
         } else {
             document.querySelector("body").innerHTML += `
 <div id="questionAndRep-wrapper">
@@ -109,7 +112,8 @@ serveurSocket.onmessage = (event) => {
 </div>`
 
             console.log('end construct')
-            load_element_button()
+
+
         }
 
     } else if (data.type === 'mobileState') {
@@ -120,6 +124,11 @@ serveurSocket.onmessage = (event) => {
 
         if (data.state === 'actif') {
             wait = false
+            if (format === "slide") {
+                load_element_slide()
+            }else{
+                load_element_button()
+            }
             waitTimer(60000).then(() => {
                 if (!animationLoad) {
                     window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
@@ -196,7 +205,7 @@ function load_element_slide() {
     let swipedir, startY, distY;
 
     questionAndRepWrapper.addEventListener('touchstart', (e) => {
-        if (!mov) {
+        if (!mov && !wait) {
             swipedir = 'none'
             distY = 0
             startY = e.changedTouches[0].pageY
@@ -204,7 +213,7 @@ function load_element_slide() {
         }
     })
     questionAndRepWrapper.addEventListener("touchmove", (e) => {
-        if (!mov) {
+        if (!mov && !wait) {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(swipedir, distY)
@@ -214,7 +223,7 @@ function load_element_slide() {
 
     questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-        if (!mov) {
+        if (!mov && !wait) {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(0, 0);
@@ -232,6 +241,8 @@ function load_element_slide() {
         setTimeout(function () {
             menu.style = "opacity : 1; transition : 1s";
         }, 750);
+        previewRep2.style = `opacity : 0;`
+        previewRep1.style = `opacity : 0;`
         if (dir === "up") {
             questionAndRepWrapper.style = "display : flex;top:-200vh"
             postMood(2, idResponseN)
