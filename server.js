@@ -95,7 +95,10 @@ socket.on('connection', ws => {
               type : "crash"
             }
 
+            console.log("As crash")
+
             mobile.socket.send(JSON.stringify(errorToCatch))
+            
           
           }
 
