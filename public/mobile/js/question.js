@@ -1,5 +1,5 @@
 // Fonction delay
-const wait = (delay) => {
+const waitTimer = (delay) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve();
@@ -44,7 +44,7 @@ serveurSocket.onmessage = (event) => {
         console.log("State", data.state)
 
         if (data.state === 'actif') {
-            wait(60000).then( () => {
+            waitTimer(60000).then( () => {
                 window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
             })
         }
