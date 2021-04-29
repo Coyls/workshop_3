@@ -125,7 +125,8 @@ let mov = false
 
 const menu = document.getElementById("menu-btn");
 
-(function () {
+window.addEventListener("load",() => {
+
     if (!wait) {
         setTimeout(() => {
             const waitingWrapper = document.querySelector("#waiting-wrapper")
@@ -211,7 +212,7 @@ const menu = document.getElementById("menu-btn");
             }
         }, 1);
     }
-})()
+})
 menu.onclick = () => {
     console.log("test")
 }
