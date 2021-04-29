@@ -61,21 +61,13 @@
 }
 
 #menu-btn-burger:before {
-<<<<<<< HEAD
-  transform: translateY(-1vh);
-=======
-  -webkit-transform: translateY(-1.5vh);
-          transform: translateY(-1.5vh);
->>>>>>> 5dd6e4daa190a858cf57a4486d30882f5df1cfed
+  -webkit-transform: translateY(-1vh);
+          transform: translateY(-1vh);
 }
 
 #menu-btn-burger:after {
-<<<<<<< HEAD
-  transform: translateY(1vh);
-=======
-  -webkit-transform: translateY(1.5vh);
-          transform: translateY(1.5vh);
->>>>>>> 5dd6e4daa190a858cf57a4486d30882f5df1cfed
+  -webkit-transform: translateY(1vh);
+          transform: translateY(1vh);
 }
 
 #menu-btn.open #menu-btn-burger {
@@ -98,14 +90,9 @@
   position: absolute;
   top: 0;
   left: 0;
-<<<<<<< HEAD
   height: 100vh;
   width: 100vw;
-=======
-  height: 100%;
-  width: 100%;
   -webkit-transition: all 0.75s ease-in-out;
->>>>>>> 5dd6e4daa190a858cf57a4486d30882f5df1cfed
   transition: all 0.75s ease-in-out;
   z-index: 8;
   display: none;
@@ -188,17 +175,6 @@ a:focus {
      object-fit: cover;
 }
 
-<<<<<<< HEAD
-=======
-.about-background {
-  position: relative;
-  height: 120%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
->>>>>>> 5dd6e4daa190a858cf57a4486d30882f5df1cfed
 /*-----------------------------------------------Logo-------------------------------------------------*/
 #logo-wrapper {
   position: absolute;
@@ -225,7 +201,7 @@ a:focus {
 .global-title {
   position: relative;
   font-size: 6vw;
-  font-family: "Montserrat", serif;
+  font-family: 'Montserrat', serif;
   color: #000000;
   font-weight: 600;
 }
