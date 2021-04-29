@@ -11,6 +11,10 @@ let flash = document.querySelector("#flashes");
 let video1NegBool = false;
 let video1PosBool = false;
 
+let animationIsEnded = {
+    type : 'isEnd'
+}
+
 const url = 'ws://vps215076.ovh.net:3000'
 const serveurSocket = new WebSocket(url)
 
@@ -114,6 +118,8 @@ video1Neg.addEventListener('ended', () => {
     //display and play the neutral video
     loopNeutralVideo.style.display = "block";
     loopNeutralVideo.play();
+
+    serveurSocket.send(JSON.stringify(animationIsEnded))
 })
 
 //When the positive video ends
@@ -123,6 +129,8 @@ video1Pos.addEventListener('ended', () => {
     //display and play the neutral video
     loopNeutralVideo.style.display = "block";
     loopNeutralVideo.play();
+
+    serveurSocket.send(JSON.stringify(animationIsEnded))
 })
 
 
