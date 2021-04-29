@@ -139,7 +139,7 @@ const menu = document.getElementById("menu-btn");
             let swipedir, startY, distY;
 
             questionAndRepWrapper.addEventListener('touchstart', (e) => {
-                if (!mov && !wait) {
+                if (!mov || !wait) {
                     swipedir = 'none'
                     distY = 0
                     startY = e.changedTouches[0].pageY
@@ -147,7 +147,7 @@ const menu = document.getElementById("menu-btn");
                 }
             })
             questionAndRepWrapper.addEventListener("touchmove", (e) => {
-                if (!mov && !wait) {
+                if (!mov || !wait) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(swipedir, distY)
@@ -157,7 +157,7 @@ const menu = document.getElementById("menu-btn");
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov && !wait)
+                if (!mov || !wait)
                 {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
