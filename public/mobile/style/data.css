@@ -53,9 +53,9 @@
   left: 0;
   height: 5vh;
   width: 100%;
-  justify-content: center;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 /*-----------------------------------------------Data-------------------------------------------------*/
@@ -91,8 +91,8 @@
   width: 90vw;
   display: flex;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  justify-content: center;
 }
 
 .fp-slidesNav ul {

@@ -84,6 +84,13 @@
   transition: all 0.75s ease-in-out;
 }
 
+.background-image {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+}
+
 /*-----------------------------------------------menu-------------------------------------------------*/
 #menu-link {
   position: absolute;
@@ -137,10 +144,12 @@ a:focus {
   top: 0;
   left: 50%;
   height: 8.5vh;
-  width: 50vw;
+  width: 100vw;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 #logo {
