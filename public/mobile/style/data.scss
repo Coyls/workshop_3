@@ -1,7 +1,17 @@
 /*-----------------------------------------------Mood-------------------------------------------------*/
+
+#data-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50vh;
+  width: 100vw;
+  z-index: 5;
+}
+
 #building-mood {
   position: relative;
-  top: 5vh;
+  top: 3vh;
   left: 5vw;
   height: 40vh;
   width: 90vw;
@@ -13,111 +23,117 @@
 #building-text-wrapper {
   position: relative;
   top: 0;
-  left: 5%;
+  left: 0;
   height: 10%;
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 #canvasG {
   position: absolute;
-  top: 5vh;
-  left: 10%;
-  height: 70%;
-  width: 80%;
+  top: 7vh;
+  left: 7.5vw;
+  height: 73%;
+  width: 73vw;
 }
 
 #textMoyG {
   position: relative;
-  top: 20%;
-  font-family: Poppins, serif;
+  top: 27.5%;
+  font-family: "Montserrat", serif;
   font-weight: 400;
   font-size: 200px;
   z-index: 2;
 }
 
-/*-----------------------------------------------Data-------------------------------------------------*/
-
-#canvasQ1{
-  position: relative;
-  top: -5vh;
-  height: 90%;
-  width: 80%;
-}
-
-#data {
-  position: relative;
-  top: 7vh;
-  left: 10vw;
-  height: 35vh;
-  width: 80vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#data-questions{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  width: 600vw;
-  left: 0;
-  bottom: 0;
-  height: 40vh;
-}
 #data-title {
   position: relative;
-  top: 0;
+  top: 2vh;
   left: 0;
   height: 5vh;
   width: 100%;
+  justify-content: center;
   display: flex;
   align-items: center;
 }
 
-.title {
-  font-size: 2.5vh;
-  font-family: Poppins, serif;
-  color: grey;
-}
+/*-----------------------------------------------Data-------------------------------------------------*/
 
-.data-wrapper {
-  position: relative;
-  height: 30vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.data-question {
-  position: relative;
+#data-wrapper {
+  position: absolute;
   top: 0;
   left: 0;
-  height: 7vh;
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-.question {
-  font-size: 2vh;
-  font-family: Poppins, serif;
-  color: grey;
+#data-section-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.data-canva-wrapper {
+  position: relative;
+  top: 25vh;
+  left: 5vw;
+  height: 30vh;
+  width: 90vw;
+}
+
+.data-question-wrapper {
+  position: relative;
+  top: 27.5vh;
+  left: 5vw;
+  height: 5vh;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.data-slider {
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 7.5vh;
-  width: 100%;
-  background-color: darksalmon;
+.fp-slidesNav ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  transform: translateX(-50%);
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+#fp-nav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li a.active span, .fp-slidesNav ul li:hover a.active span {
+  height: 40px !important;
+  width: 40px !important;
+  margin: -30px 0 0 -30px !important;
+  border-radius: 100%;
+  background-color: transparent;
+  border: 0.2vh solid #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  height: 20px !important;
+  width: 20px !important;
+  border: 0;
+  background: #333;
+  left: 50%;
+  top: 50%;
+  margin: -20px 0 0 -20px !important;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  -o-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out
 }

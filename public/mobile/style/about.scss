@@ -21,7 +21,7 @@
   position: relative;
   top: 0;
   left: 0;
-  height: 20vh;
+  height: 40vh;
   width: 100%;
 }
 
@@ -35,23 +35,17 @@
   align-items: center;
 }
 
-.team-title {
-  font-size: 6vw;
-  font-family: 'Montserrat', sans-serif;
-}
-
 #image-wrapper-part-one {
   position: relative;
   top: 1vh;
   left: 0;
-  height: calc(100% - 6vh);
+  height: 32vh;
   width: 100%;
-  background-color: #00ffc4;
 }
 
 #team-wrapper-part-two {
   position: relative;
-  top: 0;
+  top: 4vh;
   left: 0;
   height: 30vh;
   width: 100%;
@@ -61,14 +55,21 @@
   position: relative;
   top: 1vh;
   left: 0;
-  height: calc(100% - 6vh);
+  height: 25vh;
   width: 100%;
   background-color: #00ffc4;
 }
 
+.about-background {
+  position: relative;
+  height: 135%;
+  width: 100%;
+  object-fit: cover;
+}
+
 #instagram-wrapper {
   position: relative;
-  top: 10vh;
+  top: 27.5vh;
   left: 5vw;
   height: 27.5vh;
   width: 90vw;
