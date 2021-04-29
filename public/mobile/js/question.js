@@ -90,7 +90,7 @@ const postMood = (mood) => {
         idEcran: screenId, // identifiant de l'écran
         moodId: mood // Réponse à la question, valeur possibile 0 ou 1
     };
-animationLoad = true;
+    animationLoad = true;
     serveurSocket.send(JSON.stringify(post));
 }
 
@@ -133,7 +133,7 @@ window.addEventListener("load", () => {
             let swipedir, startY, distY;
 
             questionAndRepWrapper.addEventListener('touchstart', (e) => {
-                if (!mov && !wait) {
+                if (!mov) {
                     swipedir = 'none'
                     distY = 0
                     startY = e.changedTouches[0].pageY
@@ -141,7 +141,7 @@ window.addEventListener("load", () => {
                 }
             })
             questionAndRepWrapper.addEventListener("touchmove", (e) => {
-                if (!mov && !wait) {
+                if (!mov) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(swipedir, distY)
@@ -151,7 +151,7 @@ window.addEventListener("load", () => {
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov &&!wait) {
+                if (!mov) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(0, 0);
