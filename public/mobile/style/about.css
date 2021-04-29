@@ -12,16 +12,9 @@
   left: 5vw;
   height: 52vh;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #team-wrapper-part-one {
@@ -38,17 +31,9 @@
   left: 0;
   height: 5vh;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.team-title {
-  font-size: 6vw;
-  font-family: 'Montserrat', sans-serif;
+  align-items: center;
+  justify-content: center;
 }
 
 #image-wrapper-part-one {
@@ -78,10 +63,9 @@
 
 .about-background {
   position: relative;
-  height: 135%;
+  height: 145%;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 #instagram-wrapper {
@@ -98,15 +82,9 @@
   left: 0;
   height: 30vh;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .imageWrapper {
@@ -116,4 +94,5 @@
   background-color: blue;
   margin: 1.75vh;
 }
+
 /*# sourceMappingURL=about.css.map */
