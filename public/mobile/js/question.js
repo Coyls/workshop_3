@@ -199,7 +199,7 @@ window.addEventListener("load", () => {
                     previewRep2.style = `opacity : 0; bottom:-100px`
                 }
             }
-        }, 1);
+        }, 10);
     }
 })
 
