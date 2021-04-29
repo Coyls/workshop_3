@@ -25,7 +25,7 @@ const con = mysql.createConnection({
 //////////////////////////////////////////////////////////
 const requestData = "SELECT questions.name_question AS 'question', questions.id_question AS 'questionId', mood.name_mood AS 'mood', mood.id_mood AS 'moodId',posts.id_post AS 'post' FROM posts LEFT JOIN reponses ON posts.id_reponse=reponses.id_reponse LEFT JOIN questions ON reponses.id_question=questions.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
 const requestScreen = "SELECT screen.id_screen AS 'screen', questions.name_question AS 'questions' FROM screen LEFT JOIN questions ON screen.id_screen=questions.id_screen"
-const requestMobile = "SELECT questions.id_question AS 'questionId', screen.id_screen AS 'screen', questions.name_question AS 'questions',reponses.name_reponse AS 'reponses', reponses.id_reponse AS 'responseID', mood.id_mood AS 'moodId' FROM screen LEFT JOIN questions ON screen.id_screen=questions.id_screen LEFT JOIN reponses ON questions.id_question=reponses.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
+const requestMobile = "SELECT questions.id_question AS 'questionId', questions.format AS 'format', screen.id_screen AS 'screen', questions.name_question AS 'questions',reponses.name_reponse AS 'reponses', reponses.id_reponse AS 'responseID', mood.id_mood AS 'moodId' FROM screen LEFT JOIN questions ON screen.id_screen=questions.id_screen LEFT JOIN reponses ON questions.id_question=reponses.id_question LEFT JOIN mood ON reponses.id_mood=mood.id_mood"
 const requestPost = "INSERT INTO posts(id_reponse, date) VALUES"
 //////////////////////////////////////////////////////////
 let questions
@@ -74,7 +74,7 @@ socket.on('connection', ws => {
       mobiles.forEach(mobile => {
         if (mobile.socket === ws) {
           const index = screens.findIndex(screen => screen.screenId === mobile.mobileId)
-          if (!screens[index]) console.log("Ok sa vas bug")
+          if (screens[index]) {
           let linkScreen = screens[index].socket
 
           let post = {
@@ -90,6 +90,7 @@ socket.on('connection', ws => {
             if (err) throw err;  
           });
           ////////
+        }
 
         }
       })
