@@ -13,9 +13,9 @@ const waitTimer = (delay) => {
 
 let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screen_id'))
-if (!params.get('screen_id') ){
+if (!params.get('screen_id')) {
     window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
-}else if(screenId<1 || screenId >6){
+} else if (screenId < 1 || screenId > 6) {
     window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
 }
 
@@ -24,7 +24,6 @@ console.log("mobile") //// MOBILE
 
 const url = 'ws://vps215076.ovh.net:3000'
 const serveurSocket = new WebSocket(url)
-
 
 
 // Object init ---------------------------
@@ -47,8 +46,8 @@ serveurSocket.onerror = (error) => {
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
     const data = JSON.parse(event.data)
-    console.log("catch node event : "+data.type)
-    console.log("Data: ",data)
+    console.log("catch node event : " + data.type)
+    console.log("Data: ", data)
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
         idResponseP = data.question[0].responseID
@@ -57,32 +56,39 @@ serveurSocket.onmessage = (event) => {
 
         if (format === "slide") {
             document.querySelector("body").innerHTML += `
-<div id="previewRep1"></div>
-<div id="previewRep2"></div>
-<div id="questionAndRep-wrapper">
-    <div id="backGround-anim">
-    </div>
-    <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
-    <div id="question-wrapper">
-        <div id="arrowUp-wrapper">
-            <div id="arrowUp"></div>
-            <p id="arrowUp-text">positif</p>
-        </div>
-        <div id="question"><p>${data.question[0].questions}</p></div>
-        <div id="arrowDown-wrapper">
-            <div id="arrowDown"></div>
-            <p id="arrowDown-text">negatif</p>
-        </div>
-    </div>
-    <div id="repD-wrapper"><p>${data.question[1].reponses}</p></div>
-</div>`
+                    <div id="previewRep1">
+                        <p>${data.question[0].reponses}</p>
+                        <div id="arrowUp-wrapper">
+                                    <i id="arrowDown" class="las la-angle-down"></i>
+                                    <h6 id="arrowUp-text">positif</h6>
+                                </div></div>
+                        <div id="previewRep2">
+                            <div id="arrowDown-wrapper">
+                                <i id="arrowDown" class="las la-angle-up"></i>
+                                <h6 id="arrowDown-text">negatif</h6>
+                            </div>
+                            <p>${data.question[1].reponses}</p>
+                        </div>
+                        <div id="questionAndRep-wrapper">
+                        <div id="backGround-anim">
+                        </div>
+                        <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
+                        <div id="question-wrapper">
+                            
+                            <div id="question"><p>${data.question[0].questions}</p></div>
+                            
+                        </div>
+                        <div id="repD-wrapper">
+                            
+                            <p>${data.question[1].reponses}</p>
+                            </div>
+                        
+                    </div>`
 
             console.log('end construct')
             load_element_slide()
         } else {
             document.querySelector("body").innerHTML += `
-<div id="previewRep1"></div>
-<div id="previewRep2"></div>
 <div id="questionAndRep-wrapper">
     <div id="backGround-anim">
     </div>
@@ -90,12 +96,12 @@ serveurSocket.onmessage = (event) => {
     <div id="question-wrapper">
         <div id="arrowUp-wrapper">
             <div id="arrowUp"></div>
-            <p id="arrowUp-text">positif</p>
+            <h6 id="arrowUp-text">positif</h6>
         </div>
         <div id="question"><p>${data.question[0].questions}</p></div>
         <div id="arrowDown-wrapper">
             <div id="arrowDown"></div>
-            <p id="arrowDown-text">negatif</p>
+            <h6 id="arrowDown-text">negatif</h6>
         </div>
     </div>
     <div id="repD-wrapper"><p>${data.question[1].reponses}</p></div>
@@ -178,7 +184,9 @@ function load_element_slide() {
     console.log("recup Element")
     const waitingWrapper = document.querySelector("#waiting-wrapper")
     const questionAndRepWrapper = document.querySelector("#questionAndRep-wrapper")
+    const pPreviewRep1 = document.querySelector("#previewRep1 p")
     const previewRep1 = document.querySelector("#previewRep1")
+    const pPreviewRep2 = document.querySelector("#previewRep2 p")
     const previewRep2 = document.querySelector("#previewRep2")
     console.log("inside timeout");
     menu.style = "opacity : 0;";
@@ -240,15 +248,21 @@ function load_element_slide() {
             distY = -100;
         }
         if (dir === "down") {
-            previewRep1.style = `opacity : 1; top:${-100 + distY}px`
-            previewRep2.style = `opacity : 0; bottom:-100px`
+            previewRep1.style = `top:${-100 + distY}px`
+            pPreviewRep1.style = `opacity : 1;`
+            previewRep2.style = `bottom:-100px`
+            pPreviewRep2.style = `opacity : 0;`
         } else if (dir === "up") {
-            previewRep2.style = `opacity : 1; bottom:${-100 - distY}px`
-            previewRep1.style = `opacity : 0; top:-100px`
+            previewRep2.style = `bottom:${-100 - distY}px`
+            pPreviewRep2.style = `opacity : 1;`
+            previewRep1.style = `top:-100px`
+            pPreviewRep1.style = `opacity : 0;`
         } else {
 
-            previewRep1.style = `opacity : 0; top:-100px`
-            previewRep2.style = `opacity : 0; bottom:-100px`
+            previewRep1.style = `top:-100px`
+            pPreviewRep1.style = `opacity : 0;`
+            previewRep2.style = `bottom:-100px`
+            pPreviewRep2.style = `opacity : 0;`
         }
     }
 }
