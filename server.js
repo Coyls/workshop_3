@@ -75,22 +75,29 @@ socket.on('connection', ws => {
         if (mobile.socket === ws) {
           const index = screens.findIndex(screen => screen.screenId === mobile.mobileId)
           if (screens[index]) {
-          let linkScreen = screens[index].socket
+            let linkScreen = screens[index].socket
 
-          let post = {
-            type: 'post',
-            message: `Envoi du mobile ${mobile.mobileId} vers screen ${screens[index].screenId}`,
-            moodId: data.moodId
+            let post = {
+              type: 'post',
+              message: `Envoi du mobile ${mobile.mobileId} vers screen ${screens[index].screenId}`,
+              moodId: data.moodId
+            }
+
+            linkScreen.send(JSON.stringify(post))
+
+            ////////
+            con.query(requestPost + "('" + data.idResponse + "',NOW())", function (err, result) {
+              if (err) throw err;
+            });
+            ////////
+          } else {
+            const errorToCatch = {
+              type : crash
+            }
+
+            mobile.socket.send(JSON.stringify(errorToCatch))
+          
           }
-
-          linkScreen.send(JSON.stringify(post))
-
-          ////////
-          con.query(requestPost + "('"+data.idResponse+"',NOW())", function (err, result) {
-            if (err) throw err;  
-          });
-          ////////
-        }
 
         }
       })
@@ -117,14 +124,14 @@ socket.on('connection', ws => {
           let disconnect = {
             type: 'disconnecte',
             message: `Envoi du screen ${screen.screenId} vers mobile ${whitelists[screen.screenId - 1][0]}`,
-            isEnd : true
+            isEnd: true
           }
 
           linkMobile.send(JSON.stringify(disconnect))
 
         }
       })
-      
+
 
 
     }
@@ -156,7 +163,7 @@ socket.on('connection', ws => {
     let mobileWl = {
       mobileId: data.screenId,
       socket: ws,
-      wl : ""
+      wl: ""
     }
 
     mobiles.push(mobile)
@@ -186,8 +193,8 @@ socket.on('connection', ws => {
     }
 
     let mobileState = {
-      type : "mobileState",
-      state : mobileWl.wl,
+      type: "mobileState",
+      state: mobileWl.wl,
     }
 
     mobileWl.socket.send(JSON.stringify(mobileState))
@@ -222,14 +229,14 @@ socket.on('connection', ws => {
             }
 
             let mobileState = {
-              type : "mobileState",
-              state : wlElement.wl,
+              type: "mobileState",
+              state: wlElement.wl,
             }
-        
+
             wlElement.socket.send(JSON.stringify(mobileState))
           })
 
-          console.log( whitelists[mobile.mobileId - 1])
+          console.log(whitelists[mobile.mobileId - 1])
         }
       })
       if (mobile.socket === ws) {
