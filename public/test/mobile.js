@@ -1,3 +1,12 @@
+// Fonction delay
+const wait = (delay) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, delay);
+    })
+}
+////////////////////////////////////
 console.log("mobile") //// MOBILE
 
 const url = 'ws://vps215076.ovh.net:3000'
@@ -14,7 +23,7 @@ let mobileInit = {
     screenId: screenId,
 };
 
-console.log(mobileInit)
+console.log("mobileInit", mobileInit)
 
 // Connection WebSocket ---------------------------
 serveurSocket.onopen = () => {
@@ -28,10 +37,20 @@ serveurSocket.onerror = (error) => {
 serveurSocket.onmessage = (event) => {
     // console.log("Mobile link to" + screenId, event.data)
     const data = JSON.parse(event.data)
-    console.log(data)
+    // console.log(data)
 
     if (data.type === 'mobileData') {
-        console.log(data.question)
+        console.log("question/response", data.question)
+    } else if (data.type === 'mobileState') {
+        console.log("State", data.state)
+
+        if (data.state === 'actif') {
+            wait(60000).then( () => {
+                window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+            })
+        }
+    } else if (data.type === 'disconnecte') {
+        console.log("Mobile deconnecter")
 
     }
 }
