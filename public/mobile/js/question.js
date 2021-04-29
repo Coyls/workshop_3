@@ -8,6 +8,7 @@ const waitTimer = (delay) => {
         }, delay);
     })
 }
+
 ////////////////////////////////////
 console.log("mobile")
 
