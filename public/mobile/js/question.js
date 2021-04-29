@@ -43,8 +43,8 @@ serveurSocket.onmessage = (event) => {
 
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
-        idResponseP =data.question[0].reponseId
-        idResponseN=data.question[1].reponseId
+        idResponseP =data.question[0].responseID
+        idResponseN=data.question[1].responseID
         document.querySelector("body").innerHTML += `
 <div id="previewRep1"></div>
 <div id="previewRep2"></div>
