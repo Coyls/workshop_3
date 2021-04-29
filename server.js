@@ -151,6 +151,7 @@ socket.on('connection', ws => {
       socket: ws
     }
     screens.push(screen)
+    console.log("L'écran "+ data.screenId +" c'est connecté")
 
     const index = questions.findIndex(question => question.screen === data.screenId)
     let screenData = {
@@ -165,6 +166,7 @@ socket.on('connection', ws => {
       mobileId: data.screenId,
       socket: ws
     }
+    console.log("Un mobile c'est connecté à l'ecran "+ data.screenId)
 
     let mobileWl = {
       mobileId: data.screenId,
@@ -205,17 +207,13 @@ socket.on('connection', ws => {
 
     mobileWl.socket.send(JSON.stringify(mobileState))
 
-    /* mobile.socket.on('message', msg => {
-      const dataMobile = JSON.parse(msg)
-    }) */
   }
 
   // Disconnect Screen and mobile -----------------
   ws.on('close', () => {
-    console.log("Someone disconect")
     screens.forEach((screen, id) => {
       if (screen.socket === ws) {
-        console.log(screen.screenId + " screen disconecte")
+        console.log("Screen n°"+screen.screenId+" disconnecte")
         screens.splice(id, 1)
       }
     })
@@ -242,11 +240,11 @@ socket.on('connection', ws => {
             wlElement.socket.send(JSON.stringify(mobileState))
           })
 
-          console.log(whitelists[mobile.mobileId - 1])
+          // console.log(whitelists[mobile.mobileId - 1]) <- Console.log de la whitelist
         }
       })
       if (mobile.socket === ws) {
-        console.log(mobile.mobileId + " mobile disconecte")
+        console.log("Un mobile connecté a l'ecran "+ mobile.mobileId +" c'est deconnecter")
         mobiles.splice(id, 1)
       }
     })
