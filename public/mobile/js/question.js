@@ -18,6 +18,11 @@ const serveurSocket = new WebSocket(url)
 
 let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screen_id'))
+if (!params.get('screen_id') ){
+    window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+}else if(screenId<1 || screenId >6){
+    window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+}
 
 
 // Object init ---------------------------
@@ -40,15 +45,16 @@ serveurSocket.onerror = (error) => {
 // message ----------------------------------------
 serveurSocket.onmessage = (event) => {
     const data = JSON.parse(event.data)
-    console.log("construc Element")
+    console.log("catch node event : "+data.type)
+    console.log("Data: ",data)
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
-        idResponseP =data.question[0].responseID
-        idResponseN=data.question[1].responseID
-        let format=data.format
+        idResponseP = data.question[0].responseID
+        idResponseN = data.question[1].responseID
+        let format = data.question[0].format
 
-
-        document.querySelector("body").innerHTML += `
+        if (format === "slide") {
+            document.querySelector("body").innerHTML += `
 <div id="previewRep1"></div>
 <div id="previewRep2"></div>
 <div id="questionAndRep-wrapper">
@@ -69,8 +75,34 @@ serveurSocket.onmessage = (event) => {
     <div id="repD-wrapper"><p>${data.question[1].reponses}</p></div>
 </div>`
 
-        console.log('end construct')
-        load_element_slide()
+            console.log('end construct')
+            load_element_slide()
+        } else {
+            document.querySelector("body").innerHTML += `
+<div id="previewRep1"></div>
+<div id="previewRep2"></div>
+<div id="questionAndRep-wrapper">
+    <div id="backGround-anim">
+    </div>
+    <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
+    <div id="question-wrapper">
+        <div id="arrowUp-wrapper">
+            <div id="arrowUp"></div>
+            <p id="arrowUp-text">positif</p>
+        </div>
+        <div id="question"><p>${data.question[0].questions}</p></div>
+        <div id="arrowDown-wrapper">
+            <div id="arrowDown"></div>
+            <p id="arrowDown-text">negatif</p>
+        </div>
+    </div>
+    <div id="repD-wrapper"><p>${data.question[1].reponses}</p></div>
+</div>`
+
+            console.log('end construct')
+            load_element_button()
+        }
+
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
         if (data.state === "inactif") {
@@ -79,8 +111,8 @@ serveurSocket.onmessage = (event) => {
 
         if (data.state === 'actif') {
             wait = false
-            waitTimer(60000).then( () => {
-                if (!animationLoad){
+            waitTimer(60000).then(() => {
+                if (!animationLoad) {
                     window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
                 }
             })
@@ -89,13 +121,16 @@ serveurSocket.onmessage = (event) => {
         console.log("Mobile deconnecter")
         window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
 
+    } else if (data.type === 'crash') {
+        console.log("crash")
+        window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
     }
 }
 
 
 // Send data post ---------------------------------------------
 
-const postMood = (mood,response) => {
+const postMood = (mood, response) => {
     console.log('post Mood')
     let post = {
         type: "post", //nom de message serveur
@@ -105,7 +140,7 @@ const postMood = (mood,response) => {
     };
     console.log(post)
 
-    animationLoad=true
+    animationLoad = true
     serveurSocket.send(JSON.stringify(post));
 }
 
@@ -128,17 +163,14 @@ const postMood = (mood,response) => {
 ////////////////////////////////////////////////////////////////
 
 
-
-
 let mov = false
 
 const menu = document.querySelector("#menu-btn")
-/*
-window.addEventListener("load", () => {
-    if (!wait) {
-        setTimeout(() => {
 
-            */
+function load_element_button() {
+
+}
+
 function load_element_slide() {
 
     console.log("recup Element")
@@ -218,9 +250,10 @@ function load_element_slide() {
         }
     }
 }
-            /*
-        }, 0);
-    }
+
+/*
+}, 0);
+}
 })*/
 
 menu.onclick = () => {
