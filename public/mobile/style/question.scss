@@ -31,6 +31,7 @@ body{
 }
 
 #repD-wrapper{
+  position: relative;
   top: 200vh;
   height: 100vh;
   width: 100vw;
@@ -38,6 +39,7 @@ body{
 }
 
 #question-wrapper{
+  position: relative;
   top: 100vh;
   height: 100vh;
   width: 100vw;
@@ -45,6 +47,7 @@ body{
 }
 
 #repU-wrapper{
+  position: relative;
   height: 100vh;
   width: 100vw;
   background: #32a522;

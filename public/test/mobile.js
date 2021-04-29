@@ -66,6 +66,7 @@ serveurSocket.onmessage = (event) => {
 // Send data post ---------------------------------------------
 const postBtn = document.getElementById('post')
 let moodId = 1 ///// !!!!!!!!!!! A SUPPRIMER
+let idResponse = 1
 
 postBtn.addEventListener('click', () => {
     const postMood = () => {
@@ -73,7 +74,8 @@ postBtn.addEventListener('click', () => {
         let post = {
             type: "post", //nom de message serveur
             idEcran: screenId, // identifiant de l'écran
-            moodId: moodId // Réponse à la question, valeur possibile 0 ou 1
+            moodId: moodId, // Réponse à la question, valeur possibile 0 ou 1
+            idResponse: idResponse
         };
 
         animationLoad = true
