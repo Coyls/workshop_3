@@ -27,7 +27,7 @@ video1Pos.innerHTML = '<source src="./media/videos/positive_'+screenId+'.mp4">'
 
 let video = document.querySelectorAll(".video")
 
-video.muted = !video.muted;
+
 //video.removeAttribute("muted");
 
 // Object Init ---------------------------------------
@@ -62,12 +62,18 @@ serveurSocket.onmessage = (event) => {
             //the positive video bool is true
             video1PosBool = true;
             flash.classList.add('flash_anim');
+
+            video.volume = 1;
+            console.log(video);
         }
         //if mood negative
         else if (data.moodId === 2){
             //the negative video bool is true
             video1NegBool = true;
             flash.classList.add('flash_anim');
+
+            video.volume = 1;
+            console.log(video);
         }
 
     } else if (data.type === 'screenData') {
