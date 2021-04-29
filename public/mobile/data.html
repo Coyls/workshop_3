@@ -5,99 +5,117 @@
     <title>Workshop</title>
     <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/data.css">
+    <link rel="stylesheet" href="./style/fullpage.min.css">
 </head>
 <body>
 
-<div id="menu-btn">
-    <div id="menu-btn-burger">
+<div id="data-main">
+    <div id="menu-btn">
+        <div id="menu-btn-burger">
 
+        </div>
     </div>
-</div>
 
-<div id="menu-btn-active">
-    <img src="image/background_menu.png" alt="background" class="image">
-    <ul id="menu-link">
-        <a href="./home.html"><li class="nav-link">Accueil</li></a>
-        <a href="#"><li class="nav-link">Statistiques</li></a>
-        <a href="./about.html"><li class="nav-link">A propos</li></a>
-    </ul>
-</div>
-
-<div id="logo-wrapper">
-    <h1 id="logo">Comment ça va ?</h1>
-</div>
-
-<div id="building-mood">
-    <div id="building-text-wrapper">
-        <h1 class="title">L'état général du bâtiment</h1>
+    <div id="menu-btn-active">
+        <img src="image/background_menu.png" alt="background" class="image">
+        <ul id="menu-link">
+            <a href="./home.html"><li class="nav-link">Accueil</li></a>
+            <a href="#"><li class="nav-link">Statistiques</li></a>
+            <a href="./about.html"><li class="nav-link">A propos</li></a>
+        </ul>
     </div>
-    <p id="textMoyG"></p>
-    <canvas id="canvasG" width="302" height="302">
-        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
-    </canvas>
-</div>
 
-<div id="data">
+    <div id="logo-wrapper">
+        <h1 id="logo">Comment ça va ?</h1>
+    </div>
+
+    <div id="building-mood">
+        <div id="building-text-wrapper">
+            <h1 class="global-title">L'état général du bâtiment</h1>
+        </div>
+        <p id="textMoyG"></p>
+        <canvas id="canvasG" width="302" height="302">
+            Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+        </canvas>
+    </div>
 
     <div id="data-title">
-        <h1 class="title">Les statistiques par question</h1>
+        <h1 class="global-title">Les statistiques par question</h1>
     </div>
-    <div id="data-questions">
-        <div class="data-wrapper">
-            <canvas id="canvasQ1" width="400" height="302">
-                Désolé, votre navigateur ne prend pas en charge
-            </canvas>
-            <div class="data-question">
-                <p class="question">Comment te sens-tu aujourd'hui ?</p>
-            </div>
-        </div>
-        <div class="data-wrapper">
 
-            <div class="data-slider">
-
-            </div>
-            <div class="data-question">
-                <p class="question">Es-tu optimiste pour l'avenir ?</p>
-            </div>
-        </div>
-        <div class="data-wrapper">
-
-            <div class="data-slider">
-
-            </div>
-            <div class="data-question">
-                <p class="question">Te sens-tu suffisamment entouré en ce moment ?</p>
-            </div>
-        </div>
-        <div class="data-wrapper">
-
-            <div class="data-slider">
-
-            </div>
-            <div class="data-question">
-                <p class="question">As-tu réussi à rester motivé pour bosser pendant l'année écoulée ?</p>
-            </div>
-        </div>
-        <div class="data-wrapper">
-
-            <div class="data-slider">
-
-            </div>
-            <div class="data-question">
-                <p class="question">As-tu trouvé de nouvelles façons de vivre qui te rendent plus heureux qu'avant ?</p>
-            </div>
-        </div>
-        <div class="data-wrapper">
-
-            <div class="data-slider">
-
-            </div>
-            <div class="data-question">
-                <p class="question">Quel effet va avoir cette crise sur ton environnement ?</p>
-            </div>
-        </div>
-    </div>
 </div>
+
+<div id="data-wrapper">
+    <section id="data-section-wrapper" class="section s1">
+        <div class="slide">
+            <div class="data-canva-wrapper">
+                <canvas id="canvasQ0" width="420" height="302" class="image">
+                    Désolé, votre navigateur ne prend pas en charge
+                </canvas>
+            </div>
+            <div class="data-question-wrapper">
+                <p class="paragraph">Comment te sens-tu aujourd'hui ? </p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="data-canva-wrapper">
+                <canvas id="canvasQ1" width="420" height="302" class="image">
+                    Désolé, votre navigateur ne prend pas en charge
+                </canvas>
+            </div>
+            <div class="data-question-wrapper">
+                <p class="paragraph">Es-tu optimiste pour l’avenir ?</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="data-canva-wrapper">
+                <canvas id="canvasQ2" width="420" height="302" class="image">
+                    Désolé, votre navigateur ne prend pas en charge
+                </canvas>
+            </div>
+            <div class="data-question-wrapper">
+                <p class="paragraph">Te sens-tu suffisamment entouré en ce moment ?</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="data-canva-wrapper">
+                <canvas id="canvasQ3" width="420" height="302" class="image">
+                    Désolé, votre navigateur ne prend pas en charge
+                </canvas>
+            </div>
+            <div class="data-question-wrapper">
+                <p class="paragraph">As-tu réussi à rester motivé pour bosser pendant l’année écoulée ?</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="data-canva-wrapper">
+                <canvas id="canvasQ4" width="420" height="302" class="image">
+                    Désolé, votre navigateur ne prend pas en charge
+                </canvas>
+            </div>
+            <div class="data-question-wrapper">
+                <p class="paragraph">As-tu trouvé de nouvelles façons de vivre ?</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="data-canva-wrapper">
+                <canvas id="canvasQ5" width="420" height="302" class="image">
+                    Désolé, votre navigateur ne prend pas en charge
+                </canvas>
+            </div>
+            <div class="data-question-wrapper">
+                <p class="paragraph">Quel effet va avoir cette crise sur ton environnement ?</p>
+            </div>
+        </div>
+
+    </section>
+</div>
+<script src="./js/fullpage.js"></script>
 <script src="./js/gsap.js"></script>
 <script src="./js/data.js"></script>
 <script src="./js/main.js"></script>
