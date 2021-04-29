@@ -41,7 +41,26 @@ serveurSocket.onmessage = (event) => {
 
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
-
+        document.querySelector("body").innerHTML += `
+<div id="previewRep1"></div>
+<div id="previewRep2"></div>
+<div id="questionAndRep-wrapper">
+    <div id="backGround-anim">
+    </div>
+    <div id="repU-wrapper"><p></p></div>
+    <div id="question-wrapper">
+        <div id="arrowUp-wrapper">
+            <div id="arrowUp"></div>
+            <p id="arrowUp-text"></p>
+        </div>
+        <div id="question"><p></p></div>
+        <div id="arrowDown-wrapper">
+            <div id="arrowDown"></div>
+            <p id="arrowDown-text"></p>
+        </div>
+    </div>
+    <div id="repD-wrapper"><p></p></div>
+</div>`
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
         if (data.state === "inactif") {
@@ -95,26 +114,7 @@ const postMood = (mood) => {
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-document.querySelector("body").innerHTML += `
-<div id="previewRep1"></div>
-<div id="previewRep2"></div>
-<div id="questionAndRep-wrapper">
-    <div id="backGround-anim">
-    </div>
-    <div id="repU-wrapper"><p></p></div>
-    <div id="question-wrapper">
-        <div id="arrowUp-wrapper">
-            <div id="arrowUp"></div>
-            <p id="arrowUp-text"></p>
-        </div>
-        <div id="question"><p></p></div>
-        <div id="arrowDown-wrapper">
-            <div id="arrowDown"></div>
-            <p id="arrowDown-text"></p>
-        </div>
-    </div>
-    <div id="repD-wrapper"><p></p></div>
-</div>`
+
 
 
 let mov = false
