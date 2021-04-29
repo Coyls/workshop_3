@@ -46,14 +46,11 @@
           align-items: center;
 }
 
-<<<<<<< HEAD
-=======
 .team-title {
   font-size: 6vw;
   font-family: 'Montserrat', sans-serif;
 }
 
->>>>>>> 5dd6e4daa190a858cf57a4486d30882f5df1cfed
 #image-wrapper-part-one {
   position: relative;
   top: 1vh;
@@ -83,7 +80,8 @@
   position: relative;
   height: 135%;
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #instagram-wrapper {

@@ -1,4 +1,48 @@
-document.querySelector("body").innerHTML += `
+let wait = false
+let animationLoad = false
+// Fonction delay
+const waitTimer = (delay) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, delay);
+    })
+}
+////////////////////////////////////
+console.log("mobile") //// MOBILE
+
+const url = 'ws://vps215076.ovh.net:3000'
+const serveurSocket = new WebSocket(url)
+
+let params = (new URL(document.location)).searchParams;
+let screenId = parseInt(params.get('screen_id'))
+
+
+// Object init ---------------------------
+let mobileInit = {
+    type: "init",
+    deviceType: "mobile",
+    screenId: screenId,
+};
+
+console.log("mobileInit", mobileInit)
+
+// Connection WebSocket ---------------------------
+serveurSocket.onopen = () => {
+    serveurSocket.send(JSON.stringify(mobileInit))
+}
+serveurSocket.onerror = (error) => {
+    console.log(`WebSocket error: ${error}`)
+}
+
+// message ----------------------------------------
+serveurSocket.onmessage = (event) => {
+    const data = JSON.parse(event.data)
+
+    if (data.type === 'mobileData') {
+        console.log("question/response", data.question)
+
+        document.querySelector("body").innerHTML += `
 <div id="previewRep1"></div>
 <div id="previewRep2"></div>
 <div id="questionAndRep-wrapper">
@@ -6,27 +50,82 @@ document.querySelector("body").innerHTML += `
     <div id="backGround-anim">
 
     </div>
-    <div id="repU-wrapper"><p></p></div>
+    <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
     <div id="question-wrapper">
         <div id="arrowUp-wrapper">
             <div id="arrowUp"></div>
             <p id="arrowUp-text"></p>
         </div>
-        <div id="question"><p></p></div>
+        <div id="question"><p>${data.question[0].questions}</p></div>
         <div id="arrowDown-wrapper">
             <div id="arrowDown"></div>
-            <p id="arrowDown-text"></p>
+            <p id="arrowDown-text">${data.question[1].reponses}</p>
         </div>
     </div>
     <div id="repD-wrapper"><p></p></div>
 </div>`
+    } else if (data.type === 'mobileState') {
+        console.log("State", data.state)
+        if (data.state === "inactif") {
+            wait = true
+        }
 
-let wait = false
+        if (data.state === 'actif') {
+            wait = false
+            waitTimer(60000).then(() => {
+                if (!animationLoad){
+                    window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+                }
+            })
+        }
+    } else if (data.type === 'disconnecte') {
+        console.log("Mobile deconnecter")
+        window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+
+    }
+}
+
+
+// Send data post ---------------------------------------------
+
+const postMood = (mood) => {
+    console.log('post Mood')
+    let post = {
+        type: "post", //nom de message serveur
+        idEcran: screenId, // identifiant de l'écran
+        moodId: mood // Réponse à la question, valeur possibile 0 ou 1
+    };
+    animationLoad = true;
+
+    serveurSocket.send(JSON.stringify(post));
+}
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+
+
+
 let mov = false
 
-const menu = document.querySelector("#menu-btn")
+const menu = document.getElementById("menu-btn");
 
-window.addEventListener("load", () => {
+(function () {
     if (!wait) {
         setTimeout(() => {
             const waitingWrapper = document.querySelector("#waiting-wrapper")
@@ -40,7 +139,7 @@ window.addEventListener("load", () => {
             let swipedir, startY, distY;
 
             questionAndRepWrapper.addEventListener('touchstart', (e) => {
-                if (!mov) {
+                if (!mov && !wait) {
                     swipedir = 'none'
                     distY = 0
                     startY = e.changedTouches[0].pageY
@@ -48,7 +147,7 @@ window.addEventListener("load", () => {
                 }
             })
             questionAndRepWrapper.addEventListener("touchmove", (e) => {
-                if (!mov) {
+                if (!mov && !wait) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(swipedir, distY)
@@ -58,7 +157,8 @@ window.addEventListener("load", () => {
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov) {
+                if (!mov && !wait)
+                {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(0, 0);
@@ -78,8 +178,10 @@ window.addEventListener("load", () => {
                 }, 750);
                 if (dir === "up") {
                     questionAndRepWrapper.style = "display : flex;top:-200vh"
+                    postMood(2)
                 } else {
                     questionAndRepWrapper.style = "display : flex;top:0"
+                    postMood(1)
                 }
             }
 
@@ -104,8 +206,7 @@ window.addEventListener("load", () => {
             }
         }, 1);
     }
-})
-
+})()
 menu.onclick = () => {
     console.log("test")
 }
@@ -118,48 +219,4 @@ menu.onclick = () => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const url = 'ws://vps215076.ovh.net:3000'
-const serveurSocket = new WebSocket(url)
 
-let params = (new URL(document.location)).searchParams;
-let screenId = parseInt(params.get('screenId'))
-
-const postMood = () => {
-    console.log('post Mood')
-    // Création d'un objet msg qui contient les données
-    // dont le serveur a besoin pour traiter le message
-    var msg = {
-        type: "post", //nom de message serveur
-        idEcran: screenId, // identifiant de l'écran
-        idReponse: responseId, // id reponse
-        humeur: moodId // Réponse à la question, valeur possibile 0 ou 1
-    };
-
-    // Envoi de l'objet msg à travers une chaîne formatée en JSON
-    serveurSocket.send(JSON.stringify(msg));
-}
-postMood()
-
-let mobile = {
-    type: "mobile",
-    id_screen: screenId,
-};
-
-serveurSocket.onopen = (event) => {
-    serveurSocket.send(JSON.stringify(mobile))
-}
-serveurSocket.onerror = (error) => {
-    console.log(`WebSocket error: ${error}`)
-}
-serveurSocket.onmessage = (event) => {
-    let data = event.data;
-    let type = data.type
-
-
-    if (type === 'pullquestion' && screenId === data.idQuestion) {
-        console.log(data)
-        // Afficher les données
-    }
-
-    
-}
