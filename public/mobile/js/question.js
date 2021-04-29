@@ -2,6 +2,7 @@ let wait = false
 let animationLoad = false
 let idResponseP
 let idResponseN
+
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {

@@ -134,14 +134,9 @@ socket.on('connection', ws => {
 
             linkMobile.socket.send(JSON.stringify(disconnect))
           }
-
         }
       })
-
-
-
     }
-
   })
 
   // Functions Init -------------------------
@@ -168,8 +163,9 @@ socket.on('connection', ws => {
     }
 
     const screenIsConnect = screens.findIndex(screen => screen.screenId === data.screenId)
+    console.log("screenIsConnect", screenIsConnect)
 
-    if (!screenIsConnect) {
+    if (screenIsConnect === -1) {
       const errorToCatch = {
         type: "crash"
       }
