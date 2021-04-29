@@ -60,7 +60,7 @@ serveurSocket.onmessage = (event) => {
             <div id="arrowDown"></div>
             <p id="arrowDown-text">${data.question[1].reponses}</p>
         </div>
-    </div>
+    </div>`
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
         if (data.state === "inactif") {
