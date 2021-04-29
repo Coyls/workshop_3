@@ -10,11 +10,6 @@ const waitTimer = (delay) => {
         }, delay);
     })
 }
-////////////////////////////////////
-console.log("mobile") //// MOBILE
-
-const url = 'ws://vps215076.ovh.net:3000'
-const serveurSocket = new WebSocket(url)
 
 let params = (new URL(document.location)).searchParams;
 let screenId = parseInt(params.get('screen_id'))
@@ -23,6 +18,13 @@ if (!params.get('screen_id') ){
 }else if(screenId<1 || screenId >6){
     window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
 }
+
+////////////////////////////////////
+console.log("mobile") //// MOBILE
+
+const url = 'ws://vps215076.ovh.net:3000'
+const serveurSocket = new WebSocket(url)
+
 
 
 // Object init ---------------------------
