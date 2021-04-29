@@ -350,10 +350,4 @@ new fullpage("#data-wrapper", {
     slidesNavPosition: 'bottom',
     controlArrows: false,
     fitToSection: true,
-    loopBottom: true,
-    afterRender: function () {
-        setInterval(function () {
-            fullpage.moveSlideRight();
-        }, 1000);
-    }
 });
