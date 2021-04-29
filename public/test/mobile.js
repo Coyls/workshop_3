@@ -7,6 +7,8 @@ const wait = (delay) => {
     })
 }
 ////////////////////////////////////
+let animationLoad = false
+
 console.log("mobile") //// MOBILE
 
 const url = 'ws://vps215076.ovh.net:3000'
@@ -46,8 +48,10 @@ serveurSocket.onmessage = (event) => {
         console.log("State", data.state)
 
         if (data.state === 'actif') {
-            wait(60000).then( () => {
-                window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+            wait(60000).then(() => {
+                if (!animationLoad) {
+                    window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
+                }
             })
         }
     } else if (data.type === 'disconnecte') {
@@ -64,17 +68,19 @@ const postBtn = document.getElementById('post')
 let moodId = 1 ///// !!!!!!!!!!! A SUPPRIMER
 
 postBtn.addEventListener('click', () => {
-     const postMood = () => {
+    const postMood = () => {
         console.log('post Mood')
         let post = {
             type: "post", //nom de message serveur
             idEcran: screenId, // identifiant de l'écran
             moodId: moodId // Réponse à la question, valeur possibile 0 ou 1
         };
-    
+
+        animationLoad = true
+
         serveurSocket.send(JSON.stringify(post));
     }
-    postMood() 
+    postMood()
 })
 
 
