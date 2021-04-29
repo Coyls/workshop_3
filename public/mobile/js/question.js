@@ -1,5 +1,7 @@
 let wait = false
 let animationLoad = false
+let idResponseP
+let idResponseN
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {
@@ -41,6 +43,8 @@ serveurSocket.onmessage = (event) => {
 
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
+        idResponseP =data.question[0].reponseId
+        idResponseN=data.question[1].reponseId
         document.querySelector("body").innerHTML += `
 <div id="previewRep1"></div>
 <div id="previewRep2"></div>
@@ -85,12 +89,13 @@ serveurSocket.onmessage = (event) => {
 
 // Send data post ---------------------------------------------
 
-const postMood = (mood) => {
+const postMood = (mood,response) => {
     console.log('post Mood')
     let post = {
         type: "post", //nom de message serveur
         idEcran: screenId, // identifiant de l'écran
-        moodId: mood // Réponse à la question, valeur possibile 0 ou 1
+        moodId: mood, // Réponse à la question, valeur possibile 0 ou 1
+        idResponse: response
     };
     animationLoad=true
     serveurSocket.send(JSON.stringify(post));
@@ -173,10 +178,10 @@ window.addEventListener("load", () => {
                 }, 750);
                 if (dir === "up") {
                     questionAndRepWrapper.style = "display : flex;top:-200vh"
-                    postMood(2)
+                    postMood(2,idResponseN)
                 } else {
                     questionAndRepWrapper.style = "display : flex;top:0"
-                    postMood(1)
+                    postMood(1,idResponseP)
                 }
             }
 
