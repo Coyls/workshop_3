@@ -38,6 +38,18 @@ serveurSocket.onmessage = (event) => {
     }
 }
 
+const endAnimation = document.getElementById('end_animation')
+
+let animationIsEnded = {
+    type : 'isEnd'
+}
+
+endAnimation.addEventListener('click', () => {
+    serveurSocket.send(JSON.stringify(animationIsEnded))
+    
+})
+
+
 
 
 
