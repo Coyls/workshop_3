@@ -1,3 +1,5 @@
+let wait = false
+
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {
@@ -42,8 +44,12 @@ serveurSocket.onmessage = (event) => {
 
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
+        if (data.state === "inactif") {
+            wait = true
+        }
 
         if (data.state === 'actif') {
+            wait = false
             waitTimer(60000).then( () => {
                 window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
             })
@@ -110,7 +116,7 @@ document.querySelector("body").innerHTML += `
     <div id="repD-wrapper"><p></p></div>
 </div>`
 
-let wait = false
+
 let mov = false
 
 const menu = document.querySelector("#menu-btn")
