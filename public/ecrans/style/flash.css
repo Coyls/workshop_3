@@ -49,7 +49,7 @@ body {
 
 .flash_anim {
     animation-name: flash;
-    animation-duration: 0.7s;
+    animation-duration: 1.2s;
 }
 
 @keyframes flash {
