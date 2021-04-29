@@ -97,6 +97,8 @@ const postMood = (mood,response) => {
         moodId: mood, // Réponse à la question, valeur possibile 0 ou 1
         idResponse: response
     };
+    console.log(post)
+
     animationLoad=true
     serveurSocket.send(JSON.stringify(post));
 }
