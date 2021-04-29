@@ -7,8 +7,6 @@ const body = document.querySelector("body")
 let menuOpen = false
 const navLink = document.querySelectorAll(".nav-link")
 
-screen.orientation.lock("portrait")
-
 menuBtn.onclick = () => {
 
     const tlMenuList = new TimelineLite()
