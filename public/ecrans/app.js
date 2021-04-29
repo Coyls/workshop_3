@@ -25,7 +25,10 @@ loopNeutralVideo.innerHTML = '<source src="./media/videos/neutral_'+screenId+'.m
 video1Neg.innerHTML = '<source src="./media/videos/negative_'+screenId+'.mp4">'
 video1Pos.innerHTML = '<source src="./media/videos/positive_'+screenId+'.mp4">'
 
-document.querySelectorAll(".video").removeAttribute("muted");
+let video = document.querySelectorAll(".video")
+
+
+//video.removeAttribute("muted");
 
 // Object Init ---------------------------------------
 let screenInit = {
@@ -59,12 +62,18 @@ serveurSocket.onmessage = (event) => {
             //the positive video bool is true
             video1PosBool = true;
             flash.classList.add('flash_anim');
+
+            video.volume = 1;
+            console.log(video);
         }
         //if mood negative
         else if (data.moodId === 2){
             //the negative video bool is true
             video1NegBool = true;
             flash.classList.add('flash_anim');
+
+            video.volume = 1;
+            console.log(video);
         }
 
     } else if (data.type === 'screenData') {

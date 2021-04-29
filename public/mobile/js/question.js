@@ -47,6 +47,7 @@ serveurSocket.onmessage = (event) => {
         idResponseN=data.question[1].responseID
         let format=data.format
 
+
         document.querySelector("body").innerHTML += `
 <div id="previewRep1"></div>
 <div id="previewRep2"></div>
@@ -102,6 +103,8 @@ const postMood = (mood,response) => {
         moodId: mood, // Réponse à la question, valeur possibile 0 ou 1
         idResponse: response
     };
+    console.log(post)
+
     animationLoad=true
     serveurSocket.send(JSON.stringify(post));
 }
