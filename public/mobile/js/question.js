@@ -8,8 +8,9 @@ const waitTimer = (delay) => {
         }, delay);
     })
 }
+
 ////////////////////////////////////
-console.log("mobile") //// MOBILE
+console.log("mobile")
 
 const url = 'ws://vps215076.ovh.net:3000'
 const serveurSocket = new WebSocket(url)
@@ -41,7 +42,6 @@ serveurSocket.onmessage = (event) => {
 
     if (data.type === 'mobileData') {
         console.log("question/response", data.question)
-
         document.querySelector("body").innerHTML += `
 <div id="previewRep1"></div>
 <div id="previewRep2"></div>
@@ -61,9 +61,7 @@ serveurSocket.onmessage = (event) => {
             <div id="arrowDown"></div>
             <p id="arrowDown-text">${data.question[1].reponses}</p>
         </div>
-    </div>
-    <div id="repD-wrapper"><p></p></div>
-</div>`
+    </div>`
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
         if (data.state === "inactif") {
@@ -72,10 +70,8 @@ serveurSocket.onmessage = (event) => {
 
         if (data.state === 'actif') {
             wait = false
-            waitTimer(60000).then(() => {
-                if (!animationLoad){
-                    window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
-                }
+            waitTimer(60000).then( () => {
+                window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
             })
         }
     } else if (data.type === 'disconnecte') {
@@ -96,7 +92,6 @@ const postMood = (mood) => {
         moodId: mood // Réponse à la question, valeur possibile 0 ou 1
     };
     animationLoad = true;
-
     serveurSocket.send(JSON.stringify(post));
 }
 
@@ -123,9 +118,9 @@ const postMood = (mood) => {
 
 let mov = false
 
-const menu = document.getElementById("menu-btn");
+const menu = document.querySelector("#menu-btn")
 
-(function () {
+window.addEventListener("load", () => {
     if (!wait) {
         setTimeout(() => {
             const waitingWrapper = document.querySelector("#waiting-wrapper")
@@ -139,7 +134,7 @@ const menu = document.getElementById("menu-btn");
             let swipedir, startY, distY;
 
             questionAndRepWrapper.addEventListener('touchstart', (e) => {
-                if (!mov && !wait) {
+                if (!mov) {
                     swipedir = 'none'
                     distY = 0
                     startY = e.changedTouches[0].pageY
@@ -147,7 +142,7 @@ const menu = document.getElementById("menu-btn");
                 }
             })
             questionAndRepWrapper.addEventListener("touchmove", (e) => {
-                if (!mov && !wait) {
+                if (!mov) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(swipedir, distY)
@@ -157,8 +152,7 @@ const menu = document.getElementById("menu-btn");
 
             questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-                if (!mov && !wait)
-                {
+                if (!mov) {
                     distY = e.changedTouches[0].pageY - startY
                     swipedir = (distY < 0) ? 'up' : 'down'
                     appearRep(0, 0);
@@ -206,7 +200,8 @@ const menu = document.getElementById("menu-btn");
             }
         }, 1);
     }
-})()
+})
+
 menu.onclick = () => {
     console.log("test")
 }
@@ -218,5 +213,3 @@ menu.onclick = () => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
