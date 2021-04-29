@@ -241,6 +241,8 @@ socket.on('connection', ws => {
           })
 
           // console.log(whitelists[mobile.mobileId - 1]) <- Console.log de la whitelist
+
+          console.log("La whitelist "+ mobile.mobileId +"contient " + whitelists[mobile.mobileId - 1].length +" personnes")
         }
       })
       if (mobile.socket === ws) {
@@ -249,34 +251,9 @@ socket.on('connection', ws => {
       }
     })
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
 
 
-
-// Requete type
-/* con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connecté à la base de données MySQL!");
-  con.query("SELECT * FROM mood", function (err, result) {
-    if (err) throw err;
-    console.log(result)
-  });
-}); */
-// --------------------------------------------------------
 
 
 server.listen(port, () => {
