@@ -105,6 +105,25 @@ socket.on('connection', ws => {
       });
 
 
+    } else if (type === 'isEnd') {
+
+      screens.forEach(screen => {
+        if (screen.socket === ws) {
+          let linkMobile = whitelists[screen.screenId - 1][0].socket
+
+          let disconnect = {
+            type: 'disconnecte',
+            message: `Envoi du screen ${screen.screenId} vers mobile ${whitelists[screen.screenId - 1][0]}`,
+            isEnd : true
+          }
+
+          linkMobile.send(JSON.stringify(disconnect))
+
+        }
+      })
+      
+
+
     }
 
   })

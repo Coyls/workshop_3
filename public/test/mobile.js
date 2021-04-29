@@ -49,6 +49,9 @@ serveurSocket.onmessage = (event) => {
                 window.location.href = "http://vps215076.ovh.net/comment_ca_va/public/mobile/home.html";
             })
         }
+    } else if (data.type === 'disconnecte') {
+        console.log("Mobile deconnecter")
+
     }
 }
 
