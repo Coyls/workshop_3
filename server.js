@@ -92,7 +92,7 @@ socket.on('connection', ws => {
             ////////
           } else {
             const errorToCatch = {
-              type : crash
+              type : "crash"
             }
 
             mobile.socket.send(JSON.stringify(errorToCatch))
