@@ -151,7 +151,7 @@ socket.on('connection', ws => {
       socket: ws
     }
     screens.push(screen)
-    console.log("L'écran "+ data.screenId +" c'est connecté")
+    console.log("L'écran " + data.screenId + " c'est connecté")
 
     const index = questions.findIndex(question => question.screen === data.screenId)
     let screenData = {
@@ -166,7 +166,19 @@ socket.on('connection', ws => {
       mobileId: data.screenId,
       socket: ws
     }
-    console.log("Un mobile c'est connecté à l'ecran "+ data.screenId)
+
+    if (!screens.findIndex(screen => screen.screenId === data.screenId)) {
+      const errorToCatch = {
+        type: "crash"
+      }
+
+      console.log("L'ecran " + data.screenId + " n'est pas connecter, l'utilisateur à été deconnecté")
+
+      mobile.socket.send(JSON.stringify(errorToCatch))
+
+    }
+
+    console.log("Un mobile c'est connecté à l'ecran " + data.screenId)
 
     let mobileWl = {
       mobileId: data.screenId,
@@ -213,7 +225,7 @@ socket.on('connection', ws => {
   ws.on('close', () => {
     screens.forEach((screen, id) => {
       if (screen.socket === ws) {
-        console.log("Screen n°"+screen.screenId+" disconnecte")
+        console.log("Screen n°" + screen.screenId + " disconnecte")
         screens.splice(id, 1)
       }
     })
@@ -240,13 +252,11 @@ socket.on('connection', ws => {
             wlElement.socket.send(JSON.stringify(mobileState))
           })
 
-          // console.log(whitelists[mobile.mobileId - 1]) <- Console.log de la whitelist
-
-          console.log("La whitelist "+ mobile.mobileId +"contient " + whitelists[mobile.mobileId - 1].length +" personnes")
+          console.log("La whitelist " + mobile.mobileId + " contient " + whitelists[mobile.mobileId - 1].length + " personnes")
         }
       })
       if (mobile.socket === ws) {
-        console.log("Un mobile connecté a l'ecran "+ mobile.mobileId +" c'est deconnecter")
+        console.log("Un mobile connecté a l'ecran " + mobile.mobileId + " c'est deconnecter")
         mobiles.splice(id, 1)
       }
     })
