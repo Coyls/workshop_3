@@ -93,7 +93,7 @@ socket.on('connection', ws => {
           } else {
             const errorToCatch = {
               type : "crash"
-            }
+            } 
 
             console.log("As crash")
 
