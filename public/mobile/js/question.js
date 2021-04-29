@@ -47,19 +47,19 @@ serveurSocket.onmessage = (event) => {
 <div id="questionAndRep-wrapper">
     <div id="backGround-anim">
     </div>
-    <div id="repU-wrapper"><p></p></div>
+    <div id="repU-wrapper"><p>${data.question[0].reponses}</p></div>
     <div id="question-wrapper">
         <div id="arrowUp-wrapper">
             <div id="arrowUp"></div>
-            <p id="arrowUp-text"></p>
+            <p id="arrowUp-text">positif</p>
         </div>
-        <div id="question"><p></p></div>
+        <div id="question"><p>${data.question[0].questions}</p></div>
         <div id="arrowDown-wrapper">
             <div id="arrowDown"></div>
-            <p id="arrowDown-text"></p>
+            <p id="arrowDown-text">negatif</p>
         </div>
     </div>
-    <div id="repD-wrapper"><p></p></div>
+    <div id="repD-wrapper"><p>${data.question[1].reponses}</p></div>
 </div>`
     } else if (data.type === 'mobileState') {
         console.log("State", data.state)
