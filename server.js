@@ -92,14 +92,14 @@ socket.on('connection', ws => {
             ////////
           } else {
             const errorToCatch = {
-              type : "crash"
-            } 
+              type: "crash"
+            }
 
             console.log("As crash")
 
             mobile.socket.send(JSON.stringify(errorToCatch))
-            
-          
+
+
           }
 
         }
@@ -124,13 +124,16 @@ socket.on('connection', ws => {
         if (screen.socket === ws) {
           let linkMobile = whitelists[screen.screenId - 1][0].socket
 
-          let disconnect = {
-            type: 'disconnecte',
-            message: `Envoi du screen ${screen.screenId} vers mobile ${whitelists[screen.screenId - 1][0]}`,
-            isEnd: true
-          }
+          if (whitelists[screen.screenId - 1][0]) {
 
-          linkMobile.send(JSON.stringify(disconnect))
+            let disconnect = {
+              type: 'disconnecte',
+              message: `Envoi du screen ${screen.screenId} vers mobile ${whitelists[screen.screenId - 1][0]}`,
+              isEnd: true
+            }
+
+            linkMobile.send(JSON.stringify(disconnect))
+          }
 
         }
       })
@@ -281,5 +284,3 @@ socket.on('connection', ws => {
 server.listen(port, () => {
   console.log(`server running at http://localhost:${port}/`);
 });
-
-
