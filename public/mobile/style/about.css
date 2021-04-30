@@ -59,6 +59,7 @@
 #image-wrapper-part-two {
   position: relative;
   margin-top: 1vh;
+  height: 25vh;
   left: 0;
   width: 100%;
 }
