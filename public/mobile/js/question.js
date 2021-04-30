@@ -325,20 +325,20 @@ function load_element_button() {
         waitingWrapper.style = "display : none"
     }, 300);
     questionAndRepWrapper.style = "display : flex;"
-    buttonP.onclick = () => {
+    buttonP.addEventListener("click",  () => {
         window.navigator.vibrate(200);
         console.log("click P")
         questionWrapper.style = `opacity : 0;`
         repPWrapper.style = `opacity : 1;`
         postMood(1, idResponseP)
-    }
-    buttonN.onclick = () => {
+    })
+    buttonN.addEventListener("click", () => {
         console.log("click N")
         window.navigator.vibrate(200);
         questionWrapper.style = `opacity : 0;`
         repNWrapper.style = `opacity : 1;`
         postMood(2, idResponseN)
-    }
+    })
 
 }
 //////////////////////////////////////////////////////////////load slide
