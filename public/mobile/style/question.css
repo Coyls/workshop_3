@@ -83,7 +83,7 @@ body {
   transition: top 1s ease;
 }
 
-#repU-wrapper, #repD-wrapper, #question-wrapper {
+#repP-wrapper, #repN-wrapper, #question-wrapper {
   display: flex;
   position: absolute;
   align-items: center;
@@ -93,7 +93,7 @@ body {
   width: 100vw;
 }
 
-#repU-wrapper p, #repD-wrapper p, #question-wrapper p, #waiting-wrapper p {
+#repP-wrapper p, #repN-wrapper p, #question-wrapper p, #waiting-wrapper p {
   z-index: 4;
   font-family: "Bebas Neue", cursive;
   font-size: 10vw;
@@ -101,7 +101,7 @@ body {
   text-align: center;
 }
 
-#repD-wrapper {
+#repN-wrapper {
   top: 200vh;
 }
 
