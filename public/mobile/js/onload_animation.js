@@ -4,7 +4,7 @@ const logo = document.getElementById("onload_animation")
         wrapper: logo,
         animType: 'svg',
         loop: false,
-        path: "../image/onload_animation.json"
+        path: "./image/onload_animation.json"
     });
 
     
