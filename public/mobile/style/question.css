@@ -29,7 +29,8 @@ body {
 #backGroundSlide-wrapper img {
   z-index: 2;
   position: absolute;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 #backGroundSlide {
@@ -86,9 +87,16 @@ body {
 #repU-wrapper, #repD-wrapper, #question-wrapper {
   display: flex;
   position: absolute;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100vh;
   width: 100vw;
 }
@@ -111,10 +119,19 @@ body {
 
 #previewRep1, #previewRep2 {
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   z-index: 5;
   width: 100vw;
   height: 100px;
@@ -156,9 +173,16 @@ h6 {
 
 #arrowDown-wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   opacity: 1;
   height: 15vw;
   top: -80px;
@@ -166,9 +190,16 @@ h6 {
 
 #arrowUp-wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   opacity: 1;
   height: 15vw;
   bottom: -80px;
