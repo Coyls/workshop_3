@@ -92,6 +92,7 @@ serveurSocket.onmessage = (event) => {
                         </div>
                         
                     </div>`
+            document.querySelector("#waiting-wrapper").style = `opacity:1;background: url('./image/wait_backgrounds/wait_${screenId}.png')no-repeat`
 
             console.log('end construct')
         } else {
@@ -109,6 +110,7 @@ serveurSocket.onmessage = (event) => {
     </div>
     <div id="repD-wrapper"><p>${data.question[1].reponses}</p><div id="buttons-wrapper"></div>
 </div>`
+            document.querySelector("#waiting-wrapper").style = `opacity:1;background: url('./image/wait_backgrounds/wait_${screenId}.png')no-repeat`
 
             console.log('end construct')
 

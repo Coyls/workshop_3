@@ -18,7 +18,6 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   transition: opacity 0.3s;
-  background: black;
 }
 
 #waiting-anim {

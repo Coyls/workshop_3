@@ -17,7 +17,7 @@ body {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background: black;
+  transition: opacity 0.3s;
 }
 
 #waiting-anim {
@@ -65,7 +65,7 @@ body {
   height: 100vh;
   width: 100vw;
 }
-#repU-wrapper p, #repD-wrapper p,#question-wrapper p{
+#repU-wrapper p, #repD-wrapper p,#question-wrapper p,#waiting-wrapper p{
   font-family: "Bebas Neue", cursive;
   font-size: 10vw;
   width: 70vw;
@@ -114,7 +114,7 @@ body {
 }
 h6{
   text-align: center;
-  font-size: 5vw;
+  font-size: 32px;
   font-weight: 500;
   font-family: "Montserrat", serif;
 }
