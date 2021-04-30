@@ -1,6 +1,7 @@
 let tabData
 let repGP = 0;
 let moyG
+let colorG
 let repPQuestions = []
 let repQuestions = []
 let repN = []
@@ -68,6 +69,11 @@ serveurSocket.onmessage = (event) => {
         }
 
         moyG = repGP / tabData.length * 100;
+        if (moyG < 50) {
+            colorG = "#F2B39B"
+        } else {
+            colorG = "#B4E9C9"
+        }
         for (let i = 0; i < 6; i++) {
             if (repN[i] <= repP[i]) {
                 radius2[i] = repN[i]
@@ -134,6 +140,7 @@ for (let i = 0; i <= nbWave; i++) {
         dirRan = 1
     }
 }
+
 window.addEventListener("load", () => {
     let canvasG = document.querySelector("#canvasG");
     let textMoyG = document.querySelector("#textMoyG");
@@ -164,7 +171,6 @@ window.addEventListener("load", () => {
             }
         }
 
-
         draw()
         requestAnimationFrame(loop)
     }
@@ -172,7 +178,7 @@ window.addEventListener("load", () => {
     function draw() {
         ctx.fillStyle = "#ffffff"
         ctx.fillRect(0, 0, 302, 302)
-        ctx.fillStyle = `#E5B6C8`
+        ctx.fillStyle = colorG
         ctx.beginPath();
         ctx.moveTo(0, 300 / 100 * (100 - moyGTo) + waveRanTo[0]);
         for (let i = 1; i <= nbWave; i++) {
