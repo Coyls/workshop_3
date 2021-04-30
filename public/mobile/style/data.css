@@ -9,7 +9,7 @@
 
 #building-mood {
   position: relative;
-  margin-top: 4vh;
+  margin-top: 2vh;
   left: 5vw;
   width: 90vw;
   display: flex;
@@ -46,14 +46,13 @@
 
 #data-title {
   position: relative;
-  margin-top: 12vh;
+  margin-top: 11vh;
   left: 0;
   height: 5vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
 }
 
 /*-----------------------------------------------Data-------------------------------------------------*/
@@ -74,7 +73,7 @@
 
 .data-canva-wrapper {
   position: relative;
-  margin-top: 40vh;
+  margin-top: 35vh;
   left: 5vw;
   width: 90vw;
 }
