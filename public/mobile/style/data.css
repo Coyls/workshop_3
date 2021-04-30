@@ -30,9 +30,9 @@
 #canvasG {
   position: absolute;
   margin-top: 6vh;
-  left: 15vw;
-  height: 22.5vh;
-  width: 60vw;
+  left: 17.5vw;
+  height: 20vh;
+  width: 55vw;
 }
 
 #textMoyG {
@@ -46,7 +46,7 @@
 
 #data-title {
   position: relative;
-  margin-top: 11vh;
+  margin-top: 9vh;
   left: 0;
   height: 5vh;
   width: 100%;
@@ -80,7 +80,7 @@
 
 .data-question-wrapper {
   position: relative;
-  margin-top: 1vh;
+  top: 0;
   left: 5vw;
   width: 90vw;
   display: flex;
