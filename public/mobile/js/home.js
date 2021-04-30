@@ -43,13 +43,13 @@ serveurSocket.onmessage = (event) => {
         moyG = repGP / tabData.length * 100;
 
         if (moyG < 40) {
-            papetWrapper.innerHTML = `<img src="/public/mobile/image/papet_bad.png" alt="papeteries" class="image">`
+            papetWrapper.innerHTML = `<img src="comment_ca_va/public/mobile/image/papet_bad.png" alt="papeteries" class="image">`
             papetMoodTextWrapper.innerHTML = `<p class="paragraph-bold">Le bâtiment est triste</p>`
         } else if ((moyG > 40) && (moyG < 60)) {
-            papetWrapper.innerHTML = `<img src="/public/mobile/image/papet_normal.png" alt="papeteries" class="image">`
+            papetWrapper.innerHTML = `<img src="comment_ca_va/public/mobile/image/papet_normal.png" alt="papeteries" class="image">`
             papetMoodTextWrapper.innerHTML = `<p class="paragraph-bold">Le bâtiment est paisible</p>`
         } else {
-            papetWrapper.innerHTML = `<img src="/public/mobile/image/papet_good.png" alt="papeteries" class="image">`
+            papetWrapper.innerHTML = `<img src="comment_ca_va/public/mobile/image/papet_good.png" alt="papeteries" class="image">`
             papetMoodTextWrapper.innerHTML = `<p class="paragraph-bold">Le bâtiment est heureux</p>`
 
         }
