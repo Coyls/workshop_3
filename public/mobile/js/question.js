@@ -384,7 +384,7 @@ function load_element_slide() {
     let swipedir, startY, distY;
 
     questionAndRepWrapper.addEventListener('touchstart', (e) => {
-        if (!wait) {
+        if (!mov && !wait) {
             swipedir = 'none'
             distY = 0
             startY = e.changedTouches[0].pageY
@@ -392,7 +392,7 @@ function load_element_slide() {
         }
     })
     questionAndRepWrapper.addEventListener("touchmove", (e) => {
-        if (!wait) {
+        if (!mov && !wait) {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(swipedir, distY)
@@ -402,11 +402,11 @@ function load_element_slide() {
 
     questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-        if (!wait) {
+        if (!mov && !wait) {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(0, 0);
-            if (Math.abs(distY) >= 300) {
+            if (Math.abs(distY) >= 100) {
                 swipe(swipedir)
             }
 
