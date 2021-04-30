@@ -405,7 +405,6 @@ function load_element_slide() {
 
     function swipe(dir) {
         mov = true
-        window.navigator.vibrate(200);
         previewRep2.style = `opacity : 0;`
         previewRep1.style = `opacity : 0;`
 
