@@ -324,18 +324,18 @@ function load_element_button() {
         waitingWrapper.style = "display : none"
     }, 300);
     questionAndRepWrapper.style = "display : flex;"
-    buttonP.addEventListener("click",()=>{
+    buttonP.onclick = () => {
         window.navigator.vibrate(200);
         questionWrapper.style = `opacity : 0;`
         repPWrapper.style = `opacity : 1;`
         postMood(1, idResponseP)
-    })
-    buttonN.addEventListener("click",()=>{
+    }
+    buttonN.onclick = () => {
         window.navigator.vibrate(200);
         questionWrapper.style = `opacity : 0;`
         repNWrapper.style = `opacity : 1;`
         postMood(2, idResponseN)
-    })
+    }
 
 }
 //////////////////////////////////////////////////////////////load slide
