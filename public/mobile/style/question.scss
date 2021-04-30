@@ -81,6 +81,7 @@ body {
   flex-direction: column;
   -webkit-transition: top 1s ease;
   transition: top 1s ease;
+  cursor: pointer;
 }
 
 #repP-wrapper, #repN-wrapper, #question-wrapper {
@@ -92,9 +93,11 @@ body {
   height: 100vh;
   width: 100vw;
 }
-#question-wrapper{
+
+#question-wrapper {
   z-index: 100;
 }
+
 #repP-wrapper p, #repN-wrapper p, #question-wrapper p, #waiting-wrapper p {
   z-index: 4;
   font-family: "Bebas Neue", cursive;
@@ -157,7 +160,9 @@ h6 {
   height: 15vw;
   top: -80px;
 }
-
+#button-wrapper{
+  height: 15vh;
+}
 #arrowUp-wrapper {
   position: relative;
   display: flex;
@@ -167,17 +172,32 @@ h6 {
   height: 15vw;
   bottom: -80px;
 }
-#buttonP,#buttonN{
+
+#buttonP, #buttonN {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 60vw;
-
   border-radius: 3.5vh;
   border: black solid 1px;
 }
-#buttonP p, #buttonN p{
+
+#buttonP p, #buttonN p {
   font-size: 3vh;
-  width: 40vw;
+  width: 50vw;
 }
+#backGround-repP-wrapper, #backGround-repN-wrapper, #backGround-question-wrapper, #data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
+  position: fixed;
+  width :100vw;
+  height:100vh;
+}
+#backGround-repP-wrapper, #backGround-repN-wrapper, #backGround-question-wrapper{
+  z-index: 8;
+}
+#data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
+  z-index: 5;
+}
+
+/*# sourceMappingURL=question.css.map */
+
 /*# sourceMappingURL=question.css.map */
