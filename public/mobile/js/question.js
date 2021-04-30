@@ -144,6 +144,18 @@ serveurSocket.onmessage = (event) => {
 
             console.log('end construct')
         } else {
+
+            if (screenId === 1){
+                elementPage = `<img src="./image/reponse_backgrounds/positive_1/element_1.png" style="left : 2.6vw; top:7.4vh; height:16.7vh; width: 36.2vw">
+                                <img src="./image/reponse_backgrounds/positive_1/element_2.png" style="right : 0; top:15vh; width: 62.6vw">
+                                <img src="./image/reponse_backgrounds/positive_1/element_3.png" style="left : 0; top:61vh;width: 81vw">
+                                <img src="./image/question_backgrounds/question_1/element_1.png" style="left : 2.4vw; top:calc(100vh + 7.7vh); height:26vh; width: 74.6vw">
+                                <img src="./image/question_backgrounds/question_1/element_2.png" style="right : 0; top:calc(100vh + 52vh); height:32.4vh; width: 43.5vw">
+                                <img src="./image/reponse_backgrounds/negative_1/element_1.png" style="left : 0; bottom:-10vh;  width: 100vw">
+                                <img src="./image/reponse_backgrounds/negative_1/element_2.png" style="right : 2.6vw; top:calc(200vh + 8vh); height:40.8vh; width: 47.2vw">`
+
+            }
+
             document.querySelector("body").innerHTML += `
 <div id="questionAndRepButton-wrapper">
     <div id="backGroundButton-wrapper">
