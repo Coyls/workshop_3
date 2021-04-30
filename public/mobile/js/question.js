@@ -326,11 +326,13 @@ function load_element_button() {
     questionAndRepWrapper.style = "display : flex;"
     buttonP.onclick = () => {
         window.navigator.vibrate(200);
+        console.log("click P")
         questionWrapper.style = `opacity : 0;`
         repPWrapper.style = `opacity : 1;`
         postMood(1, idResponseP)
     }
     buttonN.onclick = () => {
+        console.log("click N")
         window.navigator.vibrate(200);
         questionWrapper.style = `opacity : 0;`
         repNWrapper.style = `opacity : 1;`
