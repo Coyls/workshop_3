@@ -4,7 +4,7 @@ body {
 }
 
 #waiting-wrapper {
-  z-index: 20;
+  z-index: 100;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -197,7 +197,3 @@ h6 {
 #data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
   z-index: 5;
 }
-
-/*# sourceMappingURL=question.css.map */
-
-/*# sourceMappingURL=question.css.map */

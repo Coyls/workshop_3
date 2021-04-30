@@ -7,10 +7,6 @@ let elementPage
 let elementPageQ
 let elementPageN
 let elementPageP
-
-let touchStart = "ontouchstart" in window ? 'touchstart': "click";
-let touchMove = "ontouchmove" in window ? 'touchmove': "click";
-let touchEnd = "ontouchend" in window ? 'touchend': "click";
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {
@@ -200,20 +196,35 @@ serveurSocket.onmessage = (event) => {
 
             document.querySelector("body").innerHTML += `
 <div id="questionAndRepButton-wrapper">
-        <div id="repP-wrapper">
+    <div id="repP-wrapper">
+        <div id="data-repP-wrapper">
             <p>${data.question[0].reponses}</p>
             <div id="buttons-wrapper"></div>
+        </div>
+        <div id="backGround-repP-wrapper">
+            ${elementPageP}
+        </div>
     </div>
     <div id="question-wrapper">
+        <div id="data-question-wrapper">
             <div id="question"><p>${data.question[0].questions}</p></div>
             <div id="buttons-wrapper">
                 <div id="buttonP"><p>${data.question[0].reponses}</p></div>
                 <div id="buttonN"><p>${data.question[1].reponses}</p></div>
             </div>
+        </div>
+        <div id="backGround-question-wrapper">
+            ${elementPageQ}
+        </div>
     </div>
     <div id="repN-wrapper">
+        <div id="data-repP-wrapper">
             <p>${data.question[1].reponses}</p>
             <div id="buttons-wrapper"></div>
+        </div>
+        <div id="backGround-repN-wrapper">
+            ${elementPageN}
+        </div>
     </div>
 </div>`
             document.querySelector("#waiting-wrapper").style = `opacity:1;background: url('./image/wait_backgrounds/wait_${screenId}.png')no-repeat`
@@ -329,20 +340,18 @@ function load_element_button() {
         waitingWrapper.style = "display : none"
     }, 300);
     questionAndRepWrapper.style = "display : flex;"
-    buttonP.addEventListener("click",  () => {
+    buttonP.onclick = () => {
         console.log("click P")
         questionWrapper.style = `opacity : 0;`
         repPWrapper.style = `opacity : 1;`
         postMood(1, idResponseP)
-    })
-    buttonN.addEventListener("click", () => {
+    }
+    buttonN.onclick = () => {
         console.log("click N")
         questionWrapper.style = `opacity : 0;`
         repNWrapper.style = `opacity : 1;`
         postMood(2, idResponseN)
-    })
-
-
+    }
 
 }
 //////////////////////////////////////////////////////////////load slide
@@ -372,16 +381,16 @@ function load_element_slide() {
     questionAndRepWrapper.style = "display : flex;"
     let swipedir, startY, distY;
 
-    questionAndRepWrapper.addEventListener(touchStart, (e) => {
-        if (!mov && !wait) {
+    questionAndRepWrapper.addEventListener('touchstart', (e) => {
+        if (!wait) {
             swipedir = 'none'
             distY = 0
             startY = e.changedTouches[0].pageY
             e.preventDefault()
         }
     })
-    questionAndRepWrapper.addEventListener(touchMove, (e) => {
-        if (!mov && !wait) {
+    questionAndRepWrapper.addEventListener("touchmove", (e) => {
+        if (!wait) {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(swipedir, distY)
@@ -389,13 +398,13 @@ function load_element_slide() {
         }
     })
 
-    questionAndRepWrapper.addEventListener(touchEnd, (e) => {
+    questionAndRepWrapper.addEventListener('touchend', (e) => {
 
-        if (!mov && !wait) {
+        if (!wait) {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(0, 0);
-            if (Math.abs(distY) >= 50) {
+            if (Math.abs(distY) >= 300) {
                 swipe(swipedir)
             }
 
