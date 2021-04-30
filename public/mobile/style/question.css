@@ -82,6 +82,7 @@ body {
   flex-direction: column;
   -webkit-transition: top 1s ease;
   transition: top 1s ease;
+  cursor: pointer;
 }
 
 #repP-wrapper, #repN-wrapper, #question-wrapper {
@@ -182,7 +183,9 @@ h6 {
   height: 15vw;
   top: -80px;
 }
-
+#button-wrapper{
+  height: 15vh;
+}
 #arrowUp-wrapper {
   position: relative;
   display: -webkit-box;
@@ -204,13 +207,17 @@ h6 {
   align-items: center;
   justify-content: center;
   width: 60vw;
-
   border-radius: 3.5vh;
   border: black solid 1px;
 }
 #buttonP p, #buttonN p{
   font-size: 3vh;
-  width: 40vw;
+  width: 50vw;
+}
+#backGround-repP-wrapper, #backGround-repN-wrapper, #backGround-question-wrapper, #data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
+  position: fixed;
+  width :100vw;
+  height:100vh;
 }
 /*# sourceMappingURL=question.css.map */
 
