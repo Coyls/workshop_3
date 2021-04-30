@@ -1,27 +1,41 @@
+.main-about {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 100vw;
+  background-size: cover;
+  background-image: url("workshop/workshop_3/public/mobile/image/background_about.png");
+}
+
 #paragraph-wrapper {
   position: relative;
-  top: 5vh;
+  margin-top: 4vh;
   left: 5vw;
-  height: 10vh;
   width: 90vw;
 }
 
 #team-wrapper {
   position: relative;
-  top: 5vh;
+  margin-top: 4vh;
   left: 5vw;
-  height: 52vh;
   width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #team-wrapper-part-one {
   position: relative;
   top: 0;
   left: 0;
-  height: 40vh;
   width: 100%;
 }
 
@@ -29,70 +43,76 @@
   position: relative;
   top: 0;
   left: 0;
-  height: 5vh;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #image-wrapper-part-one {
   position: relative;
-  top: 1vh;
+  margin-top: 1vh;
   left: 0;
-  height: 32vh;
   width: 100%;
 }
 
 #team-wrapper-part-two {
   position: relative;
-  top: 4vh;
+  margin-top: 4vh;
   left: 0;
-  height: 30vh;
   width: 100%;
 }
 
 #image-wrapper-part-two {
   position: relative;
-  top: 1vh;
-  left: 0;
+  margin-top: 1vh;
   height: 25vh;
+  left: 0;
   width: 100%;
-  background-color: #00ffc4;
 }
 
 .about-background {
   position: relative;
   height: 155%;
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #instagram-wrapper {
   position: relative;
-  top: 27.5vh;
+  margin-top: 4vh;
   left: 5vw;
-  height: 27.5vh;
   width: 90vw;
 }
 
 #instagram-wrapper-part-two {
   position: relative;
-  top: 1vh;
+  margin-top: 1vh;
   left: 0;
   height: 30vh;
   width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .imageWrapper {
   position: relative;
   height: 10vh;
-  width: 22vw;
-  background-color: blue;
+  width: 22.25vw;
   margin: 1.75vh;
 }
-
 /*# sourceMappingURL=about.css.map */

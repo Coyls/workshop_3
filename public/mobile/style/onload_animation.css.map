@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EACd,OAAO,EAAE,IAAI;EACb,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EAEZ,OAAO,EAAE,KAAK;EACd,OAAO,EAAE,GAAG;CAQf;;AAED,AAAA,WAAW,CAAC;EACR,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "onload_animation.scss"
+    ],
+    "names": [],
+    "file": "onload_animation.css"
+}
