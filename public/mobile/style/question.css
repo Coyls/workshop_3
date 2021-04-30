@@ -191,6 +191,12 @@ h6 {
   width :100vw;
   height:100vh;
 }
+#backGround-repP-wrapper, #backGround-repN-wrapper, #backGround-question-wrapper{
+  z-index: 8;
+}
+#data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
+  z-index: 5;
+}
 
 /*# sourceMappingURL=question.css.map */
 
