@@ -324,7 +324,7 @@ window.addEventListener("load", () => {
             ctxQ[j].stroke()
             ctxQ[j].closePath();
 
-            ctxQ[j].font = "17px Poppins"
+            ctxQ[j].font = "17px  Montserrat"
             ctxQ[j].textAlign = "end"
             ctxQ[j].fillText(`${Math.round(radius2[j])}%`, ((150 + 55 / 50 * radius2[j] + waveRanTo2[j][4]) + (150 - 55 / 50 * radius2[j] - waveRanTo2[j][0])) / 2 -83, ((90 + 55 / 50 * radius2[j] + waveRanTo2[j][6]) + (90 - 55 / 50 * radius2[j] - waveRanTo2[j][2])) / 2 - 34)
             ctxQ[j].beginPath();
@@ -336,7 +336,7 @@ window.addEventListener("load", () => {
 
             ctxQ[j].stroke()
             ctxQ[j].closePath();
-            ctxQ[j].font = "17px Poppins"
+            ctxQ[j].font = "17px Montserrat"
             ctxQ[j].textAlign = "start"
             ctxQ[j].fillText(`${Math.round(radius1[j])}%`, ((225 + 55 / 50 * radius1[j] + waveRanTo1[j][4]) + (225 - 55 / 50 * radius1[j] - waveRanTo1[j][0])) / 2 + 55 / 50 * radius1[j] + waveRanTo1[j][4] + 13, ((165 + 55 / 50 * radius1[j] + waveRanTo1[j][6]) + (165 - 55 / 50 * radius1[j] - waveRanTo1[j][2])) / 2 + 46)
 

@@ -197,3 +197,7 @@ h6 {
 #data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
   z-index: 5;
 }
+#backGround-repP-wrapper img, #backGround-repN-wrapper img, #backGround-question-wrapper img{
+  position: absolute;
+
+}
