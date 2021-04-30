@@ -5,7 +5,7 @@
   height: auto;
   width: 100vw;
   background-size: cover;
-  background-image: url("workshop/workshop_3/public/mobile/image/background_about.png");
+  background-image: url(/workshop/workshop_3/public/mobile/image/background_about.png);
 }
 
 #paragraph-wrapper {
@@ -59,7 +59,7 @@
 #image-wrapper-part-two {
   position: relative;
   margin-top: 1vh;
-  height: 25vh;
+  height: 23vh;
   left: 0;
   width: 100%;
 }

@@ -94,9 +94,8 @@
 /*-----------------------------------------------menu-------------------------------------------------*/
 #menu-link {
   position: absolute;
-  top: 30vh;
+  top: 25vh;
   left: 20vw;
-  height: 40vh;
   width: 60vw;
   display: flex;
   flex-direction: column;
@@ -119,6 +118,7 @@ a:focus {
 }
 
 .nav-link {
+  margin-bottom: 6vh;
   position: relative;
   font-family: "Montserrat", serif;
   font-weight: 600;
