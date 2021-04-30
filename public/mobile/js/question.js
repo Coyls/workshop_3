@@ -406,7 +406,7 @@ function load_element_slide() {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(0, 0);
-            if (Math.abs(distY) >= 100) {
+            if (Math.abs(distY) >= 50) {
                 swipe(swipedir)
             }
 
