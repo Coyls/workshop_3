@@ -201,8 +201,8 @@ serveurSocket.onmessage = (event) => {
             <p>${data.question[0].reponses}</p>
             <div id="buttons-wrapper"></div>
         </div>
-        <div id="backGround-repP-wrapper">
-            ${elementPageP}
+        <div id="backGround-repP-wrapper" style="background-image: (./image/question_backgrounds/background_button/image${screenId}P">
+           
         </div>
     </div>
     <div id="question-wrapper">
@@ -213,8 +213,7 @@ serveurSocket.onmessage = (event) => {
                 <div id="buttonN"><p>${data.question[1].reponses}</p></div>
             </div>
         </div>
-        <div id="backGround-question-wrapper">
-            ${elementPageQ}
+        <div id="backGround-question-wrapper" style="background-image: (./image/question_backgrounds/background_button/image${screenId}Q">
         </div>
     </div>
     <div id="repN-wrapper">
@@ -222,8 +221,8 @@ serveurSocket.onmessage = (event) => {
             <p>${data.question[1].reponses}</p>
             <div id="buttons-wrapper"></div>
         </div>
-        <div id="backGround-repN-wrapper">
-            ${elementPageN}
+        <div id="backGround-repN-wrapper" style="background-image: (./image/question_backgrounds/background_button/image${screenId}N">>
+   
         </div>
     </div>
 </div>`
