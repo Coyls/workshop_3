@@ -125,7 +125,7 @@ serveurSocket.onmessage = (event) => {
                         
                     <div id="questionAndRepSlide-wrapper">
                         
-                        <div id="repU-wrapper">
+                        <div id="repP-wrapper">
                             <p>${data.question[0].reponses}</p>
                         </div>
                         <div id="question-wrapper">
@@ -133,7 +133,7 @@ serveurSocket.onmessage = (event) => {
                                 <p>${data.question[0].questions}</p>
                             </div>
                         </div>
-                        <div id="repD-wrapper">
+                        <div id="repN-wrapper">
                             <p>${data.question[1].reponses}</p>
                         </div>
                         <div id="backGroundSlide-wrapper">
@@ -144,7 +144,6 @@ serveurSocket.onmessage = (event) => {
 
             console.log('end construct')
         } else {
-
             if (screenId === 1){
                 elementPage = `<img src="./image/reponse_backgrounds/positive_1/element_1.png" style="left : 5.2vw; top:36.9vh; height:62.2vh; width: auto">
                                 <img src="./image/question_backgrounds/question_1/element_1.png" style="left : 76.2vw; top:45.8vh; height:54vh; width: auto">
@@ -194,9 +193,12 @@ serveurSocket.onmessage = (event) => {
 
             document.querySelector("body").innerHTML += `
 <div id="questionAndRepButton-wrapper">
-    <div id="backGroundButton-wrapper">
+    <div id="repP-wrapper">
+        <div id="">
+            <p>${data.question[0].reponses}</p>
+            <div id="buttons-wrapper"></div>
+        </div>
     </div>
-    <div id="repU-wrapper"><p>${data.question[0].reponses}</p><div id="buttons-wrapper"></div>
     <div id="question-wrapper">
         <div id="question"><p>${data.question[0].questions}</p></div>
         <div id="buttons-wrapper">
@@ -204,7 +206,10 @@ serveurSocket.onmessage = (event) => {
             <div id="buttonN"><p>${data.question[1].reponses}</p></div>
         </div>
     </div>
-    <div id="repD-wrapper"><p>${data.question[1].reponses}</p><div id="buttons-wrapper"></div>
+    <div id="repN-wrapper">
+        <p>${data.question[1].reponses}</p>
+        <div id="buttons-wrapper"></div>
+    </div>
 </div>`
             document.querySelector("#waiting-wrapper").style = `opacity:1;background: url('./image/wait_backgrounds/wait_${screenId}.png')no-repeat`
 
@@ -269,6 +274,12 @@ const postMood = (mood, response) => {
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 const stoprefresh = (e) =>{
     e.preventDefault();
     e.returnValue = 'Merci de ne pas actualiser ou quitter la page avant la redirection';
@@ -289,6 +300,34 @@ const stoprefresh = (e) =>{
 let mov = false
 
 function load_element_button() {
+    console.log("recup Element")
+    const waitingWrapper = document.querySelector("#waiting-wrapper")
+    const questionAndRepWrapper = document.querySelector("#questionAndRepSlide-wrapper")
+    const buttonP = document.querySelector("#buttonP")
+    const buttonN = document.querySelector("#buttonN")
+    const questionWrapper = document.querySelector("#question-wrapper")
+    const repPWrapper = document.querySelector("#repP-wrapper")
+    const repNWrapper = document.querySelector("#repN-wrapper")
+    repNWrapper.style = `opacity : 0;`
+    repPWrapper.style = `opacity : 0;`
+    console.log("inside timeout");
+    waitingWrapper.style = "opacity : 0"
+    setTimeout(function(){
+        waitingWrapper.style = "display : none"
+    }, 300);
+    questionAndRepWrapper.style = "display : flex;"
+    buttonP.addEventListener("click",()=>{
+        window.navigator.vibrate(200);
+        questionWrapper.style = `opacity : 0;`
+        repPWrapper.style = `opacity : 1;`
+        postMood(1, idResponseP)
+    })
+    buttonN.addEventListener("click",()=>{
+        window.navigator.vibrate(200);
+        questionWrapper.style = `opacity : 0;`
+        repNWrapper.style = `opacity : 1;`
+        postMood(2, idResponseN)
+    })
 
 }
 
