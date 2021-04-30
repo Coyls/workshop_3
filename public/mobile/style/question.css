@@ -186,17 +186,7 @@ h6 {
   font-size: 3vh;
   width: 50vw;
 }
-#backGround-repP-wrapper, #backGround-repN-wrapper, #backGround-question-wrapper, #data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
-  position: fixed;
-  width :100vw;
-  height:100vh;
-}
-#backGround-repP-wrapper, #backGround-repN-wrapper, #backGround-question-wrapper{
-  z-index: 8;
-}
-#data-question-wrapper, #data-repP-wrapper, #data-repN-wrapper{
-  z-index: 5;
-}
+
 
 /*# sourceMappingURL=question.css.map */
 

@@ -196,35 +196,20 @@ serveurSocket.onmessage = (event) => {
 
             document.querySelector("body").innerHTML += `
 <div id="questionAndRepButton-wrapper">
-    <div id="repP-wrapper">
         <div id="data-repP-wrapper">
             <p>${data.question[0].reponses}</p>
             <div id="buttons-wrapper"></div>
-        </div>
-        <div id="backGround-repP-wrapper">
-            ${elementPageP}
-        </div>
     </div>
     <div id="question-wrapper">
-        <div id="data-question-wrapper">
             <div id="question"><p>${data.question[0].questions}</p></div>
             <div id="buttons-wrapper">
                 <div id="buttonP"><p>${data.question[0].reponses}</p></div>
                 <div id="buttonN"><p>${data.question[1].reponses}</p></div>
             </div>
-        </div>
-        <div id="backGround-question-wrapper">
-            ${elementPageQ}
-        </div>
     </div>
     <div id="repN-wrapper">
-        <div id="data-repP-wrapper">
             <p>${data.question[1].reponses}</p>
             <div id="buttons-wrapper"></div>
-        </div>
-        <div id="backGround-repN-wrapper">
-            ${elementPageN}
-        </div>
     </div>
 </div>`
             document.querySelector("#waiting-wrapper").style = `opacity:1;background: url('./image/wait_backgrounds/wait_${screenId}.png')no-repeat`
