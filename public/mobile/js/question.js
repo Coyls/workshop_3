@@ -392,7 +392,6 @@ function load_element_slide() {
     questionAndRepWrapper.addEventListener(touchEnd, (e) => {
 
         if (!mov && !wait) {
-            alert("start envent listener touch end")
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
             appearRep(0, 0);
@@ -405,7 +404,6 @@ function load_element_slide() {
     })
 
     function swipe(dir) {
-        alert("start swipe")
         mov = true
         previewRep2.style = `opacity : 0;`
         previewRep1.style = `opacity : 0;`
@@ -418,7 +416,6 @@ function load_element_slide() {
             questionAndRepWrapper.style = "display : flex;top:0"
             postMood(1, idResponseP)
         }
-        alert("end swipe")
     }
 
     function appearRep(dir, distY) {
