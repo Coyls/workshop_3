@@ -92,14 +92,14 @@ socket.on('connection', ws => {
             ////////
           } else {
             const errorToCatch = {
-              type : "crash"
+              type: "crash"
             }
 
             console.log("As crash")
 
             mobile.socket.send(JSON.stringify(errorToCatch))
-            
-          
+
+
           }
 
         }
@@ -122,23 +122,21 @@ socket.on('connection', ws => {
 
       screens.forEach(screen => {
         if (screen.socket === ws) {
-          let linkMobile = whitelists[screen.screenId - 1][0].socket
+          let linkMobile = whitelists[screen.screenId - 1][0]
 
-          let disconnect = {
-            type: 'disconnecte',
-            message: `Envoi du screen ${screen.screenId} vers mobile ${whitelists[screen.screenId - 1][0]}`,
-            isEnd: true
+          if (linkMobile) {
+
+            let disconnect = {
+              type: 'disconnecte',
+              message: `Envoi du screen ${screen.screenId} vers mobile ${linkMobile}`,
+              isEnd: true
+            }
+
+            linkMobile.socket.send(JSON.stringify(disconnect))
           }
-
-          linkMobile.send(JSON.stringify(disconnect))
-
         }
       })
-
-
-
     }
-
   })
 
   // Functions Init -------------------------
@@ -148,6 +146,7 @@ socket.on('connection', ws => {
       socket: ws
     }
     screens.push(screen)
+    console.log("L'écran " + data.screenId + " c'est connecté")
 
     const index = questions.findIndex(question => question.screen === data.screenId)
     let screenData = {
@@ -162,6 +161,22 @@ socket.on('connection', ws => {
       mobileId: data.screenId,
       socket: ws
     }
+
+    const screenIsConnect = screens.findIndex(screen => screen.screenId === data.screenId)
+    console.log("screenIsConnect", screenIsConnect)
+
+    if (screenIsConnect === -1) {
+      const errorToCatch = {
+        type: "crash"
+      }
+
+      console.log("L'ecran " + data.screenId + " n'est pas connecter, l'utilisateur à été deconnecté")
+
+      mobile.socket.send(JSON.stringify(errorToCatch))
+
+    }
+
+    console.log("Un mobile c'est connecté à l'ecran " + data.screenId)
 
     let mobileWl = {
       mobileId: data.screenId,
@@ -202,17 +217,13 @@ socket.on('connection', ws => {
 
     mobileWl.socket.send(JSON.stringify(mobileState))
 
-    /* mobile.socket.on('message', msg => {
-      const dataMobile = JSON.parse(msg)
-    }) */
   }
 
   // Disconnect Screen and mobile -----------------
   ws.on('close', () => {
-    console.log("Someone disconect")
     screens.forEach((screen, id) => {
       if (screen.socket === ws) {
-        console.log(screen.screenId + " screen disconecte")
+        console.log("Screen n°" + screen.screenId + " disconnecte")
         screens.splice(id, 1)
       }
     })
@@ -239,47 +250,20 @@ socket.on('connection', ws => {
             wlElement.socket.send(JSON.stringify(mobileState))
           })
 
-          console.log(whitelists[mobile.mobileId - 1])
+          console.log("La whitelist " + mobile.mobileId + " contient " + whitelists[mobile.mobileId - 1].length + " personnes")
         }
       })
       if (mobile.socket === ws) {
-        console.log(mobile.mobileId + " mobile disconecte")
+        console.log("Un mobile connecté a l'ecran " + mobile.mobileId + " c'est deconnecter")
         mobiles.splice(id, 1)
       }
     })
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
 
 
-
-// Requete type
-/* con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connecté à la base de données MySQL!");
-  con.query("SELECT * FROM mood", function (err, result) {
-    if (err) throw err;
-    console.log(result)
-  });
-}); */
-// --------------------------------------------------------
 
 
 server.listen(port, () => {
   console.log(`server running at http://localhost:${port}/`);
 });
-
-
