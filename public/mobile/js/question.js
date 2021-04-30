@@ -3,7 +3,7 @@ let animationLoad = false
 let idResponseP
 let idResponseN
 let format
-
+let elementPage
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {
@@ -57,6 +57,62 @@ serveurSocket.onmessage = (event) => {
         format = data.question[0].format
 
         if (format === "slide") {
+            if(screenId===2) {
+                elementPage = `<img src="../image/reponse_backgrounds/positive_2/element_1.png" style="left : 2.6vw; top:7.4vh; height:16.7vh; width: 36.2vw">
+<img src="../image/reponse_backgrounds/positive_2/element_2.png" style="right : 0; top:15vh; height:27.5vh; width: 62.6vw">
+<img src="../image/reponse_backgrounds/positive_2/element_3.png" style="left : 0; top:61vh; height:25.2vh; width: 81vw">
+<img src="../image/question_backgrounds/question_2/element_1.png" style="left : 2.4vw; top:calc(100vh + 7.7vh); height:26vh; width: 74.6vw">
+<img src="../image/question_backgrounds/question_2/element_2.png" style="right : 0; top:calc(100vh + 52vh); height:32.4vh; width: 43.5vw">
+<img src="../image/reponse_backgrounds/negative_2/element_1.png" style="left : 0; bottom:0; height:33vh; width: 100vw">
+<img src="../image/reponse_backgrounds/negative_2/element_2.png" style="right : 2.6vw; top:calc(200vh + 15vh); height:12.8vh; width: 47.2vw">`
+
+            }else if(screenId===5) {
+
+                elementPage = `<img src="../image/reponse_backgrounds/positive_2/element_1.png" style="left : 2.6vw; top:7.4vh; height:16.7vh; width: 36.2vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_2/element_2.png" style="right : 0; top:15vh; height:27.5vh; width: 62.6vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_2/element_3.png" style="left : 0; top:61vh; height:25.2vh; width: 81vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_2/element_1.png" style="left : 2.4vw; top:calc(100vh + 7.7vh); height:26vh; width: 74.6vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_2/element_2.png" style="right : 0; top:calc(100vh + 52vh); height:32.4vh; width: 43.5vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_2/element_1.png" style="left : 0; bottom:0; height:33vh; width: 100vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_2/element_2.png" style="right : 2.6vw; top:calc(200vh + 15vh); height:12.8vh; width: 47.2vw">`
+
+
+                elementPage = `<img src="../image/reponse_backgrounds/positive_5/element_1.png" style="right : 3.1vw; top:16.25vh; height:17.5vh; width: 38vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_5/element_2.png" style="left : 24vw; top:21.2vh; height:4.2vh; width:9.2vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_5/element_3.png" style="left : 56vw; top:69vh; height:10.7vh; width: 27.5vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_5/element_4.png" style="left : 11.7vw; top:59.6vh; height:6.7vh; width: 14.5vw">`
+
+                elementPage += `<img src="../image/question_backgrounds/question_5/element_2.png" style="left : 5.5vw; top:calc(100vh + 7vh); height:21.3vh; width: 47.7vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_5/element_4.png" style="right : 15.1vw; top:calc(100vh + 23.6vh); height:6vh; width: 8.5vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_5/element_3.png" style="right : 10.4vw; top:calc(100vh + 63.4vh); height:7vh; width: 21vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_5/element_1.png" style="left : 6.4vw; top:calc(100vh + 81vh); height:9.2vh; width: 24.5vw">`
+
+                elementPage += `<img src="../image/reponse_backgrounds/negative_5/element_3.png" style="right : 13vw; top:calc(200vh + 10.8vh); height:5vh; width: 24.5vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_5/element_4.png" style="left : 17.6vw; top:calc(200vh + 24.4vh); height:8.6vh; width: 30.6vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_5/element_1.png" style="right : 10vw; top:calc(200vh + 56vh); height:26.5vh; width: 37vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_5/element_2.png" style="left : 6.4vw; top:calc(200vh +79vh); height:16.7vh; width:36.2vw">`
+
+                elementPage = `<img src="../image/reponse_backgrounds/positive_6/element_4.png" style="left : 26.1vw; top:5.1vh; height:25.5vh; width: 53.3vw">`
+                elementPage = `<img src="../image/reponse_backgrounds/positive_6/element_5.png" style="right : 8vw; top:26.8vh; height:15.6vh; width: 34.6vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_6/element_2.png" style="left : 0; top:56.6vh; height:23.2vh; width:93vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_6/element_3.png" style="right : 0; top:40.7vh; height:31.8vh; width: 94.6vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/positive_6/element_1.png" style="left : 0; bottom: 0; height:30vh; width: 100vw">`
+
+                elementPage += `<img src="../image/question_backgrounds/question_6/element_1.png" style="left : 11vw; top:calc(100vh + 6.8vh); height:32.5vh; width: 74.6vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_6/element_3.png" style="left : 40.8vw; top:calc(100vh -2.6vh); height:24vh; width: 72.5vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_6/element_4.png" style="left : -44.2vw; top:calc(100vh + 53.4vh); height:32.2vh; width: 97.6vw">`
+                elementPage += `<img src="../image/question_backgrounds/question_6/element_2.png" style="left : 39.7vw; top:calc(100vh + 53.3vh); height:32.5vh; width: 34.5vw">`
+
+                elementPage += `<img src="../image/reponse_backgrounds/negative_6/element_5.png" style="left : 12.5vw; top:calc(200vh + 17.6vh); height:4vh; width: 8.8vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_6/element_4.png" style="right : 6.4vw; top:calc(200vh + 34.5vh); height:7vh; width: 15.2vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_6/element_3.png" style="left : 0; top:calc(200vh + 22.1vh); height:74.6vh; width: 100vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_6/element_2.png" style="left : 0; bottom: 0; height:74.6vh; width:100vw">`
+                elementPage += `<img src="../image/reponse_backgrounds/negative_6/element_1.png" style="right : 0; bottom: 0; height:74.6vh; width: 100vw">`
+
+
+
+
+            }
             document.querySelector("body").innerHTML += `
                     <div id="previewRep1">
                         <p>${data.question[0].reponses}</p>
@@ -78,6 +134,7 @@ serveurSocket.onmessage = (event) => {
                         
                     <div id="questionAndRepSlide-wrapper">
                         <div id="backGroundSlide-wrapper">
+                        
                         </div>
                         <div id="repU-wrapper">
                             <p>${data.question[0].reponses}</p>
