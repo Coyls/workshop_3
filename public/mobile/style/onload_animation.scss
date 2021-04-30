@@ -1,9 +1,11 @@
 .onload_animation {
+    display: flex;
     position: absolute;
     height: 100vh;
     width: 100vw;
     background-color: #fff;
     display: block;
+    z-index: 999;
 }
 
 .noneOnload {
