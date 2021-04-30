@@ -17,7 +17,10 @@ const waitOnload = (delay) => {
 
 waitOnload(3333).then(() => {
     logo.classList.add("noneOnload");
+    console.log(logo)
 })
+
+
 
 
 
