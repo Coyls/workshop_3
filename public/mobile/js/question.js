@@ -330,7 +330,6 @@ function load_element_button() {
     }, 300);
     questionAndRepWrapper.style = "display : flex;"
     buttonP.addEventListener("click",  () => {
-        window.navigator.vibrate(200);
         console.log("click P")
         questionWrapper.style = `opacity : 0;`
         repPWrapper.style = `opacity : 1;`
@@ -338,7 +337,6 @@ function load_element_button() {
     })
     buttonN.addEventListener("click", () => {
         console.log("click N")
-        window.navigator.vibrate(200);
         questionWrapper.style = `opacity : 0;`
         repNWrapper.style = `opacity : 1;`
         postMood(2, idResponseN)
