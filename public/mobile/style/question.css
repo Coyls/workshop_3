@@ -29,7 +29,6 @@ body {
 #backGroundSlide-wrapper img {
   z-index: 2;
   position: absolute;
-  -o-object-fit: contain;
   object-fit: contain;
 }
 
@@ -88,23 +87,17 @@ body {
 #repP-wrapper, #repN-wrapper, #question-wrapper {
   display: flex;
   position: absolute;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  transition: opacity 0.3s;
 }
-#question-wrapper{
+
+#question-wrapper {
   z-index: 100;
 }
+
 #repP-wrapper p, #repN-wrapper p, #question-wrapper p, #waiting-wrapper p {
   z-index: 4;
   font-family: "Bebas Neue", cursive;
@@ -115,18 +108,9 @@ body {
 
 #previewRep1, #previewRep2 {
   position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   z-index: 5;
   width: 100vw;
@@ -169,15 +153,8 @@ h6 {
 
 #arrowDown-wrapper {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   opacity: 1;
   height: 15vw;
@@ -188,21 +165,15 @@ h6 {
 }
 #arrowUp-wrapper {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   opacity: 1;
   height: 15vw;
   bottom: -80px;
 }
-#buttonP,#buttonN{
+
+#buttonP, #buttonN {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,7 +181,8 @@ h6 {
   border-radius: 3.5vh;
   border: black solid 1px;
 }
-#buttonP p, #buttonN p{
+
+#buttonP p, #buttonN p {
   font-size: 3vh;
   width: 50vw;
 }
@@ -219,6 +191,7 @@ h6 {
   width :100vw;
   height:100vh;
 }
+
 /*# sourceMappingURL=question.css.map */
 
 /*# sourceMappingURL=question.css.map */
