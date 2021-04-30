@@ -196,7 +196,7 @@ serveurSocket.onmessage = (event) => {
 
             document.querySelector("body").innerHTML += `
 <div id="questionAndRepButton-wrapper">
-        <div id="data-repP-wrapper">
+        <div id="repP-wrapper">
             <p>${data.question[0].reponses}</p>
             <div id="buttons-wrapper"></div>
     </div>
