@@ -107,7 +107,7 @@ serveurSocket.onmessage = (event) => {
 
             }
             document.querySelector("body").innerHTML += `
-                    <div id="backGroundSlide"><img src="./image/question_backgrounds/question_${screenId}/fond.png" style="background-color: #C5F0FF55;"></div>
+                    
                     <div id="previewRep1">
                         <p>${data.question[0].reponses}</p>
                         <div id="arrowUp-wrapper">
