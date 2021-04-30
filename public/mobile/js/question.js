@@ -7,6 +7,10 @@ let elementPage
 let elementPageQ
 let elementPageN
 let elementPageP
+
+let touchStart = "ontouchstart" in window ? 'touchstart': "click";
+let touchMove = "ontouchmove" in window ? 'touchmove': "click";
+let touchEnd = "ontouchend" in window ? 'touchend': "click";
 // Fonction delay
 const waitTimer = (delay) => {
     return new Promise((resolve) => {
@@ -368,7 +372,7 @@ function load_element_slide() {
     questionAndRepWrapper.style = "display : flex;"
     let swipedir, startY, distY;
 
-    questionAndRepWrapper.addEventListener('touchstart', (e) => {
+    questionAndRepWrapper.addEventListener(touchStart, (e) => {
         if (!mov && !wait) {
             swipedir = 'none'
             distY = 0
@@ -376,7 +380,7 @@ function load_element_slide() {
             e.preventDefault()
         }
     })
-    questionAndRepWrapper.addEventListener("touchmove", (e) => {
+    questionAndRepWrapper.addEventListener(touchMove, (e) => {
         if (!mov && !wait) {
             distY = e.changedTouches[0].pageY - startY
             swipedir = (distY < 0) ? 'up' : 'down'
@@ -385,7 +389,7 @@ function load_element_slide() {
         }
     })
 
-    questionAndRepWrapper.addEventListener('touchend', (e) => {
+    questionAndRepWrapper.addEventListener(touchEnd, (e) => {
 
         if (!mov && !wait) {
             distY = e.changedTouches[0].pageY - startY
