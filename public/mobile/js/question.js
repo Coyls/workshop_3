@@ -125,15 +125,15 @@ serveurSocket.onmessage = (event) => {
                         
                     <div id="questionAndRepSlide-wrapper">
                         
-                        <div id="repP-wrapper">
+                        <div id="repP-wrapper" >
                             <p>${data.question[0].reponses}</p>
                         </div>
-                        <div id="question-wrapper">
+                        <div id="question-wrapper" style=" top: 100vh;">
                             <div id="question">
                                 <p>${data.question[0].questions}</p>
                             </div>
                         </div>
-                        <div id="repN-wrapper">
+                        <div id="repN-wrapper" style="top: 200vh;">
                             <p>${data.question[1].reponses}</p>
                         </div>
                         <div id="backGroundSlide-wrapper">
@@ -190,6 +190,7 @@ serveurSocket.onmessage = (event) => {
 
         if (data.state === 'actif') {
             wait = false
+            console
             if (format === "slide") {
                 load_element_slide()
             } else {
@@ -263,10 +264,17 @@ const stoprefresh = (e) =>{
 
 let mov = false
 
+//////////////////////////////////////////////////////////////load button
+//////////////////////////////////////////////////////////////load button
+//////////////////////////////////////////////////////////////load button
+
+//////////////////////////////////////////////////////////////load button
+//////////////////////////////////////////////////////////////load button
+//////////////////////////////////////////////////////////////load button
 function load_element_button() {
     console.log("recup Element")
     const waitingWrapper = document.querySelector("#waiting-wrapper")
-    const questionAndRepWrapper = document.querySelector("#questionAndRepSlide-wrapper")
+    const questionAndRepWrapper = document.querySelector("#questionAndRepButton-wrapper")
     const buttonP = document.querySelector("#buttonP")
     const buttonN = document.querySelector("#buttonN")
     const questionWrapper = document.querySelector("#question-wrapper")
@@ -294,6 +302,13 @@ function load_element_button() {
     })
 
 }
+//////////////////////////////////////////////////////////////load slide
+//////////////////////////////////////////////////////////////load slide
+//////////////////////////////////////////////////////////////load slide
+
+//////////////////////////////////////////////////////////////load slide
+//////////////////////////////////////////////////////////////load slide
+//////////////////////////////////////////////////////////////load slide
 
 function load_element_slide() {
 
