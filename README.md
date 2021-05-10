@@ -1,7 +1,7 @@
 # workshop_3
 Interactive exhibition. Available only by phone.
 
-Front-End Screen : Max
+[https://github.com/Coyls/workshop_3/tree/master/public/ecrans]Front-End Screen : Max
 
 Front-End Mobile : Yohan / Arthur
 
