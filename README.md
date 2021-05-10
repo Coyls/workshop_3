@@ -1,11 +1,11 @@
 # workshop_3
 Interactive exhibition. Available only by phone.
 
-[https://github.com/Coyls/workshop_3/tree/master/public/ecrans]Front-End Screen : Max
+[Front-End Screen](https://github.com/Coyls/workshop_3/tree/master/public/ecrans) : Max
 
-Front-End Mobile : Yohan / Arthur
+[Front-End Mobile](https://github.com/Coyls/workshop_3/tree/master/public/mobile) : Yohan / Arthur
 
-Back-End Data Base : Roxane
+[Back-End Data Base](https://github.com/Coyls/workshop_3/blob/master/server.js) : Roxane
 
-Back-End Server : Loïc
+[Back-End Server](https://github.com/Coyls/workshop_3/blob/master/server.js) : Loïc
 
